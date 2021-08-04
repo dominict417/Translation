@@ -1,0 +1,109 @@
+//================= Hercules Script =======================================
+//=       _   _                     _
+//=      | | | |                   | |
+//=      | |_| | ___ _ __ ___ _   _| | ___  ___
+//=      |  _  |/ _ \ '__/ __| | | | |/ _ \/ __|
+//=      | | | |  __/ | | (__| |_| | |  __/\__ \
+//=      \_| |_/\___|_|  \___|\__,_|_|\___||___/
+//================= License ===============================================
+//= This file is part of Hercules.
+//= http://herc.ws - http://github.com/HerculesWS/Hercules
+//=
+//= Copyright (C) 2012-2021 Hercules Dev Team
+//= Copyright (C) Euphy
+//= Copyright (C) Masao
+//= Copyright (C) L0ne_W0lf
+//= Copyright (C) Silentdragon
+//= Copyright (C) Lupus
+//= Copyright (C) kobra_k88
+//=
+//= Hercules is free software: you can redistribute it and/or modify
+//= it under the terms of the GNU General Public License as published by
+//= the Free Software Foundation, either version 3 of the License, or
+//= (at your option) any later version.
+//=
+//= This program is distributed in the hope that it will be useful,
+//= but WITHOUT ANY WARRANTY; without even the implied warranty of
+//= MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//= GNU General Public License for more details.
+//=
+//= You should have received a copy of the GNU General Public License
+//= along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//=========================================================================
+//= Acolyte Skill Quest
+//================= Description ===========================================
+//= Quest for skills: Holy Light
+//================= Current Version =======================================
+//= 1.8
+//=========================================================================
+
+prt_church,173,23,4	script	Cleric	1_F_PRIEST,{
+	mes "[Acolyte Klift]";
+	mes "อา. พี่น้อง !";
+	mes "งานในการดูแลแกะที่หายไปเป็นภาระ";
+	mes "และทำให้คุณเบื่อหน่ายหรือไม่?";
+	mes "ฉันอยู่ที่นี่เพื่อช่วยคุณ";
+	next;
+	switch (select("^3355FF' เกี่ยวกับความสามารถที่ซ่อนอยู่ของ Acolyte '^000000 ..", "ฝึกฝน ^3355FF' Holy light '^000000", "จบการสนทนา")) {
+	case 1:
+		mes "[Acolyte Klift]";
+		mes "สมาชิกในคณะสงฆ์ของเราเรียนรู้ทักษะ";
+		mes "อย่างเป็นธรรมชาติเมื่อพวกเขาเติบโตเต็มที่";
+		mes "เมื่อพวกเขาเข้าใกล้รุ่นพี่ในฐานะ Acolyte ทักษะพิเศษนี้";
+		next;
+		mes "[Acolyte Klift]";
+		mes "จะเผชิญภัยใหญ่หลวงและต่อสู้กับความชั่วร้ายไม่รู้จบ";
+		mes "พี่น้องของเราต้องการความช่วยเหลืออย่างมาก";
+		mes "^3355FF' Holy Light '^000000 เป็นทักษะ";
+		mes "เพื่อให้ได้ความสามารถนี้สำหรับตัวคุณเอง";
+		next;
+		mes "[Acolyte Klift]";
+		mes "เพื่อให้ได้ทักษะ คุณต้องหาไอเท็มเหล่านี้";
+		mes "^FF33551 Opal^000000";
+		mes "^FF33551 Crystal Blue^000000";
+		mes "^FF33551 Rosary^000000 ";
+		next;
+		mes "[Acolyte Klift]";
+		mes "เพื่อให้สามารถใช้ทักษะนี้ได้";
+		mes "ต้องมีเงื่อนไขดังนี้";
+		mes "^FF3355 Job Level 30^000000";
+		next;
+		mes "[Acolyte Klift]";
+		mes "สำหรับ Priest ที่มีประสบการณ์มากมาย พวกเขาจึงสามารถเรียนรู้ทักษะนี้ได้ทุกเมื่อ";
+		mes "job level.";
+		close;
+	case 2:
+		if (getskilllv("AL_HOLYLIGHT") == 1) {
+			mes "[Acolyte Klift]";
+			mes "ท่านมีทักษะ Holy Light แล้ว";
+			mes "ท่านไม่สามารถเรียนรู้ทักษะได้หากได้รับไปแล้ว";
+			mes "ฉันขออวยพรให้ท่านใช้ทักษะนี้เพื่อเกิดประโยชน์ให้มากที่สุด..";
+			close;
+		}
+		if ((countitem(White_Jewel) > 0) && (countitem(Crystal_Blue) > 0) && (countitem(Rosary) > 0) && (JobLevel > 29 || (BaseJob == Job_Priest || BaseJob == Job_Monk)) && (BaseClass == Job_Acolyte)) {
+			mes "[Acolyte Klift]";
+			mes "ศรัทธาของคุณพิสูจน์แล้วว่าคู่ควรสำหรับคุณที่จะได้รับทักษะ 'Holy Light'";
+			mes "ทักษะของคุณเพียงพอที่จะใช้ทักษะนี้ ใช้อย่างชาญฉลาด . .";
+			next;
+			delitem White_Jewel,1;
+			delitem Crystal_Blue,1;
+			delitem Rosary,1;
+			skill "AL_HOLYLIGHT",1,0;
+			mes "[Acolyte Klift]";
+			mes "ตอนนี้ท่านได้เรียนรู้ ' Holy Light ' แล้ว";
+			mes "ขอให้ท่านใช้ทักษะนี้ในทางที่ดีเท่านั้น . . . .";
+			close;
+		}
+		mes "[Acolyte Klift]";
+		mes "โอ้ มันชัดเจน . . คุณยังไม่พร้อมที่จะรับทักษะ 'Holy Light'";
+		next;
+		mes "[Acolyte Klift]";
+		mes "คุณควรตั้งใจฟังสิ่งที่จำเป็นสำหรับทักษะนี้อย่างรอบคอบ หากคุณตั้งใจฟัง คุณอาจเรียนรู้สิ่งที่คุณขาด เพื่อท่านจะได้พัฒนาตนเอง";
+		close;
+	case 3:
+		mes "[Acolyte Klift]";
+		mes ". . . . .";
+		mes "ฉันเข้าใจความกระตือรือร้นของคุณ คุณมีเวลาอีกมากในการฝึกฝนและรับประสบการณ์ ขอให้พระเจ้าคุ้มครองคุณ. . . . .";
+		close;
+	}
+}

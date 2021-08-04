@@ -1,0 +1,714 @@
+//================= Hercules Script =======================================
+//=       _   _                     _
+//=      | | | |                   | |
+//=      | |_| | ___ _ __ ___ _   _| | ___  ___
+//=      |  _  |/ _ \ '__/ __| | | | |/ _ \/ __|
+//=      | | | |  __/ | | (__| |_| | |  __/\__ \
+//=      \_| |_/\___|_|  \___|\__,_|_|\___||___/
+//================= License ===============================================
+//= This file is part of Hercules.
+//= http://herc.ws - http://github.com/HerculesWS/Hercules
+//=
+//= Copyright (C) 2012-2021 Hercules Dev Team
+//= Copyright (C) Euphy
+//= Copyright (C) Kisuka
+//= Copyright (C) Samuray22
+//= Copyright (C) massdriller
+//= Copyright (C) Lupus
+//= Copyright (C) L0ne_W0lf
+//= Copyright (C) kobra_k88
+//=
+//= Hercules is free software: you can redistribute it and/or modify
+//= it under the terms of the GNU General Public License as published by
+//= the Free Software Foundation, either version 3 of the License, or
+//= (at your option) any later version.
+//=
+//= This program is distributed in the hope that it will be useful,
+//= but WITHOUT ANY WARRANTY; without even the implied warranty of
+//= MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//= GNU General Public License for more details.
+//=
+//= You should have received a copy of the GNU General Public License
+//= along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//=========================================================================
+//= Mage Job Quest (Pre-Renewal)
+//================= Description ===========================================
+//= Job quest for Mage classes
+//================= Current Version =======================================
+//= 2.0
+//=========================================================================
+
+geffen_in,164,124,4	script	Mage Guildsman	2_F_MAGICMASTER,{
+	if (Upper == 1) {
+		if (ADVJOB == Job_High_Wizard || ADVJOB == Job_Professor) {
+			if (Class == Job_Novice_High) {
+				mes "[Mage Guildsman]";
+				mes "โว้ว, ไม่เจอกันนาน! แต่เธอต้องตายไม่ใช่เหรอ?";
+				next;
+				mes "[Mage Guildsman]";
+				mes "อา คุณต้องได้เกิดใหม่ ฉันดีใจที่คุณกลับมา";
+				next;
+				if (getskilllv("NV_BASIC") < 9) {
+					mes "[Mage Guildsman]";
+					mes "ฉันเสียใจ แต่ฉันคิดว่าคุณยังไม่พร้อมที่จะเรียนรู้เวทมนตร์ ทำไมคุณไม่เรียนทักษะพื้นฐานให้เสร็จก่อนล่ะ?";
+					next;
+					mes "[Mage Guildsman]";
+					mes "ใช้เวลาของคุณ ยิ่งคุณเรียนรู้มากเท่าไหร่ คุณก็จะยิ่งพร้อมที่จะเรียนรู้เวทมนตร์อีกครั้ง";
+					close;
+				}
+				mes "[Mage Guildsman]";
+				mes "เนื่องจากคุณผ่านการทดสอบผู้วิเศษแล้วหนึ่งครั้ง ฉันจะไม่ถามถึงคุณสมบัติของคุณ คุณต้องการที่จะได้ทักษะเวทย์มนตร์ของคุณกลับมาทันทีใช่ไหม?";
+				next;
+				skill 143,0,0;
+				jobchange Job_Mage_High;
+				skill 157,1,0;
+				mes "[Mage Guildsman]";
+				mes "ว้าว, ด้วยเหตุผลบางอย่าง, คุณดูดีขึ้นกว่าเมื่อก่อนมาก อย่างไรก็ตาม ฉันเชื่อว่าคุณจะทำงานได้ดีขึ้นในฐานะนักเวทย์เช่นกัน";
+				close;
+			}
+			else {
+				mes "[Mage Guildsman]";
+				mes "มีอะไรให้ฉันช่วยอีกไหม? ถ้าไม่ทำไมคุณไม่ไปทดสอบทักษะของคุณ? โลกกำลังรอคุณอยู่~!";
+				close;
+			}
+		}
+		else {
+			mes "[Mage Guildsman]";
+			mes "คุณสนใจ Mage guild ไหม? ฉันไม่อยากบอกคุณเรื่องนี้ แต่คุณไม่ใช่คนที่นี่";
+			next;
+			mes "[Mage Guildsman]";
+			mes "ฉันไม่แน่ใจว่าทำไมคุณถึงยังยืนอยู่ตรงหน้าฉัน แต่ฉันบอกได้เลยว่าคุณไม่ได้เกิดมาเพื่อเป็นนักเวทย์";
+			close;
+		}
+	}
+	mes "[Mage Guildsman]";
+	mes "โย่. ว่าไง?";
+	next;
+	switch(select("I want to be a Mage.", "Tell me the Requirements.", "Pretty much nothing.")) {
+	case 1:
+		mes "[Mage Guildsman]";
+		if (BaseJob == Job_Mage) {
+			mes "เฮ้,คุณไม่ได้ตระหนัก? คุณคือผู้วิเศษ งี่เง่า!";
+			next;
+			mes "[Mage Guildsman]";
+			mes "สักวันหนึ่ง คุณจะตระหนักถึงพลังในตัวคุณ เมื่อคุณสร้างไฟด้วยความคิดของคุณ!";
+			close;
+		}
+		if (BaseJob != Job_Novice) {
+			mes "เฮ้~ เอาหล่ะ. เลิกเล่นเกมส์. คุณไม่สามารถเป็น Mage ได้เพราะคุณมีงานอื่นอยู่แล้ว";
+			close;
+		}
+		if (job_magician_q == 0) {
+			mes "Wanna be a Mage, eh...?";
+			if (Sex == SEX_MALE)
+				mes "เฮ้, มองมาที่คุณ! คุณน่ารักจัง~! ไม่ใช่ประเภทของฉันแม้ว่า...";
+			else {
+				mes "โอ้ เธอช่างร้อนแรงจริงๆ~!";
+				mes "ฉันชอบผู้หญิงแบบคุณ~";
+			}
+			next;
+			mes "[Mage Guildsman]";
+			mes "คุณบอกว่าคุณอยากเป็น Mage ใช่ไหม? เอาล่ะ กรุณาเซ็นชื่อในใบสมัครผู้วิเศษ";
+			next;
+			if (select("Sign Up.", "Quit.") == 1) {
+				mes "[Mage Guildsman]";
+				mes "ตกลง. ลงชื่อตรงนั้น โห คุณสะกดเก่งจัง เอาหล่ะ ดังนั้นชื่อของคุณคือ... " + strcharinfo(PC_NAME) + ".";
+				next;
+				mes "[Mage Guildsman]";
+				mes "ถึงเวลาแล้วสำหรับ";
+				mes "ฉันให้คุณทดสอบ";
+				switch(rand(0,3)) {
+				case 1:
+					mes "ทำ ^3355FFMixed Solution No. 1^000000";
+					mes "และนำมันกลับมาให้ฉัน";
+					job_magician_q = 1;
+					break;
+				case 2:
+					mes "ทำ ^3355FFMixed Solution No. 2^000000";
+					mes "และนำมันกลับมาให้ฉัน";
+					job_magician_q = 2;
+					break;
+				case 3:
+					mes "ทำ ^3355FFMixed Solution No. 3^000000";
+					mes "และนำมันกลับมาให้ฉัน";
+					job_magician_q = 3;
+					break;
+				default:
+					mes "ทำ ^3355FFMixed Solution No. 4^000000";
+					mes "และนำมันกลับมาให้ฉัน";
+					job_magician_q = 4;
+				}
+				next;
+				getitem Empty_Cylinder,1;
+				mes "[Mage Guildsman]";
+				mes "คุณสามารถหาส่วนผสมที่จำเป็นได้จากคู่มือแนะนำในกิลด์นี้ ดังนั้นคุณควรมองหาสิ่งที่คุณต้องการก่อนไป";
+				next;
+				mes "[Mage Guildsman]";
+				mes "เมื่อคุณรวบรวมส่วนผสมทั้งหมดที่คุณ  ใช้เครื่องที่อยู่ตรงกลางห้องเพื่อผสมสารละลาย ขอให้โชคดี!";
+				close;
+			}
+			mes "[Mage Guildsman]";
+			mes "อะไรร~?! ทันทีที่คุณบอกฉันว่าคุณอยากเป็น Mage ถ้าคุณเปลี่ยนใจแล้ว?! ตัดสินใจมากกว่านี้อีกนิด!";
+			close;
+		}
+		mes "ใช่? พร้อมไหม...?";
+		if (getskilllv("NV_BASIC") < 9) {
+			mes "โอ้สิ่งที่คนเกียจคร้าน คุณยังไม่ตรงตามข้อกำหนด";
+			next;
+			mes "[Mage Guildsman]";
+			mes "ย้อนกลับไปและไปถึง Novice Job ระดับ 9 ก่อน อย่าลืมว่าคุณต้องเรียนรู้ทักษะพื้นฐานทั้งหมดด้วยก่อนที่จะกลับมา";
+			close;
+		}
+		mes "" + strcharinfo(PC_NAME) + "'s test was...";
+		if (job_magician_q == 1)
+			mes "การผสม Solution No. 1.";
+		else if (job_magician_q == 2)
+			mes "การผสม Solution No. 2.";
+		else if (job_magician_q == 3)
+			mes "การผสม Solution No. 3.";
+		else
+			mes "การผสม Solution No. 4.";
+		next;
+		mes "[Mage Guildsman]";
+		mes "เอาล่ะให้ฉัน";
+		mes "ตรวจสอบว่าคุณทำ";
+		mes "solution accurately...";
+		next;
+		mes "[Mage Guildsman]";
+		if (countitem(Mage_Test_1) == 0 && countitem(Mage_Test_2) == 0 && countitem(Mage_Test_3) == 0 && countitem(Mage_Test_4) == 0 && countitem(Mage_Test_Etc) == 0) {
+			mes "เฮ้  ไหน Solution";
+			mes "ฉันขอ...? ฉันตรวจสอบไม่ได้ถ้าคุณไม่แสดงให้ฉันเห็นใช่ไหม?";
+			close;
+		}
+		else {
+			if ((job_magician_q == 1 && countitem(Mage_Test_1) == 0) || (job_magician_q == 2 && countitem(Mage_Test_2) == 0) || (job_magician_q == 3 && countitem(Mage_Test_3) == 0) || (job_magician_q == 4 && countitem(Mage_Test_4) == 0)) {
+				mes "เดี๋ยว";
+				mes "นี่ไม่ใชา";
+				mes "Solution ที่ฉันบอก!";
+				next;
+				mes "[Mage Guildsman]";
+				if (job_magician_q == 1)
+					mes "คุณควรผสม Solution No. 1 และนำมันกลับมาให้ฉัน ตอนนี้ไปและลองอีกครั้ง";
+				else if (job_magician_q == 2)
+					mes "คุณควรผสม Solution No. 2 และนำมันกลับมาให้ฉัน ตอนนี้ไปและลองอีกครั้ง";
+				else if (job_magician_q == 3)
+					mes "คุณควรผสม Solution No. 3 และนำมันกลับมาให้ฉัน ตอนนี้ไปและลองอีกครั้ง";
+				else
+					mes "คุณควรผสม Solution No. 4 และนำมันกลับมาให้ฉัน ตอนนี้ไปและลองอีกครั้ง";
+
+				if (countitem(Mage_Test_1) != 0) delitem Mage_Test_1,1;
+				else if (countitem(Mage_Test_2) != 0) delitem Mage_Test_2,1;
+				else if (countitem(Mage_Test_3) != 0) delitem Mage_Test_3,1;
+				else if (countitem(Mage_Test_4) != 0) delitem Mage_Test_4,1;
+				else delitem Mage_Test_Etc,1;
+				close;
+			}
+		}
+		if (countitem(Mage_Test_1) != 0) delitem Mage_Test_1,1;
+		else if (countitem(Mage_Test_2) != 0) delitem Mage_Test_2,1;
+		else if (countitem(Mage_Test_3) != 0) delitem Mage_Test_3,1;
+		else if (countitem(Mage_Test_4) != 0) delitem Mage_Test_4,1;
+		else delitem Mage_Test_Etc,1;
+		mes "หืมม. ฉันเห็นว่าคุณพยายามอย่างหนัก สำหรับความพยายามของผู้เริ่มต้น นี่เป็นสิ่งที่ดีจริงๆ";
+		mes "เป็นงานที่ดี";
+		next;
+		mes "[Mage Guildsman]";
+		mes "เอาหล่ะ! ฉันดีใจที่จะบอกว่าคุณผ่านการทดสอบผู้วิเศษ ฉันจะแปลงร่างคุณทันที!";
+		next;
+		mes "[Mage Guildsman]";
+		mes "*อะแฮ่ม*";
+		mes "ยินดีด้วย!";
+		mes "ตอนนี้คุณคือ Mage!";
+		next;
+		if (questprogress(1005)) {
+			completequest 1005;
+		}
+		else if (questprogress(1006)) {
+			completequest 1006;
+		}
+		else if (questprogress(1007)) {
+			completequest 1007;
+		}
+		else {
+			completequest 1008;
+		}
+		callfunc "Job_Change",Job_Mage;
+		callfunc "F_ClearJobVar";
+		Zeny += 50;
+		mes "[Mage Guildsman]";
+		mes "'ยินดีต้อนรับสู่โลกของฉัน~'";
+		mes "หึหึหึ, ฉันแค่อยากจะบอกว่า รู้ไหม มันเป็นคำคมจากหนังดัง~";
+		next;
+		mes "[Mage Guildsman]";
+		mes "ตอนนี้คุณเป็น Mage เหมือนเราเป็นเพื่อนกันนะ โอเค๊?";
+		close;
+	case 2:
+		mes "[Mage Guildsman]";
+		mes "อยากเป็น Mage ใช่มั้ย?";
+		if (Sex == SEX_MALE)
+			mes "สำหรับคนน่ารักอย่างคุณ ฉันยินดีที่จะอธิบายข้อกำหนดนี้!";
+		else
+			mes "ฉันยินดีที่จะอธิบายข้อกำหนดของสาวสวยเช่นคุณ!";
+		next;
+		mes "[Mage Guildsman]";
+		mes "ก่อนอื่นเลย คุณต้องไปถึง Novice Job Level 10 และเรียนรู้ทักษะพื้นฐานทั้งหมด จากนั้นคุณจะต้องผ่านการทดสอบ Mage";
+		next;
+		if (job_magician_q != 0) {
+			mes "[Mage Guildsman]";
+			mes "การทดสอบของคุณคือการ";
+			switch(job_magician_q) {
+			case 1:
+				mes "ทำ";
+				mes "^3355FFMixed Solution No. 1^000000";
+				mes "และนำมันกลับมาให้ฉัน";
+				setquest 1005;
+				break;
+			case 2:
+				mes "ทำ";
+				mes "^3355FFMixed Solution No. 2^000000";
+				mes "และนำมันกลับมาให้ฉัน";
+				setquest 1006;
+				break;
+			case 3:
+				mes "ทำ";
+				mes "^3355FFMixed Solution No. 3^000000";
+				mes "และนำมันกลับมาให้ฉัน";
+				setquest 1007;
+				break;
+			default:
+				mes "ทำ";
+				mes "^3355FFMixed Solution No. 4^000000";
+				mes "และนำมันกลับมาให้ฉัน";
+				setquest 1008;
+			}
+			next;
+			mes "[Mage Guildsman]";
+			mes "คุณสามารถค้นหาส่วนผสมที่จำเป็นสำหรับการทำ Solution ได้จาก Guide Book ใน Guild นี้";
+		}
+		else {
+			mes "[Mage Guildsman]";
+			mes "คุณจะได้รับแจ้งว่าคุณจะต้องสร้างโซลูชันผสมใดหลังจากลงนามในแบบฟอร์มใบสมัคร";
+		}
+		next;
+		mes "[Mage Guildsman]";
+		mes "แจ้งให้เราทราบเมื่อคุณพร้อมที่จะกลายเป็นผู้วิเศษ ตกลงไหม?";
+		close;
+	case 3:
+		mes "[Mage Guildsman]";
+		mes "ไม่มีอะไร...?";
+		close;
+	}
+}
+
+geffen_in,164,112,4	script	Mixing Machine	HIDDEN_NPC,{
+	mes "[Mixing Machine]";
+	mes "เครื่องนี้เป็นสมบัติของ Geffen Mage Guild และใช้สำหรับการผสมสารละลายเพื่อจุดประสงค์ทางเวทมนตร์เท่านั้น";
+	next;
+	if (select("Use Machine.", "Cancel.") == 1) {
+		mes "[Mixing Machine]";
+		mes "เลือก";
+		mes "ตัวทำละลายสำหรับ";
+		mes "the Solution.";
+		next;
+		switch(select("Payon Solution.", "Morroc Solution.", "No Solvent.")) {
+		case 1:
+			if (countitem(Payon_Potion) == 0) {
+				mes "[Mixing Machine]";
+				mes "ข้อผิดพลาด";
+				mes "ไม่พบรายการ";
+				mes "โปรดตรวจสอบอีกครั้ง.";
+				mes "กระบวนการหยุดทำงาน";
+				close;
+			}
+			.@mixitem2 = 1;
+			break;
+		case 2:
+			if (countitem(Morocc_Potion) == 0) {
+				mes "[Mixing Machine]";
+				mes "ข้อผิดพลาด";
+				mes "ไม่พบรายการ";
+				mes "โปรดตรวจสอบอีกครั้ง.";
+				mes "กระบวนการหยุดทำงาน";
+				close;
+			}
+			.@mixitem2 = 2;
+			break;
+		case 3:
+			.@mixitem2 = 0;
+			break;
+		}
+		while (1) {
+			if (.@progress == 2) {
+				mes "[Mixing Machine]";
+				if (.@mixitem1_1 != 0) mes "Jellopy: " + .@mixitem1_1 + " ea.";
+				if (.@mixitem1_2 != 0) mes "Fluff: " + .@mixitem1_2 + " ea.";
+				if (.@mixitem1_3 != 0) mes "Milk: " + .@mixitem1_3 + " ea.";
+				if (.@mixitem2 == 0) mes "Solvent: None.";
+				if (.@mixitem2 == 1) mes "Solvent: Payon Solution.";
+				if (.@mixitem2 == 2) mes "Solvent: Morroc Solution.";
+				next;
+				mes "[Mixing Machine]";
+				mes "โปรดเลือกหากคุณต้องการเริ่มผสม หรือกรอกจำนวนรายการที่จะผสมใหม่";
+				next;
+				switch(select("Begin Mixing.", "Re-Enter Number of Items.", "Reset.")) {
+				case 1:
+					mes "[Mixing Machine]";
+					mes "กรุณาวางรายการลงในภาชนะผสม ตรวจสอบให้แน่ใจว่าจำนวนรายการถูกต้อง";
+					next;
+					mes "[Mixing Machine]";
+					mes "คุณไม่สามารถปรับหรือคืนค่ารายการเมื่อวางลงในภาชนะผสมแล้ว";
+					next;
+					mes "[Mixing Machine]";
+					mes "ถ้าทุกอย่างถูกต้อง กดปุ่ม 'ผสม' เมื่อคุณพร้อม มิฉะนั้น ให้กดปุ่ม 'ยกเลิก'";
+					next;
+					if (select("กดปุ่ม 'ผสม' ", "กดปุ่ม 'ยกเลิก'") == 1) {
+						mes "[Mixing Machine]";
+						mes "วางรายการลงในเต้ารับผสมทันที โปรดรอ";
+						next;
+						mes "[Mixing Machine]";
+						if (countitem(Jellopy) < .@mixitem1_1) {
+							mes "Jellopy ไม่เพียงพอ";
+							mes "โปรดตรวจสอบอีกครั้ง";
+							mes "กระบวนการหยุดลง";
+							close;
+						}
+						else if (countitem(Fluff) < .@mixitem1_2) {
+							mes "Fluff ไม่เพียงพอ";
+							mes "โปรดตรวจสอบอีกครั้ง";
+							mes "กระบวนการหยุดลง";
+							close;
+						}
+						else if (countitem(Milk) < .@mixitem1_3) {
+							mes "Milkไม่เพียงพอ";
+							mes "โปรดตรวจสอบอีกครั้ง";
+							mes "กระบวนการหยุดลง";
+							close;
+						}
+						else if (.@mixitem2 == 1 || .@mixitem2 == 2) {
+							if (countitem(Payon_Potion) == 0 && countitem(Morocc_Potion) == 0) {
+								mes "ไม่พบ Solution";
+								mes "โปรดตรวจสอบอีกครั้ง";
+								mes "กระบวนการหยุดทำงาน";
+								close;
+							}
+						}
+						if (.@mixitem1_1 != 0) delitem Jellopy,.@mixitem1_1;
+						if (.@mixitem1_2 != 0) delitem Fluff,.@mixitem1_2;
+						if (.@mixitem1_3 != 0) delitem Milk,.@mixitem1_3;
+						if (.@mixitem2 == 1) delitem Payon_Potion,1;
+						if (.@mixitem2 == 2) delitem Morocc_Potion,1;
+						mes "รายการพร้อม";
+						mes "ปิดฝา";
+						.@progress = 3;
+						next;
+					}
+					break;
+				case 2:
+					.@continue = 0;
+					next;
+					break;
+				case 3:
+					.@mixitem1_1 = 0;
+					.@mixitem1_2 = 0;
+					.@mixitem1_3 = 0;
+					.@progress = 0;
+					.@continue = 0;
+					mes "[Mixing Machine]";
+					mes "รีเซ็ตเสร็จสมบูรณ์";
+					mes "เริ่มต้นอีกครั้ง?";
+					next;
+					if (select("Yes.", "No.") == 1)
+						break;
+					mes "[Mixing Machine]";
+					mes "กระบวนการหยุดทำงาน";
+					mes "ขอบคุณ";
+					close;
+				}
+				if (.@progress == 3) break;
+			}
+			else if (.@progress == 1) {
+				mes "[Mixing Machine]";
+				mes "ไม่พบสิ่งใด";
+				next;
+			}
+			mes "[Mixing Machine]";
+			mes "เลือกรายการที่จะผสม";
+			while(1) {
+				switch(select("Jellopy.", "Fluff.", "Milk.", "Ready to Mix.")) {
+				case 1:
+					while(1) {
+						input(.@input, 0);
+						if (.@input > 10000) {
+							next;
+							mes "[Mixing Machine]";
+							mes "ข้อผิดพลาด: เกินขีดจำกัดรายการ โปรดป้อนค่าที่น้อยกว่า 10,000 ลองอีกครั้ง";
+							next;
+							continue;
+						}
+						if (countitem(Jellopy) > 0)
+							.@mixitem1_1 += .@input;
+						.@progress = 2;
+						break;
+					}
+					break;
+				case 2:
+					while(1) {
+						input(.@input, 0);
+						if (.@input > 10000) {
+							next;
+							mes "[Mixing Machine]";
+							mes "ข้อผิดพลาด: เกินขีดจำกัดรายการ โปรดป้อนค่าที่น้อยกว่า 10,000 ลองอีกครั้ง";
+							next;
+							continue;
+						}
+						if (countitem(Fluff) > 0)
+							.@mixitem1_2 += .@input;
+						.@progress = 2;
+						break;
+					}
+					break;
+				case 3:
+					while(1) {
+						input(.@input, 0);
+						if (.@input > 10000) {
+							next;
+							mes "[Mixing Machine]";
+							mes "ข้ออผิดพลาด: เกินขีดจำกัดรายการ โปรดป้อนค่าที่น้อยกว่า 10,000 ลองอีกครั้ง";
+							next;
+							continue;
+						}
+						if (countitem(Milk) > 0)
+							.@mixitem1_3 += .@input;
+						.@progress = 2;
+						break;
+					}
+					break;
+
+				case 4:
+					if (.@progress != 2)
+						.@progress = 1;
+					.@continue = 1;
+					next;
+				}
+				if (.@continue) break;
+			}
+		}
+		mes "[Mixing Machine]";
+		mes "กรุณากรอก";
+		mes "หมายเลขซีเรียลของ";
+		mes "ผงวิเศษ";
+		next;
+		while(1) {
+			input(.@input);
+			if (.@input == 0) {
+				mes "[Mixing Machine]";
+				mes "คุณต้องการข้ามเมนูนี้หรือไม่?";
+				next;
+				if (select("Yes.", "No.") == 1) {
+					break;
+				}
+				continue;
+			}
+			if (.@input < 1000 || .@input > 9999) {
+				mes "[Mixing Machine]";
+				mes "หมายเลขซีเรียลไม่ถูกต้อง";
+				mes "กรุณาลองอีกครั้ง";
+				next;
+				continue;
+			}
+			mes "[Mixing Machine]";
+			mes "หมายเลขซีเรียลคือ #" + .@input + ", correct?";
+			next;
+			if (select("Confirm.", "Cancel.") == 1) {
+				if (.@input == 8472)
+					.@magic_powder = 1;
+				else if (.@input == 3735)
+					.@magic_powder = 2;
+				else if (.@input == 2750)
+					.@magic_powder = 3;
+				else if (.@input == 5429)
+					.@magic_powder = 4;
+				else
+					.@magic_powder = 5;
+			}
+			break;
+		}
+		mes "[Mixing Machine]";
+		mes "เลือก";
+		mes "หินเร่งปฏิกิริยา";
+		next;
+		switch(select("Yellow Gemstone.", "Red Gemstone.", "Blue Gemstone.", "1carat Diamond.", "ข้าม")) {
+		case 1: .@mixitem3 = 1; break;
+		case 2: .@mixitem3 = 2; break;
+		case 3: .@mixitem3 = 3; break;
+		case 4: .@mixitem3 = 4; break;
+		case 5: break;
+		}
+		mes "[Mixing Machine]";
+		mes "ทุกชุด";
+		mes "กำลังเริ่มต้น";
+		mes "กระบวนการผสม";
+		mes "โปรดรอ";
+		next;
+		mes "[Mixing Machine]";
+		mes "- สุภาษิตประจำวัน -";
+		switch(rand(1,5)) {
+		case 1:
+			mes "ตาต่อตา : เมื่อคุณรับจากบุคคล คุณต้องเปลี่ยนหรือชำระคืนในทางใดทางหนึ่ง";
+			break;
+		case 2:
+			mes "ความน่าเชื่อถือเป็นสกุลเงินของมนุษย์: ความไว้วางใจที่แท้จริงมีค่าซึ่งไม่สามารถวัดได้";
+			break;
+		case 3:
+			mes "สิ่งที่เกิดขึ้นรอบ ๆ : ในที่สุด คุณจะได้รับการปฏิบัติในแบบที่คุณปฏิบัติต่อผู้อื่น";
+			mes "หมายความว่า 'เมื่อคุณทำร้ายคนอื่น คุณจะได้รับอันตรายจากเขาในสถานการณ์ที่หลีกเลี่ยงไม่ได้' ";
+			break;
+		case 4:
+			mes "เพื่อนบ้านที่ดีย่อมดีกว่าพี่น้องที่อยู่ห่างไกล เมื่อคุณต้องการความช่วยเหลือ คุณวางใจได้จากคนใกล้ตัว";
+			break;
+		default:
+			mes "พวกเดียวกันแห่กันไป: คุณสามารถมองเพื่อนของบุคคลเป็นตัวบ่งชี้ถึงตัวละครของพวกเขา";
+		}
+		next;
+		if (.@mixitem1_1 == 2 && .@mixitem1_2 == 3 && .@mixitem1_3 == 1 && .@mixitem2 == 1 && .@mixitem3 == 1 && .@magic_powder == 1) {
+			mes "[Mixing Machine]";
+			mes "Mage ทดสอบ Solution No. 1.";
+			getitem Mage_Test_1,1;
+			next;
+		}
+		else if (.@mixitem1_1 == 3 && .@mixitem1_2 == 1 && .@mixitem1_3 == 1 && .@mixitem2 == 0 && .@mixitem3 == 2 && .@magic_powder == 2) {
+			mes "[Mixing Machine]";
+			mes "Mage ทดสอบ Solution No. 2.";
+			getitem Mage_Test_2,1;
+			next;
+		}
+		else if (.@mixitem1_1 == 6 && .@mixitem1_2 == 1 && .@mixitem1_3 == 0 && .@mixitem2 == 1 && .@mixitem3 == 3 && .@magic_powder == 3) {
+			mes "[Mixing Machine]";
+			mes "Mage ทดสอบ Solution No. 3.";
+			getitem Mage_Test_3,1;
+			next;
+		}
+		else if (.@mixitem1_1 == 2 && .@mixitem1_2 == 3 && .@mixitem1_3 == 0 && .@mixitem2 == 2 && .@mixitem3 == 4 && .@magic_powder == 4) {
+			mes "[Mixing Machine]";
+			mes "Mage ทดสอบ Solution No. 4.";
+			getitem Mage_Test_4,1;
+			next;
+		}
+		else {
+			mes "[Mixing Machine]";
+			mes "ไม่คาดคิด";
+			mes "เกิดข้อผิดพลาด";
+			getitem Mage_Test_Etc,1;
+			next;
+		}
+		mes "[Mixing Machine]";
+		mes "ผสมเสร็จ";
+		mes "ขอบคุณ";
+		close;
+	}
+	close;
+}
+
+// The Morroc Solution and Payon Solution traders
+// are also used in the Sage skill quests, and have
+// been moved to npc/quests/mage_solution.txt.
+//
+// pay_arche,122,100,0	script	Dollshoi	4_M_ORIENT01,{}
+// moc_ruins,91,150,0	script	Ponka-Hontas	4_F_04,{}
+
+geffen_in,177,112,4	script	Bookshelf	HIDDEN_NPC,{
+	mes "[Guide Book]";
+	mes "คู่มือเล่มนี้เป็นทรัพย์สินของ Geffen Mage Association กรุณาจัดการด้วยความระมัดระวัง";
+	next;
+	switch(select("Solution No. 1.", "Solution No. 2.", "Solution No. 3.", "Solution No. 4.", "ปิด")) {
+	case 1:
+		mes "[Mage Test Solution No. 1]";
+		mes "* รายการส่วนผสม *";
+		mes "2 Jellopy";
+		mes "3 Fluff";
+		mes "1 Milk";
+		next;
+		mes "[Mage Test Solution No. 1]";
+		mes "* ตัวทำละลาย *";
+		mes "Payon Solution";
+		mes "หาได้ที่ไหน :";
+		mes "A small spring ใน Payon, the Archer Village.";
+		next;
+		mes "[Mage Test Solution No. 1]";
+		mes "* รหัสซีเรียลพลังเวทย์มนตร์  *";
+		mes "8472";
+		next;
+		mes "[Mage Test Solution No. 1]";
+		mes "* ตัวเร่งปฏิกิริยา *";
+		mes "Yellow Gemstone";
+		mes "(Provided by";
+		mes "เครื่องผสม)";
+		close;
+	case 2:
+		mes "[Mage Test Solution No. 2]";
+		mes "* รายการส่วนผสม *";
+		mes "3 Jellopy";
+		mes "1 Fluff";
+		mes "1 Milk";
+		next;
+		mes "[Mage Test Solution No. 2]";
+		mes "* ตัวทำละลาย  *";
+		mes "ไม่มี";
+		next;
+		mes "[Mage Test Solution No. 2]";
+		mes "* รหัสซีเรียลพลังเวทย์มนตร์  *";
+		mes "3735";
+		next;
+		mes "[Mage Test Solution No. 2]";
+		mes "* ตัวเร่งปฏิกิริยา *";
+		mes "Red Gemstone";
+		mes "(Provided by";
+		mes "เครื่องผสม)";
+		close;
+	case 3:
+		mes "[Mage Test Solution No. 3]";
+		mes "* รายการส่วนผสม *";
+		mes "6 Jellopy";
+		mes "1 Fluff";
+		next;
+		mes "[Mage Test Solution No. 3]";
+		mes "* ตัวทำละลาย  *";
+		mes "Payon Solution";
+		mes "หาได้ที่ไหน :";
+		mes "A small spring ใน Payon, the Archer Village.";
+		next;
+		mes "[Mage Test Solution No. 3]";
+		mes "* รหัสซีเรียลพลังเวทย์มนตร์  *";
+		mes "2750";
+		next;
+		mes "[Mage Test Solution No. 3]";
+		mes "* ตัวเร่งปฏิกิริยา *";
+		mes "Blue Gemstone";
+		mes "(Provided by";
+		mes "เครื่องผสม)";
+		close;
+	case 4:
+		mes "[Mage Test Solution No. 4]";
+		mes "* รายการส่วนผสม *";
+		mes "2 Jellopy";
+		mes "3 Fluff";
+		next;
+		mes "[Mage Test Solution No. 4]";
+		mes "* ตัวทำละลาย  *";
+		mes "Morroc Solution";
+		mes "หาได้ที่ไหน:";
+		mes "A small spring ใกล้ทางเข้า pyramid ใน Morroc.";
+		next;
+		mes "[Mage Test Solution No. 4]";
+		mes "* รหัสซีเรียลพลังเวทย์มนตร์  *";
+		mes "5429";
+		next;
+		mes "[Mage Test Solution No. 4]";
+		mes "* ตัวเร่งปฏิกิริยา *";
+		mes "1 carat Diamond";
+		mes "(Provided by";
+		mes "เครื่องผสม)";
+		close;
+	}
+	close;
+}

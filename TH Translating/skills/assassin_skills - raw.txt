@@ -1,0 +1,569 @@
+//================= Hercules Script =======================================
+//=       _   _                     _
+//=      | | | |                   | |
+//=      | |_| | ___ _ __ ___ _   _| | ___  ___
+//=      |  _  |/ _ \ '__/ __| | | | |/ _ \/ __|
+//=      | | | |  __/ | | (__| |_| | |  __/\__ \
+//=      \_| |_/\___|_|  \___|\__,_|_|\___||___/
+//================= License ===============================================
+//= This file is part of Hercules.
+//= http://herc.ws - http://github.com/HerculesWS/Hercules
+//=
+//= Copyright (C) 2012-2021 Hercules Dev Team
+//= Copyright (C) L0ne_W0lf
+//= Copyright (C) DracoRPG
+//= Copyright (C) Reddozen
+//= Copyright (C) Lupus
+//=
+//= Hercules is free software: you can redistribute it and/or modify
+//= it under the terms of the GNU General Public License as published by
+//= the Free Software Foundation, either version 3 of the License, or
+//= (at your option) any later version.
+//=
+//= This program is distributed in the hope that it will be useful,
+//= but WITHOUT ANY WARRANTY; without even the implied warranty of
+//= MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//= GNU General Public License for more details.
+//=
+//= You should have received a copy of the GNU General Public License
+//= along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//=========================================================================
+//= Assassin Skills Quests
+//================= Description ===========================================
+//= Quests for skills: Venom Knife, Sonic Acceleration
+//================= Current Version =======================================
+//= 1.5
+//=========================================================================
+
+in_moc_16,14,27,5scriptAssassin#realman4_M_ACROSS,{
+if (BaseJob == Job_Assassin && ASSN_SK2 == 1) {
+if (getskilllv("AS_VENOMKNIFE") == 0) {
+[Killtin]
+Ah yes, that's why you look so familiar. You're of those to whom I've taught the ^990099Venom Knife^000000 skill. So, what brings you to me this time?
+next;
+[Killtin]
+What's that...?! You want me to teach it to you once again? It's a shame you've forgotten, but I suppose it can't be helped. Alright, alright, I'll teach you.
+next;
+[Killtin]
+First, you need to equip a Knife class weapon, and then cast Envenom on your knife. Throwing the blade? That's all in the wrist. Now, watch me closely and take note.
+next;
+[Killtin]
+You see? Having good form is essential to performing flawless technique. Always basics before the specifics. Now, why don't you give it a try?
+specialeffect EF_INVENOM;
+next;
+[Killtin]
+Good... Very good... Perfect form. Yes... Hmm. Are you sure that you forgot how to do this skill? I suppose that all you needed was a quick refresher.
+specialeffect(EF_INVENOM, AREA, playerattached());
+next;
+[Killtin]
+Alright, I think it's safe to say that you've mastered the Venom Knife skill. Leave me now, and always fight for the honor of the Assassin Guild!
+skill "AS_VENOMKNIFE",1,0;
+close;
+}
+else {
+[Killtin]
+So how has that ^990099Venom Knife^000000 skill been working for you? Be careful, and make sure that your victims always deserve what you give them!
+close;
+}
+}
+else if (ASSN_SK2 == 1 && ASSN_SK == 7) {
+[Killtin]
+So you've learned all of the specialized Assassin skills, eh? Don't let yourself become overconfident. Strive for even greater strength for the Assassin Guild's honor.
+close;
+}
+else if (ASSN_SK2 == 1) {
+[Killtin]
+So how has that ^990099Venom Knife^000000 skill been working for you? Be careful, and make sure that your victims always deserve what you give them!
+close;
+}
+else {
+if (BaseJob == Job_Assassin) {
+[Killtin]
+Hm? Ah, you're definitely a member of the Assassin Guild. Great, you've come just at the right time.
+next;
+[Killtin]
+Our guildmaster recently succeeded in developing two new skills for Assassins. I've been charged with the task of teaching these new skills to all the members of our guild.
+next;
+select("New skills?");
+[Killtin]
+That's right, "+ strcharinfo(PC_NAME) +". The first skill specifically enhances the Sonic Blow skill, and the second skill is a long range attack that's named ''^990099Venom Knife^000000.''
+next;
+[Killtin]
+If you have any questions, feel free to ask me about any of these new skills. It's my job to teach you as much as I can about them.
+next;
+while(1) {
+switch(select("^0000FFSonic Blow Enhancement^000000", "^990099Venom Knife^000000", "Continue Conversation")) {
+case 1:
+[Killtin]
+If you've been an Assassin for a while, then you must be familiar with the Sonic Blow skill, which inflicts 8 powerful strikes at an enemy in one blindingly fast attack.
+next;
+[Killtin]
+However, due to the speed involved in that skill, Sonic Blow isn't as accurate as it can be. After years of testing and research, our guildmaster developed a way to fix this.
+next;
+[Killtin]
+He created a new skill named ''Sonic Acceleration'' that Assassins can cast on themselves in order to quickly detect and accurately strike the target's fatal points.
+next;
+[Killtin]
+In effect, Sonic Acceleration roughly doubles the damage that you can inflict with the Sonic Blow. If you use Sonic Blow pretty often, then this skill will be pretty useful.
+next;
+[Killtin]
+I suggest that you learn the Venom Knife skill from me first. Then, you can talk to Esmille, the beautiful Assassin Cross right next to me, to learn Sonic Acceleration.
+next;
+break;
+case 2:
+[Killtin]
+As you may well know, our job isn't really known for its long range attacks. Sure, we can use Bows, and we've got a few long distance skills, but their uses are kind of limited.
+next;
+[Killtin]
+This Venom Knife skill was developed with this weakness in long range attacking in mind. Basically, we use the Envenom skill on a knife and throw it at a distant enemy to poison them.
+next;
+break;
+case 3:
+[Killtin]
+Now, if you like, I can teach you the ^009900Venom Knife^000000 skill right now. It won't take that much time, so what do you say? You ready to learn?
+next;
+while(1) {
+if (select("Learn Venom Knife", "I d-don't wanna learn!") == 1) {
+[Killtin]
+First, you need to equip a Knife class weapon, and then cast Envenom on your knife. Throwing the blade? That's all in the wrist. Now, watch me closely and take note.
+next;
+[Killtin]
+You see? Having good form is essential to performing flawless technique. Always basics before the specifics. Now, why don't you give it a try?
+specialeffect EF_INVENOM;
+next;
+[Killtin]
+Hey, that's pretty good.You're catching on really quick. Heh heh, but still, I guess I can take a little bit of credit for my excellent instruction. Ah, very nice.
+next;
+specialeffect(EF_INVENOM, AREA, playerattached());
+next;
+[Killtin]
+Alright, you may need to practice a bit more of this skill, but for the most part, you can use Venom Knife pretty easily in battle.
+ASSN_SK2 = 1;
+ASSN_SK = 1;
+skill "AS_VENOMKNIFE",1,0;
+next;
+[Killtin]
+Well, that's all I can teach you. Use this skill expertly, and bring woe to your enemies for the honor of the Assassin Guild!
+close;
+}
+if (.@teach ==1) {
+[Killtin]
+Y-you don't want to learn? Tough! It's my job to teach this Venom Knife skill to every member of the Assassin Guild! You're^FFFFFFaaaaa^000000 not leaving until I tell you to!
+next;
+}
+else {
+[Killtin]
+You can't refuse an order from our guildmaster... Like it or not, this skill will make you a better Assassin. Trust me on this and just agree to learn the skill, will you?
+next;
+}
+}
+}
+}
+}
+else if (BaseJob == Job_Thief) {
+[Killtin]
+A Thief...? Huh. That's a respectable job. But listen, if you want me to be able to teach you anything, you'll need to get stronger first.
+close;
+}
+else {
+[Assassin]
+............................... Just keep moving.
+close; }
+}
+}
+
+in_moc_16,23,27,5scriptAssassin#realgirl4_F_ACROSS,{
+if (BaseJob == Job_Assassin && ASSN_SK == 7) {
+if (getskilllv("AS_SONICACCEL") == 0) {
+[Esmille]
+Mm? Ah, you've transcended and become an Assassin Cross as well. I understand the trouble that you must have gone through to be reborn with new strength.
+next;
+[Esmille]
+You probably need to learn the Sonic Acceleration skill again after having lost some of your memories. I truly sympathize, and am willing to teach it to you again.
+next;
+if (getskilllv("AS_SONICBLOW") == 0) {
+[Esmille]
+First, go and learn the Sonic Blow skill. The skill I will teach you is completely useless unless you learn how to perform a Sonic Blow. I shall be waiting right here till then.
+close;
+}
+[Esmille]
+Now, right before you perform Sonic Blow, make sure your feet are positioned like this. Then, as smoothly and quickly as possible, shift your weight over to this side.
+specialeffect EF_SONICBLOW;
+next;
+[Esmille]
+Watch carefully, this is the most important part. See where my hands are and the angle of my arms? This is the form that you've got to memorize.
+specialeffect EF_SONICBLOW;
+next;
+[Esmille]
+Alright, that's all you need to know. Now, please try it so I can give you feedback on your form.
+next;
+specialeffect(EF_SONICBLOW, AREA, playerattached());
+next;
+[Esmille]
+Hmm, you're shifting your weight kind of unsteadily. It might help if your center of gravity was like this...
+next;
+specialeffect(EF_SONICBLOW, AREA, playerattached());
+next;
+[Esmille]
+Ah, you're so very close to perfection. Focus more on smoothly transitioning from your stance to executed action.
+next;
+[Esmille]
+Yes, that's it...! Very well executed. Good work, "+ strcharinfo(PC_NAME) +".
+skill "AS_SONICACCEL",1,0;
+ASSN_SK = 7;
+next;
+[Esmille]
+Do you understand now? You should have no problem remembering this skill now. I can teach you nothing more, so all I can do now is wish you luck on your journeys.
+close;
+}
+else {
+[Esmille]
+I trust that using Sonic Acceleration in battle has given you an edge over the enemy. Bring swift defeat to your foes for the Assassin Guild's honor.
+close;
+}
+}
+else if (ASSN_SK == 7) {
+[Esmille]
+I trust that using Sonic Acceleration in battle has given you an edge over the enemy. Bring swift defeat to your foes forthe Assassin Guild's honor.
+close;
+}
+else if (ASSN_SK == 6) {
+[Esmille]
+Please focus on the training... If we continue to be interrupted, you'll never be able to learn anything. Now, please listen closely.
+next;
+[Esmille]
+Now, right before you perform Sonic Blow, makesure your feet are positioned like this. Then, as smoothly and quickly as possible, shift your weight over to this side.
+specialeffect EF_SONICBLOW;
+next;
+[Esmille]
+Watch carefully, this is the most important part. See where my hands are and the angle of my arms? This is the form that you've got to memorize.
+specialeffect EF_SONICBLOW;
+next;
+[Esmille]
+Alright, that's all you need to know. Now, please try it so I can give you feedback on your form.
+next;
+specialeffect(EF_SONICBLOW, AREA, playerattached());
+next;
+[Esmille]
+Hmm, you're shifting your weight kind of unsteadily. It might help if your center of gravity was like this...
+next;
+specialeffect(EF_SONICBLOW, AREA, playerattached());
+next;
+[Esmille]
+That's a little better. Hmmm. Try to think of the enemy's weak point and follow through with the stabbing motion.
+next;
+specialeffect(EF_SONICBLOW, AREA, playerattached());
+next;
+[Esmille]
+Ah, you're so very close to perfection. Focus more on smoothly transitioning from your stance to executed action.
+specialeffect(EF_SONICBLOW, AREA, playerattached());
+next;
+[Esmille]
+Yes, that's it...! Very well executed. Good work, "+ strcharinfo(PC_NAME) +".
+skill "AS_SONICACCEL",1,0;
+ASSN_SK = 7;
+next;
+[Esmille]
+Do you understand now? You should have no problem remembering this skill now. I can teach you nothing more, so all I can do now is wish you luck on your journeys.
+close;
+}
+else if (ASSN_SK == 5) {
+[Esmille]
+So how is your little mission coming along? I trust that you've completed that task I assigned for you.
+next;
+if ((ASSN_SK == 5 && countitem(Blue_Jewel) > 0) || (ASSN_SK == 5 && countitem(Cardinal_Jewel) > 0) || (ASSN_SK == 5 && countitem(Skyblue_Jewel) > 0)) {
+select("How's this for treasure?");
+[Esmille]
+Oh, that jewel...! It's so captivating~ I haven't seen anything so beautiful in such a long time. You've done very well...
+next;
+[Esmille]
+That jewel is yours to keep. In truth, I don't really need any treasure, just some proof of your qualification. It looks like you're ready for me to teach you Sonic Acceleration.
+ASSN_SK = 6;
+next;
+[Esmille]
+Now, right before you perform Sonic Blow, make sure your feet are positioned like this. Then, as smoothly and quickly as possible, shift your weight over to this side.
+specialeffect EF_SONICBLOW;
+next;
+[Esmille]
+Watch carefully, this is the most important part. See where my hands are and the angle of my arms? This is the form that you've got to memorize.
+specialeffect EF_SONICBLOW;
+next;
+[Esmille]
+Alright, that's all you need to know. Now, please try it so I can give you feedback on your form.
+next;
+specialeffect(EF_SONICBLOW, AREA, playerattached());
+next;
+[Esmille]
+Hmm, you're shifting your weight kind of unsteadily. It might help if your center of gravity was like this...
+next;
+specialeffect(EF_SONICBLOW, AREA, playerattached());
+next;
+[Esmille]
+That's a little better. Hmmm. Try to think of the enemy's weak point and follow through with the stabbing motion.
+next;
+specialeffect(EF_SONICBLOW, AREA, playerattached());
+next;
+[Esmille]
+Yes, that's it...! Very well executed. Good work, "+ strcharinfo(PC_NAME) +".
+skill 1003,1,0;
+ASSN_SK = 7;
+next;
+[Esmille]
+Do you understand now? You should have no problem remembering this skill now. I can teach you nothing more, so all I can do now is wish you luck on your journeys.
+close;
+}
+else {
+[Esmille]
+Hmmm...
+close;
+}
+}
+else if (ASSN_SK == 2 || ASSN_SK == 3 || ASSN_SK == 4) {
+[Esmille]
+So how is your little mission coming along? If you've forgotten the location I've asked you to search for treasure, then I can briefly remind you.
+next;
+[Esmille]
+Find something valuable
+if (ASSN_SK == 2) {
+for me by searching the ^FF0000Coffins^000000 in the Sphinx.
+}
+else if (ASSN_SK == 3) {
+for me by searching the ^FF0000Stone Statues^000000 in the Sphinx.
+}
+else if (ASSN_SK == 4) {
+in the ^FF0000flooded crypt in the bottom floor^000000 of the Pyramids.
+}
+Only the strong can explore that area, so doing this will prove your competency to me.
+close;
+}
+else if (ASSN_SK == 1) {
+[Esmille]
+Ah. Hello, comrade. Have you heard about the latest news from the Assassin Guild? Ah, you've spoken to Killtin. Good, good...
+next;
+[Esmille]
+Now, I've been charged with the responsibility of teaching the Sonic Acceleration skill to all interested Assassins. I can tell you more about it if Killtin didn't fully explain.
+next;
+while(1) {
+switch(select("Please tell me more...", "I want to learn Sonic Acceleration!")) {
+case 1:
+[Esmille]
+Sonic Acceleration is a ^FF0000support skill used in conjunction with Sonic Blow^000000. Assassins can only cast this skill on themselves for their own personal benefit.
+next;
+[Esmille]
+If you're familiar with Sonic Blow, you'll know that it's difficult to inflict fatal damage with that skill. It's far too fast to be able to attack very accurately...
+next;
+[Esmille]
+However, by learning Sonic Acceleration, you can overcome this accuracy drawback and fulfill the full damage potential of the Sonic Blow skill.
+next;
+[Esmille]
+This skill is truly great. And our guildmaster, the one who invented this skill, is also... He's a man amongst men, I must say.
+emotion e_lv;
+next;
+break;
+case 2:
+[Esmille]
+Ah, I'm glad to see that you're so enthusiastic about learning this skill. But first, there we need to take care of the prerequisites... 
+next;
+if (getskilllv("AS_SONICBLOW") == 0) {
+[Esmille]
+First, go and learn the Sonic Blow skill. The skill I will teach you is completely useless unless you learn how to perform a Sonic Blow. I shall be waiting right here till then.
+close;
+}
+[Esmille]
+Your task will be to bring
+switch(rand(1,3)) {
+case 1:
+treasure from the Sphinx. Search the ^FF0000Coffins^000000 that are there for precious valuables. Consider this a test of your strength.
+ASSN_SK = 2;
+next;
+[Esmille]
+Whether you can complete this task will determine if you are worthy enough for me to teach you the Sonic Acceleration skill. Best of luck, and please hurry.
+close;
+case 2:
+treasure from the Sphinx. Search the ^FF0000Stone Statues^000000 there for precious valuables. Consider this excursion as a test of your strength.
+ASSN_SK = 3;
+next;
+[Esmille]
+Whether you can complete this task will determine if you are worthy enough for me to teach you the Sonic Acceleration skill. Best of luck, and please hurry.
+close;
+case 3:
+treasure from the Pyramids. Search the ^FF0000flooded crypt at the bottom floor for precious valuables^000000. Consider this as a test of your strength.
+ASSN_SK = 4;
+next;
+[Esmille]
+Whether you can complete this task will determine if you are worthy enough for me to teach you the Sonic Acceleration skill. Best of luck, and please hurry.
+close;
+}
+}
+}
+}
+else {
+if (BaseJob == Job_Assassin) {
+[Assassin]
+Ah. Hello, comrade. Have you heard about the latest news from the Assassin Guild?
+emotion e_heh;
+next;
+select("News from the Assassin Guild?");
+[Assassin]
+Hm. You must not have heard it, then. If you want to know more about it, you should speak to Killtin, who is right next to me. He will explain everything clearly.
+close;
+}
+[Assassin]
+Hm. Do you know any Assassins? Tell them to come here if they haven't already.
+close;
+}
+}
+
+in_sphinx2,259,213,0scriptOld Coffin#qsk_asFAKE_NPC,7,8,{
+OnTouch:
+if (ASSN_SK == 2) {
+^3355FFIt's an ancient coffin with a broken lid that is slightly ajar. You momentarily catch a glint of something shining inside.^000000
+specialeffect EF_CONE;
+next;
+while(1) {
+switch(select("Put your hand inside", "Inspect the coffin's opening", "Lift the lid", "Turn the coffin upside down", "Ignore it")) {
+case 1:
+^3355FFYou carefully put your hand inside the coffin and try to retrieve the shining object that you had glimpsed. ...............................^000000
+next;
+^3355FFSomething inside the coffin bit your hand really hard!^000000
+sc_start SC_POISON,30000,0;
+sc_start SC_BLOODING,10000,0;
+emotion e_omg,1;
+close;
+case 2:
+^3355FFYou try to peek inside the coffin through the gap between the coffin's edge and the lid. ...............................^000000
+next;
+^3355FFYou're barely able to perceive that something is squirming inside the coffin, but it's far too dark to see anything else.^000000
+sc_start SC_BLIND,30000,0;
+next;
+break;
+case 3:
+^3355FFYou don't have the strength to move something as heavy as this coffin's lid...^000000
+sc_start SC_CURSE,30000,0;
+next;
+break;
+case 4:
+^3355FFYou don't have the strength to turn this coffin upside down.^000000
+next;
+break;
+case 5:
+close;
+}
+}
+}
+}
+
+in_sphinx2,212,267,0scriptOld Coffin#qsk_as2FAKE_NPC,5,6,{
+OnTouch:
+if (ASSN_SK == 2) {
+^3355FFIt's an ancient coffin with a broken lid that is slightly ajar. You momentarily catch a glint of something shining inside.^000000
+specialeffect EF_CONE;
+next;
+while(1) {
+switch(select("Put your hand inside", "Inspect the coffin's opening", "Lift the lid", "Turn the coffin upside down", "Ignore it")) {
+case 1:
+^3355FFYou carefully put your hand inside the coffin and try to retrieve the shining object that you had glimpsed. ...............................^000000
+next;
+if (rand(1,3) != 3) {
+^3355FFYou carefully put your hand inside the coffin and try to retrieve the shining object that you had glimpsed. ...............................^000000
+next;
+^3355FFSomething inside the coffin bit your hand really hard!^000000
+sc_start SC_POISON,30000,0;
+sc_start SC_BLOODING,10000,0;
+emotion e_omg,1;
+close;
+}
+else {
+^3355FFYour fingers manage to find a solid object that you pull out of the coffin. You have obtained a Sapphire for Esmille.^000000
+ASSN_SK = 5;
+getitem Blue_Jewel,1;
+close;
+}
+case 2:
+^3355FFYou try to peek inside the coffin through the gap between the coffin's edge and the lid. ...............................^000000
+next;
+^3355FFYou're barely able to perceive that something is squirming inside the coffin, but it's far too dark to see anything else.^000000
+sc_start SC_BLIND,30000,0;
+next;
+break;
+case 3:
+^3355FFYou don't have the strength to move something as heavy as this coffin's lid...^000000
+sc_start SC_CURSE,30000,0;
+next;
+break;
+case 4:
+^3355FFYou don't have the strength to turn this coffin upside down.^000000
+next;
+break;
+case 5:
+close;
+}
+}
+}
+}
+
+in_sphinx2,13,163,0scriptStone Statue#qsk_asFAKE_NPC,7,7,{
+OnTouch:
+if (ASSN_SK == 3) {
+specialeffect EF_CONE;
+^3355FFThis ancient stone statue is covered with cracks and looks close to falling apart. The glimmer of a shining object peers out from beneath one of the feet. The ground appears soft enough to dig through...^000000
+specialeffect EF_CONE;
+next;
+if (select("Dig to retrieve the shining object", "Ignore it") == 1) {
+^3355FFAs your fingers dig into the soft ground, it emits^000000
+if (rand(1,3) != 3){
+^3355FFa yellow gas that clouds your senses and briefly
+knocks you unconscious.^000000
+sc_start SC_SLEEP,30000,0;
+close;
+}
+^3355FFa yellow gas. However, you hold your breath in and expel all gas in your lungs in time to escape its effects. You've retrieved a Ruby for Esmille.^000000
+ASSN_SK = 5;
+getitem Cardinal_Jewel,1;
+}
+close;
+}
+}
+
+in_sphinx2,13,146,0scriptStone Statue#qsk_as2FAKE_NPC,7,7,{
+OnTouch:
+if (ASSN_SK == 3) {
+specialeffect EF_CONE;
+^3355FFThis ancient stone statue is covered with cracks and looks close to falling apart. The glimmer of a shining object peers out from beneath one of the feet. The ground appears soft enough to dig through...^000000
+specialeffect EF_CONE;
+next;
+if (select("Dig to retrieve the shining object", "Ignore it") == 1) {
+^3355FFAs your fingers dig into the soft ground, it emits^000000
+if (rand(1,3) != 3) {
+^3355FFa yellow gas that clouds your senses and briefly knocks you unconscious.^000000
+sc_start SC_SLEEP,30000,0;
+close;
+}
+^3355FFa yellow gas. However, you hold your breath in and expel all gas in your lungs in time to escape its effects. Sadly, all you found was broken glass.^000000
+emotion e_omg,1;
+}
+close;
+}
+}
+
+moc_pryd04,85,96,0scriptGlimmer#cryptFAKE_NPC,3,3,{
+OnTouch:
+if (ASSN_SK == 4) {
+specialeffect EF_CONE;
+^3355FFThere's something glimmering beneath the surface of the water...^000000
+next;
+if (select("Pick it up", "Ignore it") == 1) {
+^3355FFAs soon as you dip your hand into the water, the water's freezing chill shoots up through your arm. You  better hurry before you freeze!^000000
+next;
+if (rand(1,3) != 3) {
+^3355FFIt's too late! Your body has just been frozen solid.^000000
+sc_start SC_FREEZE,10000,0;
+close;
+}
+^3355FFYou quickly pick up the glimmering object before the water can freeze you. You obtained an Aquamarine for Esmille.^000000
+ASSN_SK = 5;
+getitem Skyblue_Jewel,1;
+}
+close;
+}
+}

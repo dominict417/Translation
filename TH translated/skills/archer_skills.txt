@@ -1,0 +1,185 @@
+//================= Hercules Script =======================================
+//=       _   _                     _
+//=      | | | |                   | |
+//=      | |_| | ___ _ __ ___ _   _| | ___  ___
+//=      |  _  |/ _ \ '__/ __| | | | |/ _ \/ __|
+//=      | | | |  __/ | | (__| |_| | |  __/\__ \
+//=      \_| |_/\___|_|  \___|\__,_|_|\___||___/
+//================= License ===============================================
+//= This file is part of Hercules.
+//= http://herc.ws - http://github.com/HerculesWS/Hercules
+//=
+//= Copyright (C) 2012-2021 Hercules Dev Team
+//= Copyright (C) rAthena Dev Team
+//= Copyright (C) Euphy
+//= Copyright (C) eAthena Dev Team
+//= Copyright (C) Masao
+//= Copyright (C) IVBela
+//= Copyright (C) Silentdragon
+//= Copyright (C) Lupus
+//= Copyright (C) kobra_k88
+//= Copyright (C) L0ne_W0lf
+//=
+//= Hercules is free software: you can redistribute it and/or modify
+//= it under the terms of the GNU General Public License as published by
+//= the Free Software Foundation, either version 3 of the License, or
+//= (at your option) any later version.
+//=
+//= This program is distributed in the hope that it will be useful,
+//= but WITHOUT ANY WARRANTY; without even the implied warranty of
+//= MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//= GNU General Public License for more details.
+//=
+//= You should have received a copy of the GNU General Public License
+//= along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//=========================================================================
+//= Archer Skill Quest
+//================= Description ===========================================
+//= Quest for skills: Arrow Crafting, Arrow Repel
+//================= Current Version =======================================
+//= 1.7 test add text
+//=========================================================================
+
+moc_ruins,118,99,5	script	Roberto	4_M_ORIENT01,{
+	if (BaseClass == Job_Archer) {
+		if (getskilllv("AC_MAKINGARROW") == 1) {
+			mes "[Roberto]";
+			mes "โอ้ คุณมาจากบ้านเกิดของฉัน! ดีใจที่ได้พบคุณ! คุณเป็นอย่างไร? อา! ลูกศรนั้น! คุณทำได้แล้วใช่ไหม!";
+			next;
+			mes "[Roberto]";
+			mes "ฮา...! คุณคิดว่ามันดีขึ้นมากไหม? ฮ่าๆ...ยังไงก็ดีใจด้วย กลับมาพร้อมกับข่าวคราวจากทางบ้าน บ๊ายบาย~";
+			mes "Then byebye~";
+			close;
+		}
+		else if (JobLevel >= 30 || (BaseJob == Job_Hunter || BaseJob == Job_Bard || BaseJob == Job_Dancer)) {
+			mes "[Roberto]";
+			mes "เอ๊ะ! คุณ...";
+			next;
+			if ((countitem(Resin) > 19) && (countitem(Mushroom_Spore) > 6) && (countitem(Pointed_Scale) > 40) && (countitem(Wooden_Block) > 12) && (countitem(Red_Potion) > 0)) {
+				mes "[Roberto]";
+				mes "คุณนำของมาแล้ว! ขอบคุณมาก. ตามที่ฉันสัญญาไว้ ฉันจะสอนทักษะให้คุณ";
+				next;
+				delitem Resin,20;
+				delitem Mushroom_Spore,7;
+				delitem Pointed_Scale,41; //Tough_Scalelike_Stem
+				delitem Wooden_Block,13;
+				delitem Red_Potion,1;
+				skill "AC_MAKINGARROW",1,0;
+				mes "[Roberto]";
+				mes "ไม่ต้องกังวลเรื่องลูกธนูอีกต่อไป อ้อ แล้วคุณบังเอิญเจอคนที่ชื่อเจสันในพายอนหรือเปล่า? ระวัง. เขาเป็นคนที่ดุร้าย";
+				next;
+				mes "[Roberto]";
+				mes "คุณแค่ต้องระวัง Jason ใน Payon จำไว้ บ๊ายบาย~ ขอบคุณสำหรับของขวัญนะ~";
+				close;
+			}
+			mes "[Roberto]";
+			mes "นักธนูใน Morroc!? ดีใจที่ได้พบคุณ! เจอเพื่อนนักธนูในสถานที่แบบนี้! *ดมกลิ่น*! ฉันมาคนเดียวที่ Morroc.. แต่ฉันเป็นน้องใหม่ และความกดดัน... ว้าว~ ฉันเหงามาก~";
+			next;
+			switch (select("มันต้องยากแน่ๆ ไม่เป็นไร ศรัทธาเข้าไว้", "ให้ทุกข์")) {
+			case 1:
+				mes "[Roberto]";
+				mes "ใช่. ขอบคุณ... คุณต้องมีช่วงเวลาที่ยากลำบากในสถานที่แบบนี้ มันไม่ยากที่จะหาลูกศร? นั่นเป็นเหตุผลที่ฉันทำเอง";
+				next;
+				select("หา จริงเหรอ?!");
+				mes "[Roberto]";
+				mes "ใช่! ฉันรวบรวมไอเท็มต่าง ๆ และทำลูกศรโดยใช้พวกมัน เป็นทักษะที่มีประโยชน์ในการช่วยให้รอดตายเพียงลำพังในโลกที่ยากลำบากนี้ ถ้าคุณต้องการ ฉันสามารถสอนคุณได้";
+				next;
+				select("That would be wonderful.");
+				mes "[Roberto]";
+				mes "แต่.. ฉันไม่สามารถทำมันได้ฟรี โลกนี้ไม่มีอะไรฟรี ~ อืม... แล้วนี่ล่ะ? คุณนำสิ่งที่ฉันขอมาให้ฉัน แล้วฉันจะสอนทักษะให้คุณเอง";
+				next;
+				mes "[Roberto]";
+				mes "ฉันเหงามากตั้งแต่ออกจากบ้านเกิด ฉันต้องการรักษาอาการคิดถึงบ้านด้วยของจากที่นั่น นำ Resin 20 ชิ้นจากต้นไม้ในป่าพาย่อนมาให้ฉัน และ Red Potion 1 ขวดที่ขายในร้าน";
+				next;
+				mes "[Roberto]";
+				mes "นอกจากนี้ ยังมี Trunk 13 ต้น จาก Willows ที่อาศัยอยู่ใกล้กับป่าพาย่อน Pointed Scale 41 ชิ้น Mushroom Spores 7 ชิ้น ถ้าคุณนำสิ่งเหล่านี้มาให้ฉัน";
+				next;
+				mes "[Roberto]";
+				mes "ฉันจะสอนทักษะให้คุณ แล้ว..จะรอนะ.. สำหรับข่าวดีจากทางบ้านของเรา";
+				close;
+			case 2:
+				mes "[Roberto]";
+				mes "...เฮ้ "+ (Sex == SEX_MALE ? "นาย" : "เธอ") +".";
+				mes "...ระวังในช่วงกลางคืนด้วยล่ะ";
+				close;
+			}
+		}
+		mes "[Roberto]";
+		mes "อืม... คุณมีอะไรจะพูดไหม? ฉันไม่มีอะไร. ความแตกต่างใน Level ฉันคงไม่มีอะไรจะพูดต่อ";
+		close;
+	}
+	mes "[?]";
+	mes "เอ๊ะ... ครั้งแรกที่เห็นนักธนูหรืออะไรนะ? แค่ไปในที่ที่คุณไป ฉันคุยกับนักธนูระดับสูงเท่านั้น จะไม่อ้าปากเป็นอย่างอื่น!";
+	close;
+}
+
+payon,103,63,3	script	Jason	4_M_ORIENT01,3,3,{
+	if (BaseClass == Job_Archer) {
+		if (getskilllv("AC_CHARGEARROW") == 1) {
+			mes "[Jason]";
+			mes "อ้าว เจอกันอีกแล้ว เอ๊ะๆๆๆ แปลกจัง เมื่อไหร่ก็ตามที่ฉันเห็นใครซักคนอีกครั้ง ฉันก็จะเริ่มเอะอะมาก เอ่อ...ยังไงก็ยินดีที่ได้พบคุณอีกครั้ง เอ่อ... อย่ามาอีก เอ่อ...";
+			close;
+		}
+		else if (JobLevel >= 35 || (BaseJob == Job_Hunter || BaseJob == Job_Bard || BaseJob == Job_Dancer)) {
+			mes "[Jason]";
+			mes "แย่จัง... แผลฉันยังไม่หายดี เบลอ.. ฉันประมาทเกินไป... ที่จะเป็นแบบนี้.. เอ่อ... แต่ก็ยังทำร้ายฉันแบบนี้ ทำให้ฉันบาดเจ็บมากมาย...";
+			next;
+			mes "ฉันควรทำอย่างไรกับโรแบร์โต้ อืม... อ่า! คุณ? คุณเคยอยู่ที่นั่นนานแค่ไหน? อืม... ระดับสูงมาก คนอย่างคุณจะสามารถรู้วิธีใช้ Arrow Repel ได้อย่างแน่นอน";
+			next;
+			switch (select("มันคืออะไร?", "สอนฉันที")) {
+			case 1:
+				mes "[Jason]";
+				mes "...คุณล้อเล่นใช่ไหม? โอ้ คุณยังไม่รู้จัก Arrow Repel ในระดับนั้นเลยเหรอ? แปลกคนดีแฮะ";
+				next;
+				mes "[Jason]";
+				mes "โอเค ฉันจะสอนคุณว่า Arrow Repel คืออะไร";
+				mes "Arrow Repel is.";
+				next;
+				mes "[Jason]";
+				mes "Arrow Repel เป็นทักษะที่ให้คุณผลักคู่ต่อสู้ออกไปทันทีที่คุณโจมตี คุณสามารถใช้ได้เฉพาะเมื่อคุณเล็งไปที่เป้าหมายเท่านั้น แต่ไม่เหมือนเวทมนตร์ มันไม่สะกด";
+				next;
+				mes "[Jason]";
+				mes "มันมีประโยชน์มากสำหรับนักธนูที่อ่อนแอในระยะประชิด อยากเรียนก็ไปหาของมานะ มีของจำเป็นอยู่บ้าง";
+				next;
+				mes "[Jason]";
+				mes "อย่างแรก เพราะคุณต้องดัดแปลงคันธนูนำหน้าไม้ที่คุณไม่ได้ใช้ Tentacle 10 อัน Bill of Birds 10 อัน Yoyo Tails 3 อัน.. พวกนี้ยืดหยุ่นมาก และยังมี Emerald อีก 2 อัน และสุดท้ายแต่ไม่ท้ายสุด...Banana Juice 36 ขวดที่ฉันชอบ!";
+				next;
+				mes "[Jason]";
+				mes "......เอิ่ม! ถ้าคุณนำสิ่งเหล่านี้มา ฉันจะสอนคุณ Arrow Repel แล้วพบกันใหม่ (ฉันจะโกรธถ้าคุณไม่นำ Banana Juice มา)";
+				close;
+			case 2:
+				if ((countitem(Azure_Jewel) > 1) && (countitem(Yoyo_Tail) > 2) && (countitem(Tentacle) > 9) && (countitem(Bill_Of_Birds) > 9) && (countitem(Banana_Juice) > 35)) {
+					mes "[Jason]";
+					mes "ตกลง! สมบูรณ์แบบ! ฉันจะสอนทักษะที่มีชื่อเสียงระดับประเทศ Arrow Repel!";
+					next;
+					delitem Azure_Jewel,2;
+					delitem Yoyo_Tail,3;
+					delitem Tentacle,10;
+					delitem Bill_Of_Birds,10;
+					delitem Banana_Juice,36;
+					skill "AC_CHARGEARROW",1,0;
+					mes "[Jason]";
+					mes "โอ้ทำงานได้ดีกว่าที่ฉันคาดไว้! ไม่ต้องดัดแปลงคันธนู! คุณสามารถนำสิ่งนี้กลับมาได้~ และสนุกกับการใช้ทักษะที่สืบทอดมาใหม่ของคุณในฟิลด์และดันเจี้ยน! เฮ~เฮ~!";
+					close;
+				}
+				mes "[Jason]";
+				mes "อืม...แย่จัง คุณกำลังพลาดบางสิ่ง อีกครั้งที่คุณต้องใช้ 2 Emeralds, 3 Yoyo Tails, 10 Tentacles, 10 Bill of Birds และ Banana Juice 36 ขวดสุดท้าย แต่ไม่ท้ายสุด!";
+				next;
+				mes "[Jason]";
+				mes "ให้แน่ใจว่าคุณมีทั้งหมดและมาอีกครั้ง!";
+				close;
+			}
+		}
+		mes "[Jason]";
+		mes "โอ้... คุณคือนักธนู หากคุณลองอีกสักนิด คุณจะมีชื่อเสียงมากในฐานะนักธนู! ออกแรงเอง!";
+		close;
+	}
+	mes "[?]";
+	mes "ชีวิตต้องการอะไรจากเด็กขี้เหงาอย่างผม?";
+	close;
+
+OnTouch:
+	mes "[???]";
+	mes "เอ่ออออ...";
+	close;
+}

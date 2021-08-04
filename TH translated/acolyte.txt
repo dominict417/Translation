@@ -1,0 +1,476 @@
+//================= Hercules Script =======================================
+//=       _   _                     _
+//=      | | | |                   | |
+//=      | |_| | ___ _ __ ___ _   _| | ___  ___
+//=      |  _  |/ _ \ '__/ __| | | | |/ _ \/ __|
+//=      | | | |  __/ | | (__| |_| | |  __/\__ \
+//=      \_| |_/\___|_|  \___|\__,_|_|\___||___/
+//================= License ===============================================
+//= This file is part of Hercules.
+//= http://herc.ws - http://github.com/HerculesWS/Hercules
+//=
+//= Copyright (C) 2012-2021 Hercules Dev Team
+//= Copyright (C) Kisuka
+//= Copyright (C) Samuray22
+//= Copyright (C) massdriller
+//= Copyright (C) Lupus
+//= Copyright (C) L0ne_W0lf
+//= Copyright (C) kobra_k88
+//=
+//= Hercules is free software: you can redistribute it and/or modify
+//= it under the terms of the GNU General Public License as published by
+//= the Free Software Foundation, either version 3 of the License, or
+//= (at your option) any later version.
+//=
+//= This program is distributed in the hope that it will be useful,
+//= but WITHOUT ANY WARRANTY; without even the implied warranty of
+//= MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//= GNU General Public License for more details.
+//=
+//= You should have received a copy of the GNU General Public License
+//= along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//=========================================================================
+//= Acolyte Job Quest (Pre-Renewal)
+//================= Description ===========================================
+//= Job quest for Acolyte classes
+//================= Current Version =======================================
+//= 2.2
+//=========================================================================
+
+prt_church,184,41,4	script	Cleric#aco	1_M_PASTOR,{
+	if (Upper == 1) {
+		if (ADVJOB == Job_High_Priest || ADVJOB == Job_Champion) {
+			if (Class == Job_Novice_High) {
+				mes "[Father Mareusis]";
+				mes "อ้า,ฉันรู้ว่าคุณต้องทนได้";
+				mes "ประสบการณ์ชีวิตที่ผ่านมา คุณต้องเรียนรู้หลายสิ่งหลายอย่างก่อนที่จะเข้าสู่ Valhalla";
+				next;
+				if (getskilllv("NV_BASIC") < 9) {
+					mes "[Father Mareusis]";
+					mes "น่าเสียดาย, ฉันคิดว่าคุณยังไม่พร้อมที่จะเป็น Acolyte โปรดเรียนทักษะพื้นฐานทั้งหมดให้เสร็จก่อน";
+					next;
+					mes "[Father Mareusis]";
+					mes "ในระหว่างนี้";
+					mes "ฉันจะรอจนกว่า";
+					mes "คุณจะพร้อม";
+					mes "ขอพระเจ้า";
+					mes "จงอยู่กับคุณ";
+					close;
+				}
+				mes "[Father Mareusis]";
+				mes "ยินดีด้วย";
+				mes "กลับจากวัลฮัลลาและ";
+				mes "ขอให้คุณโชคดี";
+				mes "การเดินทางของชีวิตใหม่";
+				next;
+				skill 143,0,0;
+				jobchange Job_Acolyte_High;
+				skill 156,1,0;
+				mes "[Father Mareusis]";
+				mes "ตอนนี้ ออกไปและแสวงหาผู้ที่ต้องการความช่วยเหลือจากคุณ ขอพระเจ้าส่องสว่างเส้นทางของคุณ";
+				close;
+			}
+			else {
+				mes "[Father Mareusis]";
+				mes "ตอนนี้ ออกไปหาคนที่ต้องการความช่วยเหลือจากคุณ ขอพระเจ้าจงให้ความกระจ่างของคุณ";
+				close;
+			}
+		}
+		else {
+			mes "[Father Mareusis]";
+			mes "ฉันรู้สึกว่าคุณได้อดทนกับประสบการณ์ชีวิตที่ผ่านมา คุณต้องเรียนรู้หลายสิ่งหลายอย่างก่อนที่จะเข้า Valhalla";
+			next;
+			mes "[Father Mareusis]";
+			mes "อย่างไรก็ตาม ฉันสามารถบอกได้ว่าคุณไม่เหมาะที่จะเป็น Acolyte โปรดจำไว้ว่าคุณเป็นใครในชีวิตที่ผ่านมาและหาเส้นทางของคุณ";
+			close;
+		}
+	}
+	mes "[Father Mareusis]";
+	mes "สิ่งที่คุณแสวงหาคืออะไร?";
+	next;
+	switch(select("หลวงพ่อ ฉันอยากเป็น Acolyte", "ข้อกำหนดของ Acolyte ฝึกหัด", "แค่มองไปรอบๆ")) {
+	case 1:
+		mes "[Father Mareusis]";
+		if (BaseJob == Job_Acolyte) {
+			mes "วันนี้คุณสบายดีไหม? ฉันสามารถบอกได้จากเครื่องแต่งกายของคุณว่าคุณเป็น Acolyte แล้ว คุณไม่ได้ล้อเล่นใช่มั้ย?";
+			close;
+		}
+		else if (BaseJob != Job_Novice) {
+			mes "ฉันเสียใจ แต่เรารับได้เฉพาะมือใหม่ในฐานะผู้สมัครเพื่อเปลี่ยนงานเป็น Acolyte";
+			close;
+		}
+		if (job_acolyte_q == 0) {
+			mes "จริงมั้ย";
+			mes "ที่อยากเป็น";
+			mes "ผู้รับใช้ของพระเจ้า?";
+			next;
+			if (select("ใช่หลวงพ่อ ฉันจะเป็น", "ไม่ ฉันโกหก") == 1) {
+				mes "[Father Mareusis]";
+				mes "ดี ฉันยอมรับ " + strcharinfo(PC_NAME) + "ฉันปรารถนาที่จะเป็น Acolyte คุณเข้าใจว่าคุณต้องทำการปลงอาบัติก่อนที่คุณจะสามารถเป็นผู้รับใช้ของพระเจ้า ถูกต้องไหม?";
+				next;
+				mes "[Father Mareusis]";
+				mes "ดี ฉันจะทำ";
+				mes "รับภารกิจไป...";
+				switch(rand(3)) {
+				default:
+					job_acolyte_q = 2;
+					mes "กรุณาเยี่ยมชม ^000077Father Rubalkabara^000000, สมาชิกของ Prontera Parish,เขากำลังฝึกบำเพ็ญเพียรใน ^000077Relics NorthEast of Prontera City^000000.และกลับมาที่นี่ ";
+					setquest 1001;
+					break;
+				case 1:
+					job_acolyte_q = 3;
+					mes "กรุณาเยี่ยมชม ^000077Mother Mathilda^000000, นางได้บำเพ็ญเพียรอยู่ใกล้ๆ ^000077Morroc Town, SouthWest of Prontera City^000000.และกลับมาที่นี่ ";
+					setquest 1002;
+					break;
+				case 2:
+					job_acolyte_q = 4;
+					mes "กรุณาเยี่ยมชม ^000077Father Yosuke^000000, เขากำลังบำเพ็ญเพียรอยู่รอบๆ ^000077a bridge somewhere NorthWest of Prontera^000000.และกลับมาที่นี่ ";
+					setquest 1003;
+					break;
+				}
+				next;
+				mes "[Father Mareusis]";
+				mes "ขอพระหรรษทานของพระเจ้าส่องสว่างเส้นทางของคุณและนำทางคุณในระหว่างการเดินทางของการปลงอาบัติ";
+				close;
+			}
+			mes "[Father Mareusis]";
+			mes "คุณโกหก?";
+			mes "เป็นการดีที่คุณ";
+			mes "ได้สารภาพของคุณ";
+			mes "การกระทำผิด เข้าไป";
+			mes "สันติภาพลของูกชายของฉัน";
+			close;
+		}
+		mes "โอ้ คุณกลับมาแล้ว ให้ฉันตรวจสอบดูว่าคุณพร้อมที่จะรับใช้พระเจ้าหรือไม่ มาดูกัน...";
+		next;
+		mes "[Father Mareusis]";
+		if (getskilllv("NV_BASIC") < 9) {
+			mes "พระเจ้าที่ดี! คุณยังไม่สำเร็จการฝึกขั้นพื้นฐาน?! มันสำคัญ ที่คุณต้องทำมันให้เสร็จ!";
+			next;
+			mes "[Father Mareusis]";
+			mes "คุณควรได้รับการฝึกฝนมากกว่านี้! ย้อนกลับไปและให้แน่ใจว่าคุณไปถึง Novice Job ระดับ 9 และเรียนรู้ทักษะพื้นฐานทั้งหมด!";
+			close;
+		}
+		if (job_acolyte_q < 5) {
+			mes "โอ้? ฉันไม่พบชื่อของคุณในรายการลงทะเบียน";
+			next;
+			switch(job_acolyte_q) {
+			case 2:
+				mes "[Father Mareusis]";
+				mes "กรุณาเยี่ยมชม ^000077Father Rubalkabara^000000, เป็นสมาชิกของ Prontera Parish, และกลับมาที่นี่";
+				next;
+				mes "[Father Mareusis]";
+				mes "เขากำลังฝึกบำเพ็ญเพียรใน ^000077Relics at the NorthEast of Prontera City^000000.";
+				break;
+			case 3:
+				mes "[Father Mareusis]";
+				mes "กรุณาเยี่ยมชม ^000077Mother Mathilda^000000 และกลับมาหาฉัน";
+				next;
+				mes "[Father Mareusis]";
+				mes "นางได้บำเพ็ญเพียรอยู่ใกล้ๆ ^000077Morroc Town, located SouthWest of Prontera City^000000.";
+				break;
+			case 4:
+				mes "[Father Mareusis]";
+				mes "กรุณาเยี่ยมชม Father Yosuke ^000000 และกลับมาหาฉัน";
+				next;
+				mes "[Father Mareusis]";
+				mes "เขากำลังบำเพ็ญเพียรอยู่รอบๆ ^000077bridge somewhere to the NorthWest of Prontera^000000.";
+				break;
+			}
+			next;
+			mes "[Father Mareusis]";
+			mes "ขอพระหรรษทานของพระเจ้าทำให้เส้นทางของคุณสดใสและนำทางคุณในการเดินทางแห่งการปลงอาบัติ";
+			close;
+		}
+		mes "อืมม...";
+		mes "ชื่อของคุณอยู่ในรายชื่อและคุณได้พิสูจน์คุณสมบัติของคุณแล้ว";
+		next;
+		mes "[Father Mareusis]";
+		mes "ฉันภูมิใจที่จะบอกว่าตอนนี้คุณพร้อมที่จะเป็น Acolyte แล้ว!";
+		next;
+		skill 143,0,0;
+		callfunc "Job_Change",Job_Acolyte;
+		callfunc "F_ClearJobVar";
+		if (questprogress(1001)) {
+			completequest 1001;
+		}
+		else if (questprogress(1002)) {
+			completequest 1002;
+		}
+		else {
+			completequest 1003;
+		}
+		mes "[Father Mareusis]";
+		mes "อย่าลืมขอบคุณพระเจ้าที่ดูแลเราตลอดเวลา";
+		next;
+		mes "[Father Mareusis]";
+		mes "ใช้ของประทานของคุณเพื่อรับใช้พระองค์เสมอโดยช่วยเหลือผู้อื่น ในความโกลาหลและช่วงเวลาแห่งความยากลำบาก เผชิญกับความยากลำบากของคุณด้วยศรัทธาที่แน่วแน่";
+		next;
+		mes "[Father Mareusis]";
+		mes "สุดท้าย, ข้าพเจ้าขอแสดงความยินดีจากใจจริงที่ท่านอดทนผ่านการพิจารณาคดีการปลงอาบัติ";
+		close;
+	case 2:
+		mes "[Father Mareusis]";
+		mes "คุณต้องการที่จะเป็น Acolyte หรือไม่? คุณต้องปฏิบัติตามข้อกำหนดสองข้อ";
+		next;
+		mes "[Father Mareusis]";
+		mes "อันดับแรก, คุณต้องไปถึงระดับเริ่มต้นอย่างน้อย 9 และเรียนรู้ทักษะพื้นฐานทั้งหมด ประการที่สอง คุณจะได้รับการทดสอบการปลงอาบัติเพื่อเอาชนะ";
+		next;
+		mes "[Father Mareusis]";
+		if (job_acolyte_q != 0) {
+			switch(job_acolyte_q) {
+			case 2:
+				mes "สำหรับการทดลองใช้ของคุณ, กรุณาเยี่ยมชม ^000077Father Rubalkabara ^000000 แล้วกลับมาหาฉันที่นี่";
+				next;
+				mes "[Father Mareusis]";
+				mes "เขากำลังบำเพ็ญเพียรอยู่ใน ^000077Relics at the NorthEast of Prontera City^000000.";
+				break;
+			case 3:
+				mes "สำหรับการทดลองใช้ของคุณ, กรุณาเยี่ยมชม ^000077Mother Mathilda^000000 แล้วกลับมาหาฉันที่นี่";
+				next;
+				mes "[Father Mareusis]";
+				mes "นางได้บำเพ็ญเพียรอยู่ใกล้ๆ ^000077Morroc, located to the SouthWest of Prontera City^000000.";
+				break;
+			default:
+				mes "สำหรับการทดลองใช้ของคุณ, กรุณาเยี่ยมชม ^000077Father Yosuke^000000 แล้วกลับมาหาฉันที่นี่";
+				next;
+				mes "[Father Mareusis]";
+				mes "ทรงบำเพ็ญเพียรรอบสะพานที่ไหนสักแห่ง ^000077NorthWest of Prontera^000000.";
+				break;
+			}
+			next;
+			mes "[Father Mareusis]";
+			mes "ขอพระคุณของพระเจ้าส่องสว่างเส้นทางของคุณและนำทางคุณในการเดินทางของการปลงอาบัติ";
+		}
+		else {
+			mes "ปลายทางสำหรับการทดลองใช้นี้จะถูกตัดสินเมื่อคุณกรอกแบบฟอร์มใบสมัคร";
+		}
+		next;
+		mes "[Father Mareusis]";
+		mes "โปรดกลับมาหลังจากปฏิบัติตามข้อกำหนดทั้งสองข้อ ฉันถามคุณแล้ว ตราบใดที่ความปรารถนาของคุณที่จะรับใช้พระเจ้าและผู้อื่นจริงใจ, คุณจะสามารถทำมันได้";
+		close;
+	case 3:
+		close;
+	}
+}
+
+prt_fild03,365,255,2	script	Ascetic#aco	4_M_ORIENT02,{
+	mes "[Father Rubalkabara]";
+	if (BaseJob == Job_Novice) {
+		if (job_acolyte_q == 6) {
+			mes "โปรดดูแล พวกเขาน่าจะรู้ว่าคุณเจอฉันแล้ว ตอนที่คุณไปถึง Prontera Sanctuary.";
+			next;
+			mes "[Father Rubalkabara]";
+			mes "ฉันได้ส่งนกพิราบขนส่งพร้อมข้อความ ฉันหวังว่ามันจะมาถึงที่นั่นอย่างปลอดภัย...";
+			close;
+		}
+		if (job_acolyte_q != 0) {
+			if (job_acolyte_q == 2) {
+				mes "โอ้...? คุณต้องเป็นคนหนึ่งที่ปรารถนาจะเป็น Acolyte ฉันได้รับข่าวจาก Sanctuary แล้วว่าคุณอาจจะมา";
+				next;
+				mes "[Father Rubalkabara]";
+				mes "ตอนนี้, ชื่อของคุณคือ " + strcharinfo(PC_NAME) + ", ใช่มั้ย? ยอดเยี่ยม, ขอบคุณที่มาเยี่ยมฉัน";
+				next;
+				mes "[Father Rubalkabara]";
+				mes "ฉันเชื่อว่าคุณได้รับบอกเกี่ยวกับ Acolytes จาก Friar Mareusis มามากแล้ว นอกจากนี้ยังมีผู้ช่วยเหลือมากมาย Prontera Sanctuary.";
+				next;
+				mes "[Father Rubalkabara]";
+				mes "ฉันเดาว่าฉันไม่จำเป็นต้องสอนคุณมาก Besides, ฉันแน่ใจว่าคนในรุ่นของคุณอาจมีปัญหาในการฟังชายชราอย่างฉัน ฮ่าๆ~";
+				next;
+				mes "[Father Rubalkabara]";
+				mes "ถึงกระนั้น บทเรียนอาจมาจากสถานที่ที่คุณคาดไม่ถึง พระเจ้าชอบที่จะสอนลูก ๆ ของเขาด้วยวิธีที่แปลก คุณจะเห็น.";
+				next;
+				mes "[Father Rubalkabara]";
+				mes "ดี, ฉันจะส่งข้อความบอกพวกเขาว่าคุณมาเยี่ยมฉัน ดังนั้นตอนนี้คุณสามารถกลับไปที่ Prontera Sanctuary.";
+				next;
+				mes "[Father Rubalkabara]";
+				mes "ลาก่อน";
+				close2;
+				savepoint "prt_fild03",361,255;
+				job_acolyte_q = 6;
+				end;
+			}
+			else {
+				mes "โอ้...";
+				mes "คุณเป็นหนึ่งใน";
+				mes "ผู้สมัครเป็น Acolyte...?";
+				mes "มาดูกัน...";
+				next;
+				mes "[Father Rubalkabara]";
+				mes "ชื่อของคุณ " + strcharinfo(PC_NAME) + "?";
+				mes "ฉันไม่คิดว่าคุณชื่อ";
+				mes "อยู่ในรายการของฉัน อืม...";
+				next;
+				mes "[Father Rubalkabara]";
+				mes "ทำไมไม่ลองกลับไปที่ Prontera Sanctuary แล้วตรวจดูใหม่ล่ะ?";
+				close;
+			}
+		}
+		else {
+			mes "หื้ม? อะไรทำให้คุณมาที่นี่? ที่นี่เป็นสถานที่ที่อันตรายมากสำหรับมือใหม่อย่างคุณ!";
+			close;
+		}
+	}
+	else if (BaseJob == Job_Acolyte) callfunc "F_FatherRub";
+	else {
+		if (BaseJob == Job_Priest) {
+			mes "ทักทาย.";
+			next;
+			mes "[Father Rubalkabara]";
+			mes "ยินดีต้อนรับสู่ส่วนลึก รู้สึกอิสระที่จะนั่งและใคร่ครวญพระวจนะของพระเจ้ากับฉัน ที่แห่งนี้สวยงามแม้ภัยจะมาพร้อมกับความรู้สึกสงบ...";
+			close;
+		}
+		else {
+			mes "โอ้ โห...";
+			mes "คุณเข้ามาในห้วงลึกที่นี่เพื่อฝึกฝนหรือไม่? หรือคุณเป็นแค่คนพเนจร?";
+			next;
+			mes "[Father Rubalkabara]";
+			mes "ไม่ว่าคุณจะเป็นใคร, โปรดดูแลตัวเอง สัตว์ประหลาดที่นี่แข็งแกร่งจนน่าตกใจ ตรงกันข้ามกับรูปลักษณ์ที่น่ารักของพวกมัน";
+			close;
+		}
+	}
+}
+
+moc_fild07,41,355,4	script	Ascetic#2aco	4_F_SISTER,{
+	mes "[Mother Mathilda]";
+	if (BaseJob == Job_Novice) {
+		if (job_acolyte_q == 7) {
+			mes "ฉันจะส่งนกพิราบพาไปที่ Prontera Sanctuary. เมื่อคุณกลับมา นักบวชที่นั่นน่าจะได้รับข้อความของฉันแล้ว";
+			next;
+			mes "[Mother Mathilda]";
+			mes "ฉันจะอธิษฐานต่อพระเจ้า และหวังว่าคุณจะกลายเป็น Acolyte ในไม่ช้า";
+			close;
+		}
+		if (job_acolyte_q != 0) {
+			if (job_acolyte_q == 3) {
+				mes "อ้า, คุณต้องเป็นหนึ่งในผู้สมัคร Acolyte ฉันยินดีต้อนรับคุณอย่างจริงใจ";
+				next;
+				mes "[Mother Mathilda]";
+				mes "คุณชื่ออะไร? " + strcharinfo(PC_NAME) + "? มาดูกัน...... , คุณอยู่ในรายการของฉัน";
+				next;
+				mes "[Mother Mathilda]";
+				mes "ฉันจะส่งข้อความไปยังเขตรักษาพันธุ์เพื่อยืนยันว่าคุณ " + strcharinfo(PC_NAME) + " มาเยี่ยมฉันและชำระบาปของคุณให้เสร็จ";
+				next;
+				mes "[Mother Mathilda]";
+				mes "โปรดกลับไปที่ Prontera Sanctuary และพูดคุยกับนักบวชที่รับผิดชอบ";
+				close2;
+				savepoint "moc_fild07",35,355;
+				job_acolyte_q = 7;
+				end;
+			}
+			else {
+				mes "อ้า...!";
+				mes "คุณต้องเป็นที่หนึ่ง";
+				mes "ของผู้สมัคร Acolyte";
+				mes "ฉันยินดีต้อนรับคุณอย่างจริงใจ";
+				next;
+				mes "[Mother Mathilda]";
+				mes "ตอนนี้, คุณชื่ออะไร?";
+				mes "" + strcharinfo(PC_NAME) + "? มาดูกัน...";
+				next;
+				mes "[Mother Mathilda]";
+				mes "หื้มม...";
+				mes "ดูเหมือนชื่อของคุณ";
+				mes "ไม่อยู่ในรายการของฉัน...";
+				next;
+				mes "[Mother Mathilda]";
+				mes "บางทีคุณควรกลับไปที่ Prontera Sanctuary และตรวจสอบปลายทางสำหรับการทดลองปลงอาบัติของคุณอีกครั้ง";
+				close;
+			}
+		}
+		else {
+			mes "...";
+			close;
+		}
+	}
+	else if (BaseJob == Job_Acolyte) callfunc "F_MotherMart";
+	else {
+		if (BaseJob == Job_Priest) {
+			mes "สวัสดี~";
+			next;
+			mes "[Mother Mathilda]";
+			mes "การปฏิบัติของคุณเป็นอย่างไร? แน่นอนฉันหวังว่าคุณจะเพลิดเพลินกับการใช้ชีวิตในพระคุณของพระเจ้า";
+			close;
+		}
+		else {
+			mes "ขอพระเจ้า";
+			mes "อยู่กับคุณ...";
+			close;
+		}
+	}
+}
+
+prt_fild00,208,218,6	script	Ascetic#3aco	4W_M_02,{
+	mes "[Father Yosuke]";
+	if (BaseJob == Job_Novice) {
+		if (job_acolyte_q == 8) {
+			mes "อะไรนะ?";
+			next;
+			mes "[Father Yosuke]";
+			mes "คุณมีธุระอะไรกับฉันอีกไหม! คุณทำไม่ได้! กลับไปที่เขตรักษาพันธุ์ทันที!";
+			close;
+		}
+		if (job_acolyte_q != 0) {
+			if (job_acolyte_q == 4) {
+				mes "เฮ้.";
+				mes "ไม่ว่าคุณจะเป็นอะไร";
+				mes "คุณดูเหมือน an";
+				mes "ผู้สมัคร Acolyte";
+				mes "ใช่?";
+				next;
+				mes "[Father Yosuke]";
+				mes "ไม่เลว, ไม่เลว คุณทนต่อการพิจารณาคดีการปลงอาบัติได้ดีทีเดียว";
+				mes "แล้วคุณชื่ออะไร?";
+				next;
+				mes "[Father Yosuke]";
+				mes "" + strcharinfo(PC_NAME) + ", หื้ม?";
+				next;
+				mes "[Father Yosuke]";
+				mes "ตกลง ฉันจะส่งข้อความไปยังวิหารที่ " + strcharinfo(PC_NAME) + ", และมาหาฉัน";
+				next;
+				mes "[Father Yosuke]";
+				mes "กลับไปที่ Santuary และกลายเป็น Acolyte ให้เสร็จ เด็กน้อย";
+				close2;
+				savepoint "prt_fild00",206,230;
+				job_acolyte_q = 8;
+				end;
+			}
+			else {
+				mes "เฮ้.";
+				mes "คุณดูเหมือนผู้สมครเป็น Acolyte ฉันคิดถูกไหม?";
+				next;
+				mes "[Father Yosuke]";
+				mes "ไม่เลวเลย, คุณทำมาจนสุดทางที่นี่จาก Prontera. แล้วคุณชื่ออะไรลูก?";
+				next;
+				mes "[Father Yosuke]";
+				mes "" + strcharinfo(PC_NAME) + ", หื้ม?ทำไมไม่มีชื่อของคุณในรายการของฉัน?";
+				next;
+				mes "[Father Yosuke]";
+				mes "คุณอาจทำผิดพลาด กลับไปที่ Santuary, และตรวจสอบกับบาทหลวง.";
+				close;
+			}
+		}
+		else {
+			mes "คุณ...";
+			mes "Novice.";
+			mes "มีบางอย่าง";
+			mes "คุณอยากบอกฉันไหม?";
+			close;
+		}
+	}
+	else if (BaseJob == Job_Acolyte) callfunc "F_FatherYos";
+	else {
+		if (BaseJob == Job_Priest) {
+			mes "เฮ้...";
+			next;
+			mes "[Father Yosuke]";
+			mes "ถ้าคุณชอบ,มาประทับอยู่กับข้าพเจ้าที่นี่และใคร่ครวญความจริงอันยิ่งใหญ่ ความยิ่งใหญ่ของพระเจ้าเป็นแรงบันดาลใจอย่างแท้จริง...";
+			close;
+		}
+		else {
+			mes "มีอะไรจะพูดมั้ย? เพราะน่าเสียดายสำหรับคุณ";
+			mes "ฉันไม่ตอบอะไร";
+			close;
+		}
+	}
+}

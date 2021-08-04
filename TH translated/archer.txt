@@ -1,0 +1,256 @@
+//================= Hercules Script =======================================
+//=       _   _                     _
+//=      | | | |                   | |
+//=      | |_| | ___ _ __ ___ _   _| | ___  ___
+//=      |  _  |/ _ \ '__/ __| | | | |/ _ \/ __|
+//=      | | | |  __/ | | (__| |_| | |  __/\__ \
+//=      \_| |_/\___|_|  \___|\__,_|_|\___||___/
+//================= License ===============================================
+//= This file is part of Hercules.
+//= http://herc.ws - http://github.com/HerculesWS/Hercules
+//=
+//= Copyright (C) 2012-2021 Hercules Dev Team
+//= Copyright (C) massdriller
+//= Copyright (C) Lupus
+//= Copyright (C) L0ne_W0lf
+//= Copyright (C) kobra_k88
+//=
+//= Hercules is free software: you can redistribute it and/or modify
+//= it under the terms of the GNU General Public License as published by
+//= the Free Software Foundation, either version 3 of the License, or
+//= (at your option) any later version.
+//=
+//= This program is distributed in the hope that it will be useful,
+//= but WITHOUT ANY WARRANTY; without even the implied warranty of
+//= MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//= GNU General Public License for more details.
+//=
+//= You should have received a copy of the GNU General Public License
+//= along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//=========================================================================
+//= Archer Job Quest (Pre-Renewal)
+//================= Description ===========================================
+//= Job quest for Archer classes
+//================= Current Version =======================================
+//= 1.9
+//=========================================================================
+
+payon_in02,64,71,4	script	Archer Guildsman#archer	4_M_03,{
+	if (Upper == 1) {
+		if (Class == Job_Novice_High && (ADVJOB == Job_Sniper || ADVJOB == Job_Clown || ADVJOB == Job_Gypsy)) {
+			mes "[Archer Guildsman]";
+			mes "เฮ้, ฉันรู้จักคุณ.";
+			mes "คุณทำแบบทดสอบนี้";
+			mes "เมื่อก่อนไม่ใช่เหรอ";
+			next;
+			mes "[Archer Guildsman]";
+			mes "อ้า, คุณต้องเคย";
+			mes "ถึง Valhalla และได้เกิดใหม่";
+			mes "วาว, น่าประทับใจมาก!";
+			next;
+			if (getskilllv("NV_BASIC") < 9) {
+				mes "[Archer Guildsman]";
+				mes "เอ่อ...";
+				mes "คุณควรเรียนรู้ทักษะพื้นฐานทั้งหมดก่อนจึงจะสามารถเป็น Archerได้";
+				next;
+				mes "[Archer Guildsman]";
+				mes "ได้เลย แล้วเจอกัน";
+				close;
+			}
+			mes "[Archer Guildsman]";
+			mes "ดีละถ้าอย่างนั้น. ฉันไม่";
+			mes "ต้องพูดอะไรอีก";
+			mes "ฉันรู้ว่าคุณจะทำผลงานได้ดี Archer...";
+			next;
+			skill 143,0,0;
+			jobchange Job_Archer_High;
+			skill 147,1,0;
+			skill 148,1,0;
+			mes "[Archer Guildsman]";
+			mes "แม้ว่าจะไม่มีอะไรพิเศษ";
+			mes "ตอบแทนท่านในครั้งนี้ ฉันหวังว่าคุณเข้าใจ ดูแลตัวเองนะ";
+			close;
+		}
+		else {
+			mes "[Archer Guildsman]";
+			mes "โอ้...?";
+			mes "เฮ้, คุณมา";
+			mes "มาทำอะไรที่นี่...?";
+			next;
+			mes "[Archer Guildsman]";
+			mes "ฉันบอกได้เลยว่าคุณไม่ได้ถูกตัดออกเพื่อเป็น  Archer มันให้ความรู้สึกเหมือนคุณตั้งใจจะทำ";
+			mes "บางอย่างอีก...";
+			close;
+		}
+	}
+	mes "[Archer Guildsman]";
+	mes "ขอให้เป็นวันที่ดี. ฉันจะช่วยคุณได้อย่างไร?";
+	next;
+	switch(select("ฉันอยากเป็นอาเชอร์ Archer.", "ฉันต้องการข้อกำหนด,ได้โปรด.", "ไม่มีอะไร ขอบคุณ")) {
+	case 1:
+		if (BaseJob == Job_Archer) {
+			mes "[Archer Guildsman]";
+			mes "คุณเป็น Archer อยู่แล้วหรือเปล่า...";
+			close;
+		}
+		else if (BaseJob != Job_Archer && BaseJob != Job_Novice) {
+			mes "[Archer Guildsman]";
+			mes "หืมม...";
+			mes "คุณดูไม่เหมือนมือใหม่เลย...";
+			next;
+			mes "[Archer Guildsman]";
+			mes "ไม่ว่าคุณจะเป็นอะไรก็ตาม คุณไม่สามารถเลือกงานเป็น Archer ได้เพราะคุณมีงานทำอยู่แล้ว";
+			close;
+		}
+		if (job_archer_q == 0) {
+			mes "[Archer Guildsman]";
+			mes "คุณต้องการที่จะเป็น Archer?";
+			mes "ถ้าใช่ คุณต้องกรอกแบบฟอร์มใบสมัครนี้";
+			next;
+			if (select("นำมาใช้", "ยกเลิก") == 1) {
+				job_archer_q = 1;
+				setquest 1004;
+				mes "[Archer Guildsman]";
+				mes "ตกลง ลงชื่อที่นี่ เอาหล่ะ อืม ฉันจะเลื่อนตำแหน่งให้คุณเมื่อคุณมีคุณสมบัติตรงตามข้อกำหนด";
+				next;
+				mes "[Archer Guildsman]";
+				mes "หากคุณคิดว่าคุณเคยเจอพวกเขาแล้ว เราสามารถตรวจดูได้เลย";
+				mes "คุณพร้อมไหม?";
+				next;
+				if (select("ใช่ฉันเป็น", "ไม่มียังไม่ได้.") == 1) {
+					mes "[Archer Guildsman]";
+					mes "ได้เลย เดี๋ยวผมเช็คให้";
+					next;
+				}
+				else {
+					mes "[Archer Guildsman]";
+					mes "ฉันเข้าใจ ด้วยความยินดี หากต้องการดูข้อกำหนด";
+					close;
+				}
+			}
+			mes "[Archer Guildsman]";
+			mes "เอาล่ะ";
+			mes "แล้วเจอกันใหม่";
+			close;
+		}
+		mes "[Archer Guildsman]";
+		mes "คุณหรือไม่..." + strcharinfo(PC_NAME) + "?";
+		next;
+		if (getskilllv("NV_BASIC") < 9) {
+			mes "[Archer Guildsman]";
+			mes "คุณไม่ได้อยู่ในระดับงานที่เหมาะสม โปรดตรวจสอบข้อกำหนดอีกครั้ง";
+			next;
+			mes "[Archer Guildsman]";
+			mes "ระดับงานของคุณต้องมีอย่างน้อย 10 และอย่าลืมว่าคุณควรเรียนรู้ทักษะพื้นฐานทั้งหมด เสร็จแล้วก็กลับมา";
+			close;
+		}
+		if (job_archer_q == 1) {
+			.@archer_item1 = countitem(Tree_Of_Archer_1) * 5;
+			.@archer_item2 = countitem(Tree_Of_Archer_2) * 3;
+			.@archer_item3 = countitem(Tree_Of_Archer_3) * 2;
+			.@archer_item4 = countitem(Wooden_Block);
+			.@total_archer = .@archer_item1 + .@archer_item2 + .@archer_item3 + .@archer_item4;
+			.@total_archer2 = (((.@archer_item2 + .@archer_item3) * 2) + .@archer_item4);
+			mes "[Archer Guildsman]";
+			mes "ยอดเยี่ยม!";
+			mes "ทีนี้";
+			mes "มาดูกัน...";
+			next;
+			mes "[Archer Guildsman]";
+			mes "ฉันจะประเมินมูลค่าของลำต้นประเภทต่างๆ ที่จำเป็นในการผลิตธนูที่คุณนำมา";
+			next;
+			if (countitem(Tree_Of_Archer_1) == 0 && countitem(Tree_Of_Archer_2) == 0 && countitem(Tree_Of_Archer_3) == 0 && countitem(Wooden_Block) == 0) {
+				mes "[Archer Guildsman]";
+				mes "อืม...";
+				mes "ขออภัย คุณไม่ได้นำสิ่งของที่จำเป็นมาด้วย ไม่มีอะไรให้ฉันประเมิน";
+				close;
+			}
+			mes "[Archer Guildsman]";
+			if (countitem(Tree_Of_Archer_1) != 0) mes " Grade S : " + countitem(Tree_Of_Archer_1) + " ea, Grade: " + .@archer_item1 + " . ";
+			if (countitem(Tree_Of_Archer_2) != 0) mes " Grade A : " + countitem(Tree_Of_Archer_2) + " ea, Grade : " + .@archer_item2 + " . ";
+			if (countitem(Tree_Of_Archer_3) != 0) mes " Grade B : " + countitem(Tree_Of_Archer_3) + " ea, Grade : " + .@archer_item3 + " . ";
+			if (countitem(Wooden_Block) != 0) mes " Grade C : " + countitem(Wooden_Block) + " ea, Grade : " + .@archer_item4 + " . ";
+			if (.@total_archer < 25) {
+				mes "Total Grades: ^FF0000" + .@total_archer + "^000000 / 40";
+				next;
+				mes "[Archer Guildsman]";
+				mes "น้อยกว่า 25? คุณต้องได้คะแนนอย่างน้อย 25! มาเลย พยายามให้มากขึ้น!";
+				close;
+			}
+			else {
+				mes "คะแนนรวม: ^0000FF" + .@total_archer + "^000000 / 40";
+				next;
+				mes "[Archer Guildsman]";
+				if (.@total_archer > 40) {
+					mes "ว้าว! มากกว่า 40!";
+					mes "ยอดเยี่ยม! ยินดีด้วย!";
+				}
+				else if (.@total_archer > 30) {
+					mes "มากกว่า 30! งานที่ดี!";
+					mes "ยินดีด้วย!";
+				}
+				else {
+					mes "*เฮ้อ* เอ่อ คุณเพิ่งผ่าน... ยังไงก็เถอะ ทำได้ดีมาก";
+				}
+			}
+			next;
+			mes "[Archer Guildsman]";
+			mes "ฉันจะโอนลำต้นเหล่านี้ไปที่แผนกผลิตธนูของเรา ตอนนี้คุณมีคุณสมบัติตรงตามข้อกำหนดแล้ว ให้ฉันส่งเสริมคุณทันที!";
+			if (countitem(Tree_Of_Archer_1) != 0) delitem Tree_Of_Archer_1,countitem(Tree_Of_Archer_1);
+			if (countitem(Tree_Of_Archer_2) != 0) delitem Tree_Of_Archer_2,countitem(Tree_Of_Archer_2);
+			if (countitem(Tree_Of_Archer_3) != 0) delitem Tree_Of_Archer_3,countitem(Tree_Of_Archer_3);
+			if (countitem(Wooden_Block) != 0) delitem Wooden_Block,countitem(Wooden_Block);
+		}
+		next;
+		callfunc "Job_Change",Job_Archer;
+		callfunc "F_ClearJobVar";
+		completequest 1004;
+		mes "[Archer Guildsman]";
+		mes "ยินดีด้วย!";
+		mes "ตอนนี้คุณเป็น Archer!";
+		next;
+		mes "[Archer Guildsman]";
+		mes "แน่นอน, เราหวังว่าคุณจะช่วยสนับสนุนอนาคตของ Archer Guild ด้วยความพยายามของคุณ";
+		next;
+		mes "[Archer Guildsman]";
+		mes "อา, คันธนูของท่านมาจากฝ่ายผลิตธนู เอาเลย! มันเป็นของคุณ~";
+		getitem Bow_,1;
+		getitem Arrow,.@total_archer2;
+		next;
+		mes "[Archer Guildsman]";
+		mes "ตอนนี้คุณไป ตามล่าด้วยความภาคภูมิใจ โดยรู้ว่าคุณได้รับการฝึกฝนโดยหนึ่งในผู้เชี่ยวชาญที่ดีที่สุด!";
+		close;
+	case 2:
+		mes "[Archer Guildsman]";
+		mes "ฉันจะอธิบายข้อกำหนดสำหรับการเป็น Archer.";
+		if (BaseJob != Job_Novice) {
+			if (BaseJob == Job_Archer) {
+				next;
+				mes "[Archer Guildsman]";
+				mes "แต่...";
+				mes "คุณเป็นนักธนูแล้ว คุณควรรู้สิ่งเหล่านี้แล้ว...";
+			}
+			else {
+				next;
+				mes "[Archer Guildsman]";
+				mes "รอสักครู่. คุณได้เลือกงานอื่นแล้ว ไม่ต้องรู้หรอก~";
+			}
+			mes "ดังนั้น...ใช่...ไม่มีเหตุผลจริงๆที่จะบอกคุณถึงข้อกำหนด...";
+		}
+		next;
+		mes "[Archer Guildsman]";
+		mes "ก่อนอื่น คุณต้องทำงานระดับ 9 ในฐานะมือใหม่ และรู้ทักษะพื้นฐานทั้งหมด";
+		next;
+		mes "[Archer Guildsman]";
+		mes "นักธนูต้องการสมาธิและการตอบสนองสูงมาก ดังนั้นเราจึงไม่ยอมรับผู้ที่มีความอดทนน้อย";
+		next;
+		mes "[Archer Guildsman]";
+		mes "คุณต้องรวบรวม ^FF0000Trunks^000000. มี 4 ประเภทที่แตกต่างกันของ Trunks, แต่ละอย่างมีคุณภาพแตกต่างกัน คุณจะได้รับเกรดที่แตกต่างกันสำหรับคุณ Trunks, ขึ้นอยู่กับคุณภาพของพวกเขา";
+		next;
+		mes "[Archer Guildsman]";
+		mes "เพื่อที่จะได้เป็น Archer, คุณต้องได้คะแนนอย่างน้อย ^0000FF25^000000 จาก 40 คะแนน. คุณสามารถได้รับ Trunks จาก 'Willow,' the tree. ระวังตัวด้วยนะ พวกมันเป็นมอนสเตอร์ที่แข็งแกร่ง";
+		close;
+	case 3:
+		close;
+	}
+}
