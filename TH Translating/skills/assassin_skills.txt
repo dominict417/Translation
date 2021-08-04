@@ -45,12 +45,7 @@ in_moc_16,14,27,5	script	Assassin#realman	4_M_ACROSS,{
 			mes "นั่นอะไร...?! คุณต้องการให้ฉันสอนคุณอีกครั้งหรือไม่? น่าเสียดายที่คุณลืมไป แต่ฉันคิดว่ามันช่วยไม่ได้ ตกลง ตกลง ฉันจะสอนคุณ";
 			next;
 			mes "[Killtin]";
-			mes "First, you need to equip";
-			mes "a Knife class weapon, and";
-			mes "then cast Envenom on your";
-			mes "knife. Throwing the blade?";
-			mes "That's all in the wrist. Now,";
-			mes "watch me closely and take note.";
+			mes "ขั้นแรก คุณต้องติดตั้งอาวุธคลาสมีด จากนั้นจึงร่าย Envenom ลงบนมีดของคุณ ขว้างใบมีด? นั่นคือทั้งหมดที่อยู่ในข้อมือ ตอนนี้ดูฉันอย่างใกล้ชิดและรับทราบ";
 			next;
 			mes "[Killtin]";
 			mes "You see? Having";
