@@ -48,41 +48,21 @@ in_moc_16,14,27,5	script	Assassin#realman	4_M_ACROSS,{
 			mes "ขั้นแรก คุณต้องติดตั้งอาวุธคลาสมีด จากนั้นจึงร่าย Envenom ลงบนมีดของคุณ ขว้างใบมีด? นั่นคือทั้งหมดที่อยู่ในข้อมือ ตอนนี้ดูฉันอย่างใกล้ชิดและรับทราบ";
 			next;
 			mes "[Killtin]";
-			mes "You see? Having";
-			mes "good form is essential";
-			mes "to performing flawless";
-			mes "technique. Always basics";
-			mes "before the specifics. Now,";
-			mes "why don't you give it a try?";
+			mes "เห็นไหม? การมีฟอร์มที่ดีเป็นสิ่งสำคัญในการแสดงเทคนิคที่ไร้ที่ติ พื้นฐานก่อนข้อมูลเฉพาะเสมอ ทำไมคุณไม่ลองดูล่ะ";
 			specialeffect EF_INVENOM;
 			next;
 			mes "[Killtin]";
-			mes "Good... Very good...";
-			mes "Perfect form. Yes...";
-			mes "Hmm. Are you sure that";
-			mes "you forgot how to do this";
-			mes "skill? I suppose that all you";
-			mes "needed was a quick refresher.";
+			mes "ดี...ดีมาก...ฟอร์มสมบูรณ์ ใช่... อืม. คุณแน่ใจหรือว่าลืมวิธีการทำทักษะนี้? ฉันคิดว่าสิ่งที่คุณต้องการคือการทบทวนอย่างรวดเร็ว";
 			specialeffect(EF_INVENOM, AREA, playerattached());
 			next;
 			mes "[Killtin]";
-			mes "Alright, I think it's";
-			mes "safe to say that you've";
-			mes "mastered the Venom Knife";
-			mes "skill. Leave me now, and";
-			mes "always fight for the honor";
-			mes "of the Assassin Guild!";
+			mes "เอาล่ะ ฉันคิดว่ามันปลอดภัยที่จะบอกว่าคุณเชี่ยวชาญทักษะ Venom Knife แล้ว ปล่อยฉันเดี๋ยวนี้ และต่อสู้เพื่อเกียรติยศของสมาคมนักฆ่าเสมอ!";
 			skill "AS_VENOMKNIFE",1,0;
 			close;
 		}
 		else {
 			mes "[Killtin]";
-			mes "So how has that";
-			mes "^990099Venom Knife^000000 skill";
-			mes "been working for you?";
-			mes "Be careful, and make sure";
-			mes "that your victims always";
-			mes "deserve what you give them!";
+			mes "แล้วทักษะ ^990099Venom Knife^000000 นั้นทำงานให้คุณได้อย่างไร? ระวังและให้แน่ใจว่าเหยื่อของคุณสมควรได้รับสิ่งที่คุณให้พวกเขาเสมอ!";
 			close;
 		}
 	}
@@ -98,177 +78,87 @@ in_moc_16,14,27,5	script	Assassin#realman	4_M_ACROSS,{
 	}
 	else if (ASSN_SK2 == 1) {
 		mes "[Killtin]";
-		mes "So how has that";
-		mes "^990099Venom Knife^000000 skill";
-		mes "been working for you?";
-		mes "Be careful, and make sure";
-		mes "that your victims always";
-		mes "deserve what you give them!";
+		mes "คุณได้เรียนรู้ทักษะเฉพาะของ Assassin ทั้งหมดแล้วใช่ไหม อย่าปล่อยให้ตัวเองมั่นใจมากเกินไป มุ่งมั่นเพื่อความแข็งแกร่งยิ่งขึ้นไปอีกเพื่อเกียรติยศของสมาคมนักฆ่า";
 		close;
 	}
 	else {
 		if (BaseJob == Job_Assassin) {
 			mes "[Killtin]";
-			mes "Hm? Ah, you're definitely";
-			mes "a member of the Assassin";
-			mes "Guild. Great, you've come";
-			mes "just at the right time.";
+			mes "แล้วทักษะ ^990099Venom Knife^000000 นั้นทำงานให้คุณได้อย่างไร? ระวังและให้แน่ใจว่าเหยื่อของคุณสมควรได้รับสิ่งที่คุณให้พวกเขาเสมอ!";
 			next;
 			mes "[Killtin]";
-			mes "Our guildmaster recently";
-			mes "succeeded in developing two";
-			mes "new skills for Assassins. I've";
-			mes "been charged with the task of";
-			mes "teaching these new skills to";
-			mes "all the members of our guild.";
+			mes "กิลด์มาสเตอร์ของเราเพิ่งประสบความสำเร็จในการพัฒนาสองทักษะใหม่สำหรับมือสังหาร ฉันถูกมอบหมายให้สอนทักษะใหม่เหล่านี้ให้กับสมาชิกทุกคนในกิลด์ของเรา";
 			next;
 			select("New skills?");
 			mes "[Killtin]";
-			mes "That's right, "+ strcharinfo(PC_NAME) +".";
-			mes "The first skill specifically";
-			mes "enhances the Sonic Blow";
-			mes "skill, and the second skill";
-			mes "is a long range attack that's";
-			mes "named ''^990099Venom Knife^000000.''";
+			mes "ใช่แล้ว "+ strcharinfo(PC_NAME) +" ทักษะแรกช่วยเสริมทักษะ Sonic Blow โดยเฉพาะ และทักษะที่สองคือการโจมตีระยะไกลที่ชื่อว่า ''^990099Venom Knife^000000''";
 			next;
 			mes "[Killtin]";
-			mes "If you have any questions,";
-			mes "feel free to ask me about";
-			mes "any of these new skills. It's";
-			mes "my job to teach you as much";
-			mes "as I can about them.";
+			mes "หากคุณมีคำถามใดๆ อย่าลังเลที่จะถามฉันเกี่ยวกับทักษะใหม่ๆ เหล่านี้ เป็นงานของฉันที่จะสอนคุณเกี่ยวกับพวกเขาให้มากที่สุด";
 			next;
 			while(1) {
-				switch(select("^0000FFSonic Blow Enhancement^000000", "^990099Venom Knife^000000", "Continue Conversation")) {
+				switch(select("^0000FFเพิ่มพลัง Sonic Blow^000000", "^990099Venom Knife^000000", "คุยต่อ")) {
 				case 1:
 					mes "[Killtin]";
-					mes "If you've been an Assassin";
-					mes "for a while, then you must";
-					mes "be familiar with the Sonic";
-					mes "Blow skill, which inflicts 8";
-					mes "powerful strikes at an enemy";
-					mes "in one blindingly fast attack.";
+					mes "หากคุณเป็นมือสังหารมาระยะหนึ่งแล้ว คุณต้องคุ้นเคยกับทักษะ Sonic Blow ซึ่งทำดาเมจ 8 ครั้งต่อศัตรูด้วยการโจมตีที่รวดเร็วจนแทบมองไม่เห็น";
 					next;
 					mes "[Killtin]";
-					mes "However, due to the speed";
-					mes "involved in that skill, Sonic";
-					mes "Blow isn't as accurate as it";
-					mes "can be. After years of testing";
-					mes "and research, our guildmaster";
-					mes "developed a way to fix this.";
+					mes "อย่างไรก็ตาม เนื่องจากความเร็วที่เกี่ยวข้องกับทักษะนั้น Sonic Blow จึงไม่แม่นยำเท่าที่ควร หลังจากทดสอบและค้นคว้ามาหลายปี กิลด์มาสเตอร์ของเราได้พัฒนาวิธีแก้ไขปัญหานี้";
 					next;
 					mes "[Killtin]";
-					mes "He created a new skill";
-					mes "named ''Sonic Acceleration''";
-					mes "that Assassins can cast on";
-					mes "themselves in order to quickly";
-					mes "detect and accurately strike";
-					mes "the target's fatal points.";
+					mes "เขาได้สร้างทักษะใหม่ชื่อ ''Sonic Acceleration'' ที่นักฆ่าสามารถร่ายใส่ตัวเองได้ เพื่อตรวจจับและโจมตีจุดตายของเป้าหมายได้อย่างแม่นยำ";
 					next;
 					mes "[Killtin]";
-					mes "In effect, Sonic Acceleration";
-					mes "roughly doubles the damage";
-					mes "that you can inflict with the";
-					mes "Sonic Blow. If you use Sonic";
-					mes "Blow pretty often, then this";
-					mes "skill will be pretty useful.";
+					mes "ผลที่ตามมาคือ Sonic Acceleration จะเพิ่มความเสียหายเป็นสองเท่าโดยประมาณที่คุณสามารถทำกับ Sonic Blow หากคุณใช้ Sonic Blow บ่อยๆ ทักษะนี้จะมีประโยชน์มาก";
 					next;
 					mes "[Killtin]";
-					mes "I suggest that you learn";
-					mes "the Venom Knife skill from";
-					mes "me first. Then, you can talk";
-					mes "to Esmille, the beautiful";
-					mes "Assassin Cross right next to me, to learn Sonic Acceleration.";
+					mes "ฉันแนะนำให้คุณเรียนรู้ทักษะ Venom Knife จากฉันก่อน จากนั้นคุณสามารถคุยกับ Esmille, Assassin Cross ที่สวยงามข้างๆ ฉัน เพื่อเรียนรู้ Sonic Acceleration";
 					next;
 					break;
 				case 2:
 					mes "[Killtin]";
-					mes "As you may well know, our";
-					mes "job isn't really known for its";
-					mes "long range attacks. Sure, we";
-					mes "can use Bows, and we've got";
-					mes "a few long distance skills, but";
-					mes "their uses are kind of limited.";
+					mes "อย่างที่คุณอาจทราบดีว่างานของเรานั้นไม่เป็นที่รู้จักในด้านการโจมตีระยะไกล แน่นอน เราสามารถใช้ธนูได้ และเรามีทักษะทางไกลอยู่บ้าง แต่การใช้งานนั้นค่อนข้างจำกัด";
 					next;
 					mes "[Killtin]";
-					mes "This Venom Knife skill was";
-					mes "developed with this weakness";
-					mes "in long range attacking in mind. Basically, we use the Envenom";
-					mes "skill on a knife and throw it at a distant enemy to poison them.";
+					mes "ทักษะมีดพิษนี้ได้รับการพัฒนาโดยคำนึงถึงจุดอ่อนในการโจมตีระยะไกล โดยพื้นฐานแล้ว เราใช้ทักษะ Envenom บนมีดและโยนมันใส่ศัตรูที่อยู่ห่างไกลเพื่อทำให้พวกมันเป็นพิษ";
 					next;
 					break;
 				case 3:
 					mes "[Killtin]";
-					mes "Now, if you like, I can";
-					mes "teach you the ^009900Venom Knife^000000";
-					mes "skill right now. It won't take";
-					mes "that much time, so what do";
-					mes "you say? You ready to learn?";
+					mes "ถ้าท่านชอบ ข้าจะสอนทักษะ ^009900 Venom Knife^000000 ให้ท่านได้ในตอนนี้ ใช้เวลาไม่นานขนาดนั้น แล้วคุณล่ะ ว่าอย่างไร? คุณพร้อมที่จะเรียนรู้?";
 					next;
 					while(1) {
-						if (select("Learn Venom Knife", "I d-don't wanna learn!") == 1) {
+						if (select("เรียน Venom Knife", "ข้ายังไม่อยากเรียนรู้!") == 1) {
 							mes "[Killtin]";
-							mes "First, you need to equip";
-							mes "a Knife class weapon, and";
-							mes "then cast Envenom on your";
-							mes "knife. Throwing the blade?";
-							mes "That's all in the wrist. Now,";
-							mes "watch me closely and take note.";
+							mes "ขั้นแรก คุณต้องติดตั้งอาวุธคลาสมีด จากนั้นจึงร่าย Envenom ลงบนมีดของคุณ ขว้างใบมีด? นั่นคือทั้งหมดที่อยู่ในข้อมือ ตอนนี้ดูฉันอย่างใกล้ชิดและรับทราบ";
 							next;
 							mes "[Killtin]";
-							mes "You see? Having";
-							mes "good form is essential";
-							mes "to performing flawless";
-							mes "technique. Always basics";
-							mes "before the specifics. Now,";
-							mes "why don't you give it a try?";
+							mes "เห็นไหม? การมีฟอร์มที่ดีเป็นสิ่งสำคัญในการแสดงเทคนิคที่ไร้ที่ติ พื้นฐานก่อนข้อมูลเฉพาะเสมอ ทำไมคุณไม่ลองดูล่ะ";
 							specialeffect EF_INVENOM;
 							next;
 							mes "[Killtin]";
-							mes "Hey, that's pretty good.";
-							mes "You're catching on really";
-							mes "quick. Heh heh, but still,";
-							mes "I guess I can take a little";
-							mes "bit of credit for my excellent";
-							mes "instruction. Ah, very nice.";
+							mes "เฮ้ ดีมาก คุณจับได้เร็วจริงๆ หึหึ แต่ถึงกระนั้น ฉันเดาว่าฉันสามารถให้เครดิตกับการสอนที่ยอดเยี่ยมของฉันได้บ้าง อ่า ดีมาก";
 							next;
 							specialeffect(EF_INVENOM, AREA, playerattached());
 							next;
 							mes "[Killtin]";
-							mes "Alright, you may need";
-							mes "to practice a bit more";
-							mes "of this skill, but for the most";
-							mes "part, you can use Venom";
-							mes "Knife pretty easily in battle.";
+							mes "เอาล่ะ คุณอาจต้องฝึกฝนทักษะนี้อีกสักหน่อย แต่โดยส่วนใหญ่ คุณสามารถใช้ Venom Knife ในการต่อสู้ได้";
 							ASSN_SK2 = 1;
 							ASSN_SK = 1;
 							skill "AS_VENOMKNIFE",1,0;
 							next;
 							mes "[Killtin]";
-							mes "Well, that's all I can";
-							mes "teach you. Use this skill";
-							mes "expertly, and bring woe to";
-							mes "your enemies for the honor";
-							mes "of the Assassin Guild!";
+							mes "นั่นคือทั้งหมดที่ฉันสามารถสอนคุณได้ ใช้ทักษะนี้อย่างเชี่ยวชาญ และนำความหายนะมาสู่ศัตรูของคุณเพื่อเป็นเกียรติแก่สมาคมนักฆ่า!";
 							close;
 						}
 						if (.@teach ==1) {
 							mes "[Killtin]";
-							mes "Y-you don't want to";
-							mes "learn? Tough! It's my";
-							mes "job to teach this Venom";
-							mes "Knife skill to every member";
-							mes "of the Assassin Guild! You're^FFFFFFaaaaa^000000 not leaving until I tell you to!";
+							mes "ค-คุณไม่ต้องการที่จะเรียนรู้? ยาก! เป็นหน้าที่ของฉันที่จะสอนทักษะ Venom Knife นี้ให้กับสมาชิก Assassin Guild ทุกคน! คุณ^FFFFFFaaaaa^000000 ไม่ไปจนกว่าฉันจะบอกให้!";
 							next;
 						}
 						else {
 							mes "[Killtin]";
-							mes "You can't refuse an";
-							mes "order from our guildmaster...";
-							mes "Like it or not, this skill will";
-							mes "make you a better Assassin.";
-							mes "Trust me on this and just agree";
-							mes "to learn the skill, will you?";
+							mes "คุณไม่สามารถปฏิเสธคำสั่งจากหัวหน้ากิลด์ของเราได้... ไม่ว่าจะชอบหรือไม่ ทักษะนี้จะทำให้คุณเป็น Assassin ที่ดียิ่งขึ้น เชื่อฉันในเรื่องนี้และตกลงที่จะเรียนรู้ทักษะใช่ไหม";
 							next;
 						}
 					}
@@ -277,18 +167,13 @@ in_moc_16,14,27,5	script	Assassin#realman	4_M_ACROSS,{
 		}
 		else if (BaseJob == Job_Thief) {
 			mes "[Killtin]";
-			mes "A Thief...? Huh.";
-			mes "That's a respectable";
-			mes "job. But listen, if you";
-			mes "want me to be able to";
-			mes "teach you anything, you'll";
-			mes "need to get stronger first.";
+			mes "Thief รึ...? ฮะ. นั่นเป็นงานที่น่านับถือ แต่ฟังนะ ถ้าคุณต้องการให้ฉันสอนอะไรคุณ คุณต้องเข้มแข็งขึ้นก่อน";
 			close;
 		}
 		else {
 			mes "[Assassin]";
 			mes "...............................";
-			mes "Just keep moving.";
+			mes "แค่เพียงก้าวต่อไป";
 			close;
 		}
 	}
@@ -298,419 +183,222 @@ in_moc_16,23,27,5	script	Assassin#realgirl	4_F_ACROSS,{
 	if (BaseJob == Job_Assassin && ASSN_SK == 7) {
 		if (getskilllv("AS_SONICACCEL") == 0) {
 			mes "[Esmille]";
-			mes "Mm? Ah, you've transcended";
-			mes "and become an Assassin Cross";
-			mes "as well. I understand the trouble that you must have gone through";
-			mes "to be reborn with new strength.";
+			mes "อืม? อา คุณได้ก้าวข้ามและกลายเป็น Assassin Cross ด้วยเช่นกัน ฉันเข้าใจปัญหาที่คุณต้องผ่านเพื่อเกิดใหม่ด้วยความแข็งแกร่งใหม่";
 			next;
 			mes "[Esmille]";
-			mes "You probably need to learn";
-			mes "the Sonic Acceleration skill";
-			mes "again after having lost some";
-			mes "of your memories. I truly";
-			mes "sympathize, and am willing";
-			mes "to teach it to you again.";
+			mes "คุณอาจต้องเรียนรู้ทักษะ Sonic Acceleration อีกครั้งหลังจากที่สูญเสียความทรงจำบางส่วนไป ฉันเห็นอกเห็นใจอย่างแท้จริงและยินดีที่จะสอนให้คุณอีกครั้ง";
 			next;
 			if (getskilllv("AS_SONICBLOW") == 0) {
 				mes "[Esmille]";
-				mes "First, go and learn the";
-				mes "Sonic Blow skill. The skill";
-				mes "I will teach you is completely";
-				mes "useless unless you learn how";
-				mes "to perform a Sonic Blow. I shall be waiting right here till then.";
+				mes "ก่อนอื่น ไปเรียนรู้ทักษะ Sonic Blow ทักษะที่ฉันจะสอนคุณนั้นไร้ประโยชน์โดยสิ้นเชิง เว้นแต่คุณจะเรียนรู้วิธีการทำ Sonic Blow ฉันจะรออยู่ตรงนี้จนถึงเวลานั้น";
 				close;
 			}
 			mes "[Esmille]";
-			mes "Now, right before you";
-			mes "perform Sonic Blow, make";
-			mes "sure your feet are positioned";
-			mes "like this. Then, as smoothly";
-			mes "and quickly as possible, shift";
-			mes "your weight over to this side.";
+			mes "ตอนนี้ ก่อนที่คุณจะแสดง Sonic Blow ตรวจสอบให้แน่ใจว่าเท้าของคุณอยู่ในตำแหน่งนี้ จากนั้นให้เลื่อนน้ำหนักไปทางด้านนี้อย่างราบรื่นและรวดเร็วที่สุด";
 			specialeffect EF_SONICBLOW;
 			next;
 			mes "[Esmille]";
-			mes "Watch carefully, this";
-			mes "is the most important";
-			mes "part. See where my hands";
-			mes "are and the angle of my";
-			mes "arms? This is the form that";
-			mes "you've got to memorize.";
+			mes "ระวังให้ดี นี่เป็นส่วนที่สำคัญที่สุด เห็นว่ามือของฉันอยู่ที่ไหนและมุมของแขนของฉัน? นี่คือรูปแบบที่คุณต้องจดจำ";
 			specialeffect EF_SONICBLOW;
 			next;
 			mes "[Esmille]";
-			mes "Alright, that's all";
-			mes "you need to know. Now,";
-			mes "please try it so I can give";
-			mes "you feedback on your form.";
+			mes "เอาล่ะ นั่นคือทั้งหมดที่คุณต้องรู้ ตอนนี้ โปรดลองใช้เพื่อให้เราสามารถให้ข้อเสนอแนะเกี่ยวกับแบบฟอร์มของคุณได้";
 			next;
 			specialeffect(EF_SONICBLOW, AREA, playerattached());
 			next;
 			mes "[Esmille]";
-			mes "Hmm, you're shifting";
-			mes "your weight kind of";
-			mes "unsteadily. It might";
-			mes "help if your center of";
-			mes "gravity was like this...";
+			mes "อืม คุณกำลังเปลี่ยนน้ำหนักของคุณอย่างไม่มั่นคง อาจช่วยได้ถ้าจุดศูนย์ถ่วงของคุณเป็นแบบนี้...";
 			next;
 			specialeffect(EF_SONICBLOW, AREA, playerattached());
 			next;
 			mes "[Esmille]";
-			mes "Ah, you're so very";
-			mes "close to perfection.";
-			mes "Focus more on smoothly";
-			mes "transitioning from your";
-			mes "stance to executed action.";
+			mes "อา คุณเข้าใกล้ความสมบูรณ์แบบมาก มุ่งเน้นที่การเปลี่ยนจากจุดยืนเป็นการดำเนินการที่ดำเนินการอย่างราบรื่น";
 			next;
 			mes "[Esmille]";
-			mes "Yes, that's it...!";
-			mes "Very well executed.";
-			mes "Good work, "+ strcharinfo(PC_NAME) +".";
+			mes "ใช่นั่นแหละ...! ดำเนินการได้ดีมาก ทำได้ดีมาก "+ strcharinfo(PC_NAME) +"";
 			skill "AS_SONICACCEL",1,0;
 			ASSN_SK = 7;
 			next;
 			mes "[Esmille]";
-			mes "Do you understand now?";
-			mes "You should have no problem";
-			mes "remembering this skill now.";
-			mes "I can teach you nothing more,";
-			mes "so all I can do now is wish";
-			mes "you luck on your journeys.";
+			mes "ตอนนี้คุณเข้าใจไหม? คุณไม่ควรมีปัญหาในการจดจำทักษะนี้ในตอนนี้ ฉันไม่สามารถสอนอะไรคุณได้อีก ดังนั้นสิ่งที่ฉันทำได้ตอนนี้คือขอให้คุณโชคดีในการเดินทางของคุณ";
 			close;
 		}
 		else {
 			mes "[Esmille]";
-			mes "I trust that using";
-			mes "Sonic Acceleration in";
-			mes "battle has given you an";
-			mes "edge over the enemy. Bring";
-			mes "swift defeat to your foes for";
-			mes "the Assassin Guild's honor.";
+			mes "ฉันเชื่อว่าการใช้ Sonic Acceleration ในการต่อสู้จะทำให้คุณได้เปรียบเหนือศัตรู นำความพ่ายแพ้อย่างรวดเร็วมาสู่ศัตรูของคุณเพื่อเป็นเกียรติแก่สมาคมนักฆ่า";
 			close;
 		}
 	}
 	else if (ASSN_SK == 7) {
 		mes "[Esmille]";
-		mes "I trust that using";
-		mes "Sonic Acceleration in";
-		mes "battle has given you an";
-		mes "edge over the enemy. Bring";
-		mes "swift defeat to your foes for";
-		mes "the Assassin Guild's honor.";
+		mes "ฉันเชื่อว่าการใช้ Sonic Acceleration ในการต่อสู้จะทำให้คุณได้เปรียบเหนือศัตรู นำความพ่ายแพ้อย่างรวดเร็วมาสู่ศัตรูของคุณเพื่อเกียรติยศของสมาคมนักฆ่า";
 		close;
 	}
 	else if (ASSN_SK == 6) {
 		mes "[Esmille]";
-		mes "Please focus on the";
-		mes "training... If we continue to";
-		mes "be interrupted, you'll never";
-		mes "be able to learn anything.";
-		mes "Now, please listen closely.";
+		mes "โปรดให้ความสำคัญกับการฝึกอบรม... หากเรายังคงถูกขัดจังหวะต่อไป คุณจะไม่สามารถเรียนรู้อะไรได้เลย ตอนนี้โปรดฟังอย่างตั้งใจ";
 		next;
 		mes "[Esmille]";
-		mes "Now, right before you";
-		mes "perform Sonic Blow, make";
-		mes "sure your feet are positioned";
-		mes "like this. Then, as smoothly";
-		mes "and quickly as possible, shift";
-		mes "your weight over to this side.";
+		mes "ตอนนี้ ก่อนที่คุณจะแสดง Sonic Blow ตรวจสอบให้แน่ใจว่าเท้าของคุณอยู่ในตำแหน่งนี้ จากนั้นให้เลื่อนน้ำหนักไปทางด้านนี้อย่างราบรื่นและรวดเร็วที่สุด";
 		specialeffect EF_SONICBLOW;
 		next;
 		mes "[Esmille]";
-		mes "Watch carefully, this";
-		mes "is the most important";
-		mes "part. See where my hands";
-		mes "are and the angle of my";
-		mes "arms? This is the form that";
-		mes "you've got to memorize.";
+		mes "ระวังให้ดี นี่เป็นส่วนที่สำคัญที่สุด เห็นว่ามือของฉันอยู่ที่ไหนและมุมของแขนของฉัน? นี่คือรูปแบบที่คุณต้องจดจำ";
 		specialeffect EF_SONICBLOW;
 		next;
 		mes "[Esmille]";
-		mes "Alright, that's all";
-		mes "you need to know. Now,";
-		mes "please try it so I can give";
-		mes "you feedback on your form.";
+		mes "เอาล่ะ นั่นคือทั้งหมดที่คุณต้องรู้ ตอนนี้ โปรดลองใช้เพื่อให้เราสามารถให้ข้อเสนอแนะเกี่ยวกับแบบฟอร์มของคุณได้";
 		next;
 		specialeffect(EF_SONICBLOW, AREA, playerattached());
 		next;
 		mes "[Esmille]";
-		mes "Hmm, you're shifting";
-		mes "your weight kind of";
-		mes "unsteadily. It might";
-		mes "help if your center of";
-		mes "gravity was like this...";
+		mes "อืม คุณกำลังเปลี่ยนน้ำหนักของคุณอย่างไม่มั่นคง อาจช่วยได้ถ้าจุดศูนย์ถ่วงของคุณเป็นแบบนี้...";
 		next;
 		specialeffect(EF_SONICBLOW, AREA, playerattached());
 		next;
 		mes "[Esmille]";
-		mes "That's a little better.";
-		mes "Hmmm. Try to think of";
-		mes "the enemy's weak point";
-		mes "and follow through with";
-		mes "the stabbing motion.";
+		mes "ดีขึ้นนิดหน่อย อืม. พยายามนึกถึงจุดอ่อนของศัตรูแล้วทำตามด้วยการแทง";
 		next;
 		specialeffect(EF_SONICBLOW, AREA, playerattached());
 		next;
 		mes "[Esmille]";
-		mes "Ah, you're so very";
-		mes "close to perfection.";
-		mes "Focus more on smoothly";
-		mes "transitioning from your";
-		mes "stance to executed action.";
+		mes "อา คุณเข้าใกล้ความสมบูรณ์แบบมาก มุ่งเน้นที่การเปลี่ยนจากจุดยืนเป็นการดำเนินการที่ดำเนินการอย่างราบรื่น";
 		specialeffect(EF_SONICBLOW, AREA, playerattached());
 		next;
 		mes "[Esmille]";
-		mes "Yes, that's it...!";
-		mes "Very well executed.";
-		mes "Good work, "+ strcharinfo(PC_NAME) +".";
+		mes "ใช่นั่นแหละ...! ดำเนินการได้ดีมาก ทำได้ดีมาก "+ strcharinfo(PC_NAME) +"";
 		skill "AS_SONICACCEL",1,0;
 		ASSN_SK = 7;
 		next;
 		mes "[Esmille]";
-		mes "Do you understand now?";
-		mes "You should have no problem";
-		mes "remembering this skill now.";
-		mes "I can teach you nothing more,";
-		mes "so all I can do now is wish";
-		mes "you luck on your journeys.";
+		mes "ตอนนี้คุณเข้าใจไหม? คุณไม่ควรมีปัญหาในการจดจำทักษะนี้ในตอนนี้ ฉันไม่สามารถสอนอะไรคุณได้อีก ดังนั้นสิ่งที่ฉันทำได้ตอนนี้คือขอให้คุณโชคดีในการเดินทางของคุณ";
 		close;
 	}
 	else if (ASSN_SK == 5) {
 		mes "[Esmille]";
-		mes "So how is your little";
-		mes "mission coming along?";
-		mes "I trust that you've completed";
-		mes "that task I assigned for you.";
+		mes "ภารกิจเล็กๆ น้อยๆ ของคุณเป็นอย่างไร? ฉันเชื่อว่าคุณทำงานที่ฉันมอบหมายให้คุณสำเร็จแล้ว";
 		next;
 		if ((ASSN_SK == 5 && countitem(Blue_Jewel) > 0) || (ASSN_SK == 5 && countitem(Cardinal_Jewel) > 0) || (ASSN_SK == 5 && countitem(Skyblue_Jewel) > 0)) {
-			select("How's this for treasure?");
+			select("สมบัติพวกนี้ดูเป็นไง?");
 			mes "[Esmille]";
-			mes "Oh, that jewel...!";
-			mes "It's so captivating~";
-			mes "I haven't seen anything";
-			mes "so beautiful in such a long";
-			mes "time. You've done very well...";
+			mes "โอ้ อัญมณีนั่น...! มีเสน่ห์เหลือเกิน~ ฉันไม่ได้เห็นอะไรสวยงามแบบนี้มานานแล้ว คุณทำได้ดีมาก...";
 			next;
 			mes "[Esmille]";
-			mes "That jewel is yours";
-			mes "to keep. In truth, I don't";
-			mes "really need any treasure, just some proof of your qualification.";
-			mes "It looks like you're ready for me to teach you Sonic Acceleration.";
+			mes "อัญมณีนั้นเป็นของคุณที่จะเก็บไว้ อันที่จริง ฉันไม่ได้ต้องการสมบัติใดๆ แค่หลักฐานยืนยันคุณสมบัติของคุณ ดูเหมือนว่าคุณจะพร้อมให้ฉันสอน Sonic Acceleration ให้คุณ";
 			ASSN_SK = 6;
 			next;
 			mes "[Esmille]";
-			mes "Now, right before you";
-			mes "perform Sonic Blow, make";
-			mes "sure your feet are positioned";
-			mes "like this. Then, as smoothly";
-			mes "and quickly as possible, shift";
-			mes "your weight over to this side.";
+			mes "ตอนนี้ ก่อนที่คุณจะแสดง Sonic Blow ตรวจสอบให้แน่ใจว่าเท้าของคุณอยู่ในตำแหน่งนี้ จากนั้นให้เลื่อนน้ำหนักไปทางด้านนี้อย่างราบรื่นและรวดเร็วที่สุด";
 			specialeffect EF_SONICBLOW;
 			next;
 			mes "[Esmille]";
-			mes "Watch carefully, this";
-			mes "is the most important";
-			mes "part. See where my hands";
-			mes "are and the angle of my";
-			mes "arms? This is the form that";
-			mes "you've got to memorize.";
+			mes "ระวังให้ดี นี่เป็นส่วนที่สำคัญที่สุด เห็นว่ามือของฉันอยู่ที่ไหนและมุมของแขนของฉัน? นี่คือรูปแบบที่คุณต้องจดจำ";
 			specialeffect EF_SONICBLOW;
 			next;
 			mes "[Esmille]";
-			mes "Alright, that's all";
-			mes "you need to know. Now,";
-			mes "please try it so I can give";
-			mes "you feedback on your form.";
+			mes "เอาล่ะ นั่นคือทั้งหมดที่คุณต้องรู้ ตอนนี้ โปรดลองใช้เพื่อให้เราสามารถให้ข้อเสนอแนะเกี่ยวกับแบบฟอร์มของคุณได้";
 			next;
 			specialeffect(EF_SONICBLOW, AREA, playerattached());
 			next;
 			mes "[Esmille]";
-			mes "Hmm, you're shifting";
-			mes "your weight kind of";
-			mes "unsteadily. It might";
-			mes "help if your center of";
-			mes "gravity was like this...";
+			mes "อืม คุณกำลังเปลี่ยนน้ำหนักของคุณอย่างไม่มั่นคง อาจช่วยได้ถ้าจุดศูนย์ถ่วงของคุณเป็นแบบนี้...";
 			next;
 			specialeffect(EF_SONICBLOW, AREA, playerattached());
 			next;
 			mes "[Esmille]";
-			mes "That's a little better.";
-			mes "Hmmm. Try to think of";
-			mes "the enemy's weak point";
-			mes "and follow through with";
-			mes "the stabbing motion.";
+			mes "ดีขึ้นนิดหน่อย อืม. พยายามนึกถึงจุดอ่อนของศัตรูแล้วทำตามด้วยการแทง";
 			next;
 			specialeffect(EF_SONICBLOW, AREA, playerattached());
 			next;
 			mes "[Esmille]";
-			mes "Yes, that's it...!";
-			mes "Very well executed.";
-			mes "Good work, "+ strcharinfo(PC_NAME) +".";
+			mes "ใช่นั่นแหละ...! ดำเนินการได้ดีมาก ทำได้ดีมาก "+ strcharinfo(PC_NAME) +"";
 			skill 1003,1,0;
 			ASSN_SK = 7;
 			next;
 			mes "[Esmille]";
-			mes "Do you understand now?";
-			mes "You should have no problem";
-			mes "remembering this skill now.";
-			mes "I can teach you nothing more,";
-			mes "so all I can do now is wish";
-			mes "you luck on your journeys.";
+			mes "ตอนนี้คุณเข้าใจไหม? คุณไม่ควรมีปัญหาในการจดจำทักษะนี้ในตอนนี้ ฉันไม่สามารถสอนอะไรคุณได้อีก ดังนั้นสิ่งที่ฉันทำได้ตอนนี้คือขอให้คุณโชคดีในการเดินทางของคุณ";
 			close;
 		}
 		else {
 			mes "[Esmille]";
-			mes "Hmmm...";
+			mes "หืมม...";
 			close;
 		}
 	}
 	else if (ASSN_SK == 2 || ASSN_SK == 3 || ASSN_SK == 4) {
 		mes "[Esmille]";
-		mes "So how is your little";
-		mes "mission coming along?";
-		mes "If you've forgotten the";
-		mes "location I've asked you to";
-		mes "search for treasure, then";
-		mes "I can briefly remind you.";
+		mes "ภารกิจเล็กๆ น้อยๆ ของคุณเป็นอย่างไร? หากคุณลืมสถานที่ที่ฉันได้ขอให้คุณค้นหาสมบัติ ฉันจะเตือนคุณสั้นๆ";
 		next;
 		mes "[Esmille]";
-		mes "Find something valuable";
+		mes "ค้นหาสิ่งที่มีค่า";
 		if (ASSN_SK == 2) {
-			mes "for me by searching the";
-			mes "^FF0000Coffins^000000 in the Sphinx.";
+			mes "มาให้ฉันโดยค้นหา ^FF0000Coffins^000000 ในสฟิงซ์";
 		}
 		else if (ASSN_SK == 3) {
-			mes "for me by searching the";
-			mes "^FF0000Stone Statues^000000 in the Sphinx.";
+			mes "มาให้ฉันโดยค้นหา ^FF0000Stone Statues^000000 ในสฟิงซ์";
 		}
 		else if (ASSN_SK == 4) {
-			mes "in the ^FF0000flooded crypt in the";
-			mes "bottom floor^000000 of the Pyramids.";
+			mes "ใน ^FF0000 ฝังศพใต้ถุนโบสถ์ที่ชั้นล่าง^000000 ของพีระมิด";
 		}
-		mes "Only the strong can explore";
-		mes "that area, so doing this will";
-		mes "prove your competency to me.";
+		mes "เฉพาะผู้แข็งแกร่งเท่านั้นที่สามารถสำรวจพื้นที่นั้นได้ ดังนั้นการทำเช่นนี้จะพิสูจน์ความสามารถของคุณกับฉัน";
 		close;
 	}
 	else if (ASSN_SK == 1) {
 		mes "[Esmille]";
-		mes "Ah. Hello, comrade.";
-		mes "Have you heard about";
-		mes "the latest news from";
-		mes "the Assassin Guild?";
-		mes "Ah, you've spoken to";
-		mes "Killtin. Good, good...";
+		mes "อา. สวัสดีเพื่อน. คุณเคยได้ยินเกี่ยวกับข่าวล่าสุดจากสมาคมนักฆ่าหรือไม่? อา คุณได้พูดกับ Killtin แล้ว ดีดี...";
 		next;
 		mes "[Esmille]";
-		mes "Now, I've been charged";
-		mes "with the responsibility of";
-		mes "teaching the Sonic Acceleration skill to all interested Assassins.";
-		mes "I can tell you more about it if";
-		mes "Killtin didn't fully explain.";
+		mes "ตอนนี้ ฉันถูกตั้งข้อหารับผิดชอบในการสอนทักษะ Sonic Acceleration ให้กับนักฆ่าที่สนใจทุกคน ฉันสามารถบอกคุณได้มากกว่านี้ถ้า Killtin ไม่ได้อธิบายอย่างเต็มที่";
 		next;
 		while(1) {
-			switch(select("Please tell me more...", "I want to learn Sonic Acceleration!")) {
+			switch(select("บอกมากกว่านี้...", "ฉันต้องการเรียน Sonic Acceleration!")) {
 			case 1:
 				mes "[Esmille]";
-				mes "Sonic Acceleration is";
-				mes "a ^FF0000support skill used in";
-				mes "conjunction with Sonic Blow^000000.";
-				mes "Assassins can only cast this";
-				mes "skill on themselves for their";
-				mes "own personal benefit.";
+				mes "Sonic Acceleration เป็น ^FF0000 สกิลสนับสนุนที่ใช้ร่วมกับ Sonic Blow^000000 นักลอบสังหารสามารถร่ายสกิลนี้เพื่อตัวเองเท่านั้น";
 				next;
 				mes "[Esmille]";
-				mes "If you're familiar with";
-				mes "Sonic Blow, you'll know";
-				mes "that it's difficult to inflict";
-				mes "fatal damage with that skill.";
-				mes "It's far too fast to be able";
-				mes "to attack very accurately...";
+				mes "หากคุณคุ้นเคยกับ Sonic Blow คุณจะรู้ว่ามันยากที่จะสร้างความเสียหายร้ายแรงด้วยทักษะนั้น มันเร็วเกินไปที่จะโจมตีแม่น...";
 				next;
 				mes "[Esmille]";
-				mes "However, by learning";
-				mes "Sonic Acceleration, you";
-				mes "can overcome this accuracy";
-				mes "drawback and fulfill the full";
-				mes "damage potential of the";
-				mes "Sonic Blow skill.";
+				mes "อย่างไรก็ตาม ด้วยการเรียนรู้ Sonic Acceleration คุณสามารถเอาชนะข้อเสียเปรียบด้านความแม่นยำและเติมเต็มศักยภาพในการสร้างความเสียหายของทักษะ Sonic Blow ได้อย่างเต็มที่";
 				next;
 				mes "[Esmille]";
-				mes "This skill is truly great.";
-				mes "And our guildmaster,";
-				mes "the one who invented this";
-				mes "skill, is also... He's a man";
-				mes "amongst men, I must say.";
+				mes "ทักษะนี้ยอดเยี่ยมจริงๆ และหัวหน้ากิลด์ของเรา ผู้คิดค้นทักษะนี้ ก็คือ... เขาเป็นผู้ชายในหมู่ผู้ชาย ฉันต้องบอกว่า";
 				emotion e_lv;
 				next;
 				break;
 			case 2:
 				mes "[Esmille]";
-				mes "Ah, I'm glad to see";
-				mes "that you're so enthusiastic";
-				mes "about learning this skill.";
-				mes "But first, there we need to";
-				mes "take care of the prerequisites... ";
+				mes "อา ฉันดีใจที่ได้เห็นคุณกระตือรือร้นที่จะเรียนรู้ทักษะนี้ แต่ก่อนอื่นเราต้องดูแลข้อกำหนดเบื้องต้นก่อน...";
 				next;
 				if (getskilllv("AS_SONICBLOW") == 0) {
 					mes "[Esmille]";
-					mes "First, go and learn the";
-					mes "Sonic Blow skill. The skill";
-					mes "I will teach you is completely";
-					mes "useless unless you learn how";
-					mes "to perform a Sonic Blow. I shall be waiting right here till then.";
+					mes "ก่อนอื่น ไปเรียนรู้ทักษะ Sonic Blow ทักษะที่ฉันจะสอนคุณนั้นไร้ประโยชน์โดยสิ้นเชิง เว้นแต่คุณจะเรียนรู้วิธีการทำ Sonic Blow ฉันจะรออยู่ตรงนี้จนถึงเวลานั้น";
 					close;
 				}
 				mes "[Esmille]";
-				mes "Your task will be to bring";
+				mes "งานของคุณคือนำ";
 				switch(rand(1,3)) {
 				case 1:
-					mes "treasure from the Sphinx.";
-					mes "Search the ^FF0000Coffins^000000 that";
-					mes "are there for precious";
-					mes "valuables. Consider this";
-					mes "a test of your strength.";
+					mes "สมบัติจากสฟิงซ์ ค้นหา ^FF0000Coffins^000000 ที่มีอยู่เพื่อหาของมีค่า ถือว่านี่เป็นการทดสอบความแข็งแกร่งของคุณ";
 					ASSN_SK = 2;
 					next;
 					mes "[Esmille]";
-					mes "Whether you can complete";
-					mes "this task will determine";
-					mes "if you are worthy enough";
-					mes "for me to teach you the";
-					mes "Sonic Acceleration skill.";
-					mes "Best of luck, and please hurry.";
+					mes "คุณจะทำภารกิจนี้สำเร็จหรือไม่ จะเป็นตัวตัดสินว่าคุณมีค่าพอที่ฉันจะสอนทักษะ Sonic Acceleration ให้กับคุณหรือไม่ ขอให้โชคดีและโปรดรีบ";
 					close;
 				case 2:
-					mes "treasure from the Sphinx.";
-					mes "Search the ^FF0000Stone Statues^000000";
-					mes "there for precious valuables.";
-					mes "Consider this excursion as";
-					mes "a test of your strength.";
+					mes "สมบัติจากสฟิงซ์ ค้นหา ^FF0000Stone Statues^000000 ที่นั่นเพื่อหาของมีค่าล้ำค่า พิจารณาการเดินทางครั้งนี้เพื่อทดสอบความแข็งแกร่งของคุณ";
 					ASSN_SK = 3;
 					next;
 					mes "[Esmille]";
-					mes "Whether you can complete";
-					mes "this task will determine";
-					mes "if you are worthy enough";
-					mes "for me to teach you the";
-					mes "Sonic Acceleration skill.";
-					mes "Best of luck, and please hurry.";
+					mes "คุณจะทำภารกิจนี้สำเร็จหรือไม่ จะเป็นตัวตัดสินว่าคุณมีค่าพอที่ฉันจะสอนทักษะ Sonic Acceleration ให้กับคุณหรือไม่ ขอให้โชคดีและโปรดรีบ";
 					close;
 				case 3:
-					mes "treasure from the Pyramids.";
-					mes "Search the ^FF0000flooded crypt at";
-					mes "the bottom floor for precious";
-					mes "valuables^000000. Consider this as";
-					mes "a test of your strength.";
+					mes "สมบัติจากปิรามิด ค้นหา ^FF0000ห้องใต้ดินที่ถูกน้ำท่วมที่ชั้นล่างเพื่อหาของมีค่าอันมีค่า^000000 พิจารณาว่านี่เป็นการทดสอบความแข็งแกร่งของคุณ";
 					ASSN_SK = 4;
 					next;
 					mes "[Esmille]";
-					mes "Whether you can complete";
-					mes "this task will determine";
-					mes "if you are worthy enough";
-					mes "for me to teach you the";
-					mes "Sonic Acceleration skill.";
-					mes "Best of luck, and please hurry.";
+					mes "คุณจะทำภารกิจนี้สำเร็จหรือไม่ จะเป็นตัวตัดสินว่าคุณมีค่าพอที่ฉันจะสอนทักษะ Sonic Acceleration ให้กับคุณหรือไม่ ขอให้โชคดีและโปรดรีบ";
 					close;
 				}
 			}
@@ -719,27 +407,16 @@ in_moc_16,23,27,5	script	Assassin#realgirl	4_F_ACROSS,{
 	else {
 		if (BaseJob == Job_Assassin) {
 			mes "[Assassin]";
-			mes "Ah. Hello, comrade.";
-			mes "Have you heard about";
-			mes "the latest news from";
-			mes "the Assassin Guild?";
+			mes "อา. สวัสดีเพื่อน. คุณเคยได้ยินเกี่ยวกับข่าวล่าสุดจากสมาคมนักฆ่าหรือไม่?";
 			emotion e_heh;
 			next;
-			select("News from the Assassin Guild?");
+			select("ข่าวล่าสุดของ Assassin Guild?");
 			mes "[Assassin]";
-			mes "Hm. You must not have";
-			mes "heard it, then. If you want";
-			mes "to know more about it, you";
-			mes "should speak to Killtin, who";
-			mes "is right next to me. He will";
-			mes "explain everything clearly.";
+			mes "หืม คุณต้องไม่เคยได้ยินมันแล้ว ถ้าคุณต้องการทราบข้อมูลเพิ่มเติมเกี่ยวกับเรื่องนี้ คุณควรคุยกับ Killtin ที่อยู่ข้างๆ ฉัน เขาจะอธิบายทุกอย่างชัดเจน";
 			close;
 		}
 		mes "[Assassin]";
-		mes "Hm. Do you know any";
-		mes "Assassins? Tell them";
-		mes "to come here if they";
-		mes "haven't already.";
+		mes "หืม คุณรู้จัก Assassins บ้างไหม? บอกให้พวกเขามาที่นี่ถ้าพวกเขายังไม่ได้มา";
 		close;
 	}
 }
@@ -747,58 +424,35 @@ in_moc_16,23,27,5	script	Assassin#realgirl	4_F_ACROSS,{
 in_sphinx2,259,213,0	script	Old Coffin#qsk_as	FAKE_NPC,7,8,{
 OnTouch:
 	if (ASSN_SK == 2) {
-		mes "^3355FFIt's an ancient coffin";
-		mes "with a broken lid that";
-		mes "is slightly ajar. You";
-		mes "momentarily catch a glint";
-		mes "of something shining inside.^000000";
+		mes "^3355Fมันคือโลงศพโบราณที่มีฝาแตกและแง้มเล็กน้อย คุณมองเห็นแสงวาววับอยู่ภายในชั่วขณะหนึ่ง^000000";
 		specialeffect EF_CONE;
 		next;
 		while(1) {
-			switch(select("Put your hand inside", "Inspect the coffin's opening", "Lift the lid", "Turn the coffin upside down", "Ignore it")) {
+			switch(select("เอามือเข้าไปข้างใน", "ตรวจสอบโลงศพที่เปิดอยู่", "ยกฝาขึ้น", "พลิกโลงศพกลับหัว", "ไม่สนใจมัน")) {
 			case 1:
-				mes "^3355FFYou carefully put your";
-				mes "hand inside the coffin";
-				mes "and try to retrieve the";
-				mes "shining object that";
-				mes "you had glimpsed.";
+				mes "^3355FFคุณค่อยๆ สอดมือเข้าไปในโลงศพและพยายามดึงวัตถุที่ส่องแสงแวววาวซึ่งคุณเหลือบไปเห็น";
 				mes "...............................^000000";
 				next;
-				mes "^3355FFSomething inside";
-				mes "the coffin bit your";
-				mes "hand really hard!^000000";
+				mes "^3355FFบางอย่างในโลงศพกัดมือคุณอย่างแรง!^000000";
 				sc_start SC_POISON,30000,0;
 				sc_start SC_BLOODING,10000,0;
 				emotion e_omg,1;
 				close;
 			case 2:
-				mes "^3355FFYou try to peek";
-				mes "inside the coffin";
-				mes "through the gap";
-				mes "between the coffin's";
-				mes "edge and the lid.";
+				mes "^3355FFคุณพยายามมองเข้าไปในโลงศพผ่านช่องว่างระหว่างขอบของโลงศพกับฝาปิด";
 				mes "...............................^000000";
 				next;
-				mes "^3355FFYou're barely able to";
-				mes "perceive that something";
-				mes "is squirming inside the";
-				mes "coffin, but it's far too dark";
-				mes "to see anything else.^000000";
+				mes "^3355FFคุณแทบจะไม่สามารถรับรู้ได้ว่ามีบางอย่างกำลังดิ้นอยู่ในโลงศพ แต่มันมืดเกินไปที่จะมองเห็นสิ่งอื่น^000000";
 				sc_start SC_BLIND,30000,0;
 				next;
 				break;
 			case 3:
-				mes "^3355FFYou don't have the";
-				mes "strength to move";
-				mes "something as heavy";
-				mes "as this coffin's lid...^000000";
+				mes "^3355FFคุณไม่มีแรงขยับของหนักเท่าฝาโลงศพนี้เลย...^000000";
 				sc_start SC_CURSE,30000,0;
 				next;
 				break;
 			case 4:
-				mes "^3355FFYou don't have the";
-				mes "strength to turn this";
-				mes "coffin upside down.^000000";
+				mes "^3355FFคุณไม่มีแรงที่จะพลิกโลงศพนี้กลับหัวกลับหาง^000000";
 				next;
 				break;
 			case 5:
@@ -811,21 +465,13 @@ OnTouch:
 in_sphinx2,212,267,0	script	Old Coffin#qsk_as2	FAKE_NPC,5,6,{
 OnTouch:
 	if (ASSN_SK == 2) {
-		mes "^3355FFIt's an ancient coffin";
-		mes "with a broken lid that";
-		mes "is slightly ajar. You";
-		mes "momentarily catch a glint";
-		mes "of something shining inside.^000000";
+		mes "^3355FFเป็นโลงศพโบราณที่มีฝาหักและแง้มเล็กน้อย คุณจับแสงแวววาวของบางสิ่งภายในชั่วขณะหนึ่ง^000000";
 		specialeffect EF_CONE;
 		next;
 		while(1) {
-			switch(select("Put your hand inside", "Inspect the coffin's opening", "Lift the lid", "Turn the coffin upside down", "Ignore it")) {
+			switch(select("เอามือเข้าไปข้างใน", "ตรวจสอบโลงศพที่เปิดอยู่", "ยกฝาขึ้น", "พลิกโลงศพกลับหัว", "ไม่สนใจมัน")) {
 			case 1:
-				mes "^3355FFYou carefully put your";
-				mes "hand inside the coffin";
-				mes "and try to retrieve the";
-				mes "shining object that";
-				mes "you had glimpsed.";
+				mes "^3355FFคุณค่อยๆ สอดมือเข้าไปในโลงศพและพยายามดึงวัตถุที่ส่องแสงแวววาวซึ่งคุณเหลือบไปเห็น";
 				mes "...............................^000000";
 				next;
 				if (rand(1,3) != 3) {
@@ -836,52 +482,33 @@ OnTouch:
 					mes "you had glimpsed.";
 					mes "...............................^000000";
 					next;
-					mes "^3355FFSomething inside";
-					mes "the coffin bit your";
-					mes "hand really hard!^000000";
+					mes "^3355FFบางอย่างในโลงศพกัดมือคุณอย่างแรง!^000000";
 					sc_start SC_POISON,30000,0;
 					sc_start SC_BLOODING,10000,0;
 					emotion e_omg,1;
 					close;
 				}
 				else {
-					mes "^3355FFYour fingers manage";
-					mes "to find a solid object";
-					mes "that you pull out of the";
-					mes "coffin. You have obtained";
-					mes "a Sapphire for Esmille.^000000";
+					mes "^3355FFนิ้วของคุณจัดการเพื่อค้นหาวัตถุแข็งที่คุณดึงออกมาจากโลงศพ คุณได้รับ Sapphire สำหรับ Esmille^000000";
 					ASSN_SK = 5;
 					getitem Blue_Jewel,1;
 					close;
 				}
 			case 2:
-				mes "^3355FFYou try to peek";
-				mes "inside the coffin";
-				mes "through the gap";
-				mes "between the coffin's";
-				mes "edge and the lid.";
+				mes "^3355FFคุณพยายามมองเข้าไปในโลงศพผ่านช่องว่างระหว่างขอบของโลงศพกับฝาปิด";
 				mes "...............................^000000";
 				next;
-				mes "^3355FFYou're barely able to";
-				mes "perceive that something";
-				mes "is squirming inside the";
-				mes "coffin, but it's far too dark";
-				mes "to see anything else.^000000";
+				mes "^3355FFคุณแทบจะไม่สามารถรับรู้ได้ว่ามีบางอย่างกำลังดิ้นอยู่ในโลงศพ แต่มันมืดเกินไปที่จะมองเห็นสิ่งอื่น^000000";
 				sc_start SC_BLIND,30000,0;
 				next;
 				break;
 			case 3:
-				mes "^3355FFYou don't have the";
-				mes "strength to move";
-				mes "something as heavy";
-				mes "as this coffin's lid...^000000";
+				mes "^3355FFคุณไม่มีแรงขยับของหนักเท่าฝาโลงศพนี้เลย...^000000";
 				sc_start SC_CURSE,30000,0;
 				next;
 				break;
 			case 4:
-				mes "^3355FFYou don't have the";
-				mes "strength to turn this";
-				mes "coffin upside down.^000000";
+				mes "^3355FFคุณไม่มีแรงที่จะพลิกโลงศพนี้กลับหัวกลับหาง^000000";
 				next;
 				break;
 			case 5:
@@ -895,30 +522,18 @@ in_sphinx2,13,163,0	script	Stone Statue#qsk_as	FAKE_NPC,7,7,{
 OnTouch:
 	if (ASSN_SK == 3) {
 		specialeffect EF_CONE;
-		mes "^3355FFThis ancient stone statue";
-		mes "is covered with cracks and";
-		mes "looks close to falling apart.";
-		mes "The glimmer of a shining object";
-		mes "peers out from beneath one of";
-		mes "the feet. The ground appears";
-		mes "soft enough to dig through...^000000";
+		mes "^3355FFรูปปั้นหินโบราณนี้ถูกปกคลุมไปด้วยรอยแตกและดูเหมือนใกล้จะพังทลาย ประกายแวววาวของวัตถุส่องแสงส่องออกมาจากใต้เท้าข้างหนึ่ง พื้นดินดูนุ่มพอที่จะขุดได้...^000000";
 		specialeffect EF_CONE;
 		next;
-		if (select("Dig to retrieve the shining object", "Ignore it") == 1) {
-			mes "^3355FFAs your fingers dig into";
-			mes "the soft ground, it emits^000000";
+		if (select("ขุดวัตถุที่ส่องแสง", "ไม่สนใจมัน") == 1) {
+			mes "^3355FFเมื่อนิ้วของคุณขุดลงไปในพื้นนุ่ม มันจะเปล่งออกมา^000000";
 			if (rand(1,3) != 3){
-				mes "^3355FFa yellow gas that clouds";
-				mes "your senses and briefly";
-				mes "knocks you unconscious.^000000";
+				mes "^3355FFก๊าซสีเหลืองที่บดบังความรู้สึกของคุณและชั่วครู่
+ทำให้คุณหมดสติ^000000";
 				sc_start SC_SLEEP,30000,0;
 				close;
 			}
-			mes "^3355FFa yellow gas. However, you";
-			mes "hold your breath in and expel";
-			mes "all gas in your lungs in time";
-			mes "to escape its effects. You've";
-			mes "retrieved a Ruby for Esmille.^000000";
+			mes "^3355FFก๊าซสีเหลือง อย่างไรก็ตาม คุณกลั้นหายใจและขับก๊าซทั้งหมดในปอดให้ทันเวลาเพื่อหลีกเลี่ยงผลกระทบ คุณได้รับ Ruby ของ Esmille^000000";
 			ASSN_SK = 5;
 			getitem Cardinal_Jewel,1;
 		}
@@ -930,30 +545,18 @@ in_sphinx2,13,146,0	script	Stone Statue#qsk_as2	FAKE_NPC,7,7,{
 OnTouch:
 	if (ASSN_SK == 3) {
 		specialeffect EF_CONE;
-		mes "^3355FFThis ancient stone statue";
-		mes "is covered with cracks and";
-		mes "looks close to falling apart.";
-		mes "The glimmer of a shining object";
-		mes "peers out from beneath one of";
-		mes "the feet. The ground appears";
-		mes "soft enough to dig through...^000000";
+		mes "^3355FFรูปปั้นหินโบราณนี้ถูกปกคลุมไปด้วยรอยแตกและดูเหมือนใกล้จะพังทลาย ประกายแวววาวของวัตถุส่องแสงส่องออกมาจากใต้เท้าข้างหนึ่ง พื้นดินดูนุ่มพอที่จะขุดได้...^000000";
 		specialeffect EF_CONE;
 		next;
-		if (select("Dig to retrieve the shining object", "Ignore it") == 1) {
-			mes "^3355FFAs your fingers dig into";
-			mes "the soft ground, it emits^000000";
+		if (select("ขุดวัตถุที่ส่องแสง", "ไม่สนใจมัน") == 1) {
+			mes "^3355FFเมื่อนิ้วของคุณขุดลงไปในพื้นนุ่ม มันจะเปล่งออกมา^000000";
 			if (rand(1,3) != 3) {
-				mes "^3355FFa yellow gas that clouds";
-				mes "your senses and briefly";
-				mes "knocks you unconscious.^000000";
+				mes "^3355FFก๊าซสีเหลืองที่บดบังความรู้สึกของคุณและชั่วครู่
+ทำให้คุณหมดสติ^000000";
 				sc_start SC_SLEEP,30000,0;
 				close;
 			}
-			mes "^3355FFa yellow gas. However, you";
-			mes "hold your breath in and expel";
-			mes "all gas in your lungs in time";
-			mes "to escape its effects. Sadly,";
-			mes "all you found was broken glass.^000000";
+			mes "^3355FFก๊าซสีเหลือง อย่างไรก็ตาม คุณกลั้นหายใจและขับก๊าซทั้งหมดในปอดให้ทันเวลาเพื่อหลีกเลี่ยงผลกระทบ น่าเศร้า สิ่งที่คุณพบคือเศษแก้ว^000000";
 			emotion e_omg,1;
 		}
 		close;
@@ -964,29 +567,17 @@ moc_pryd04,85,96,0	script	Glimmer#crypt	FAKE_NPC,3,3,{
 OnTouch:
 	if (ASSN_SK == 4) {
 		specialeffect EF_CONE;
-		mes "^3355FFThere's something";
-		mes "glimmering beneath";
-		mes "the surface of the water...^000000";
+		mes "^3355FFใต้ผิวน้ำมีแสงระยิบระยับ...^000000";
 		next;
-		if (select("Pick it up", "Ignore it") == 1) {
-			mes "^3355FFAs soon as you dip your";
-			mes "hand into the water, the";
-			mes "water's freezing chill shoots";
-			mes "up through your arm. You ";
-			mes "better hurry before you freeze!^000000";
+		if (select("หยิบมันขึ้นมา", "ไม่สนใจมัน") == 1) {
+			mes "^3355FFทันทีที่คุณจุ่มมือลงไปในน้ำ ความหนาวเย็นที่เยือกแข็งของน้ำจะพุ่งทะลุแขนของคุณ คุณควรรีบร้อนก่อนที่จะหยุด!^000000";
 			next;
 			if (rand(1,3) != 3) {
-				mes "^3355FFIt's too late!";
-				mes "Your body has just";
-				mes "been frozen solid.^000000";
+				mes "^3355FFสายไปแล้ว! ร่างกายของคุณเพิ่งแข็งตัว^000000";
 				sc_start SC_FREEZE,10000,0;
 				close;
 			}
-			mes "^3355FFYou quickly pick up";
-			mes "the glimmering object";
-			mes "before the water can";
-			mes "freeze you. You obtained";
-			mes "an Aquamarine for Esmille.^000000";
+			mes "^3355FFคุณหยิบวัตถุที่วาววับขึ้นมาอย่างรวดเร็วก่อนที่น้ำจะแช่แข็งคุณ คุณได้รับ Aquamarine สำหรับ Esmille^000000";
 			ASSN_SK = 5;
 			getitem Skyblue_Jewel,1;
 		}
