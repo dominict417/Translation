@@ -68,12 +68,7 @@ in_moc_16,14,27,5	script	Assassin#realman	4_M_ACROSS,{
 	}
 	else if (ASSN_SK2 == 1 && ASSN_SK == 7) {
 		mes "[Killtin]";
-		mes "So you've learned all of";
-		mes "the specialized Assassin";
-		mes "skills, eh? Don't let yourself";
-		mes "become overconfident. Strive";
-		mes "for even greater strength for";
-		mes "the Assassin Guild's honor.";
+		mes "คุณได้เรียนรู้ทักษะเฉพาะของ Assassin ทั้งหมดแล้วใช่ไหม อย่าปล่อยให้ตัวเองมั่นใจมากเกินไป มุ่งมั่นเพื่อความแข็งแกร่งยิ่งขึ้นไปอีกเพื่อเกียรติยศของสมาคมนักฆ่า";
 		close;
 	}
 	else if (ASSN_SK2 == 1) {
