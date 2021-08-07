@@ -1,0 +1,243 @@
+//================= Hercules Script =======================================
+//=       _   _                     _
+//=      | | | |                   | |
+//=      | |_| | ___ _ __ ___ _   _| | ___  ___
+//=      |  _  |/ _ \ '__/ __| | | | |/ _ \/ __|
+//=      | | | |  __/ | | (__| |_| | |  __/\__ \
+//=      \_| |_/\___|_|  \___|\__,_|_|\___||___/
+//================= License ===============================================
+//= This file is part of Hercules.
+//= http://herc.ws - http://github.com/HerculesWS/Hercules
+//=
+//= Copyright (C) 2012-2021 Hercules Dev Team
+//= Copyright (C) Kisuka
+//= Copyright (C) IVBela
+//= Copyright (C) DracoRPG
+//= Copyright (C) Reddozen
+//= Copyright (C) Lupus
+//=
+//= Hercules is free software: you can redistribute it and/or modify
+//= it under the terms of the GNU General Public License as published by
+//= the Free Software Foundation, either version 3 of the License, or
+//= (at your option) any later version.
+//=
+//= This program is distributed in the hope that it will be useful,
+//= but WITHOUT ANY WARRANTY; without even the implied warranty of
+//= MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//= GNU General Public License for more details.
+//=
+//= You should have received a copy of the GNU General Public License
+//= along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//=========================================================================
+//= Hunter Skills Quests
+//================= Description ===========================================
+//= Quests for skills: Phantasmic Arrow
+//================= Current Version =======================================
+//= 1.4
+//=========================================================================
+
+pay_arche,109,169,3scriptArpesto4_M_05,{
+if (BaseJob == Job_Hunter) {
+if (qskill_hunter == 100) {
+if (getskilllv("HT_PHANTASMIC")) {
+[Arpesto]
+Hm, I'm sorry if I made a big scene when you grazed me with that attack accidentally. It's just that I was training so diligently and blood sugar was incredibly low and the fatigue...
+next;
+[Reidin Corse]
+Hah! Admit it, old man! You were just scared! Me, on the other hand...
+emotion e_gg,"Reidin Corse#tu
+next;
+[Arpesto]
+You little whippersnapper! I don't know what you're talking about!
+close;
+} else {
+[Arpesto] I recognize you from somewhere, I think. Reidin, do you remember this guy?
+next;
+[Reidin Corse]
+Oh come on, we see hundreds of Archers and Hunters and Snipers and... I can't remember them all. But I guess this guy's up to snuff. Trust me on this!
+next;
+[Arpesto]
+Alright, alright. If Reidin thinks you're worthy, then you're probably are. In that case, I'd like to offer to teach you my secret
+skill, ''Phantasmic Arrow.''
+next;
+[Reidin Corse]
+Wait, wait. This guy only needs a refresher. Yeah, I'm pretty sure you were here to learn this skill before. Yeah, I've got a gut feeling about it.
+next;
+[Arpesto]
+Damn. Only a refresher? That means you'll learn this free of charge. Alright... You should be able to use the Phantasmic Arrow skill now. Travel safely now, you hear?
+skill "HT_PHANTASMIC",1,0;
+close;
+}
+}
+else if (qskill_hunter == 1) {
+if (countitem(Cardinal_Jewel_) > 4 && countitem(Harpys_Feather) > 4 && countitem(Pet_Food) > 29) {
+[Arpesto]
+Hm? You're back? Oh, did you bring everything? Ah, you did. Good! Now I shall reveal my super secret skill... The 1st Arpesto Form!
+next;
+[Reidin Corse]
+Wait! Wait... Didn't you call it Arpesto's 3rd Form or something at first?
+emotion e_swt,"Reidin Corse#tu
+next;
+[Arpesto]
+Er, yes, Arpesto's 3rd Form, that's right. It's just there's just so many of them, that...  Anyway, let me teach you the ''Emergency Arrow'' skill.
+next;
+[Reidin Corse]
+Whoa, hold on! ''Emergency Arrow?!'' That's the old name you gave that skill, right? Didn't you change it?
+emotion e_omg;
+next;
+emotion e_omg;
+[Arpesto]
+What the hell are you talkin--
+next;
+[Arpesto]
+Oh, you're right. We agreed that name was too cheesy. What did we call it now? Um... ''Phantasmic Arrow?''
+emotion e_dots;
+next;
+[Arpesto]
+...
+......
+emotion e_sob;
+next;
+[Reidin Corse]
+Umm.... Ummm........
+next;
+[Reidin Corse]
+Yeah, that was the one! ''^3131FFPhantasmic Arrow^000000'' sounds soooo much cooler than that other name you came up with!
+emotion e_ic,"Reidin Corse#tu
+next;
+[Arpesto]
+You can be pretty handy sometimes, Reidin. Now, back to the matter at hand. I shall teach you my awesome skill, Phantasmic Arrow. Now... Ready your mind and body!
+next;
+[Arpesto]
+Phan-! Ta-! Ssssss-! Mic-!
+next;
+[Arpesto]
+ARRRRRRRROOOOOOW~!
+specialeffect EF_FLASHER;
+specialeffect(EF_FLASHER, AREA, playerattached());
+next;
+[Arpesto]
+^333333*Pant Pant*^000000 Alright, I used a special technique to teach you the skill-- directly into your brain. You should be able to use it now. Why don't give it a try?
+next;
+^3355FF*Swwwwwww!* *Bang!*^000000
+specialeffect EF_HIT2;
+emotion e_omg;
+emotion e_omg,1;
+next;
+[Arpesto]
+^333333*Pant Pant* *Cough Cough* *Cough Cough*^000000
+next;
+[Arpesto]
+WHHHHHHHY MEEEEE?!
+emotion e_omg,"Reidin Corse#tu
+next;
+^3355FF*Thump*^000000
+next;
+[Reidin Corse]
+Ar-Arpesto, no!
+...........................
+Oh. Oh, come on! The arrow just glanced you! You'll be alright. Quit being a baby.
+next;
+[Reidin Corse]
+Eh, don't worry about Arpesto. He's just being a crazy old man. I'll take care of him, so just make sure you make good use of that new skill. Take care~
+delitem Cardinal_Jewel_,5;
+delitem Harpys_Feather,5;
+delitem Pet_Food,30;
+qskill_hunter = 100;
+skill "HT_PHANTASMIC",1,0;
+close;
+} else {
+[Arpesto]
+Hurry up and bring
+^3131FF5 Cursed Rubies^000000,
+^3131FF30 Pet Foods^000000 and
+^3131FF5 Harpy Feathers^000000.
+Then, I can teach you the Emergency Arrow skill.
+close;
+}
+}
+else {
+if (getskilllv("HT_PHANTASMIC")) {
+[Arpesto]
+Ah, very nice. Um, as you demonstrated earlier, my teaching technique was perfect. But next time, use the skill on foes that deserve to be beaten, alright? Good.
+qskill_hunter = 100;
+close;
+}
+if (BaseJob == Job_Hunter && JobLevel < 40) {
+[Arpesto]
+Did the master send you to me? Hmm... You're still pretty green from the looks of it. Yeah, I don't think there's anything I can teach quite yet.
+next;
+[Arpesto]
+Train a little more and get some more experience in your job. When you become more adept at hunting, you'll be able to grasp what I've been teaching Hunters and Snipers.
+close;
+} else {
+[Arpesto]
+Has the master sent you? Ah, you definitely have the keen, vulture like eyes of a true Hunter. You should be capable of learning my secret skill, the 3rd Arpesto Form...
+next;
+[Arpesto]
+It's a handy skill that I developed while battling Medusas and running out of arrows. I simply call it, ''^3131FFEmergency Arrow^000000.'' Would you be interested in learning it?
+next;
+switch(select("Yes, please!", "Ummm...")) {
+case 1:
+[Arpesto]
+Great, great. Of course, you can't resist this offer if you recognize this skill's value. However, I'd like to ask for a little tuition in return for me teaching this to you.
+next;
+[Arpesto]
+Although I feel guilt at asking for payment from a fellow Hunter, creating this skill required much sacrifice and unimaginable bloodshed on my part...
+next;
+[Reidin Corse]
+Hey! You liar! I was there when you accidently made up that skill when you were bored and just messing around with one of the Bows!
+emotion e_gg,"Reidin Corse#tu
+next;
+emotion e_omg;
+[Arpesto]
+^333333*Ahem*^000000 Please Reidin, don't entertain unfounded rumors. It was only after countless battles with Eddga that I managed to invent and perfect Emergency Arrow.
+next;
+[Reidin Corse]
+^333333*Tsk tsk*^000000 Huh. I thought you said you developed it while you were fighting Medusas.
+next;
+[Arpesto]
+A-anyway, please bring me the following items as tuition in exchange for me teaching you this skill.
+next;
+[Arpesto]
+Please bring me
+^3131FF5 Cursed Rubies^000000,
+^3131FF30 Pet Foods^000000 and
+^3131FF5 Harpy Feathers^000000.
+Then I can teach you this skill.
+next;
+[Reidin Corse]
+30 Pet Foods? What the heck do you need all that for?
+next;
+[Arpesto]
+I... I'm going to use it to feed my pet Falcon.
+next;
+[Reidin Corse]
+...
+......
+.........
+......Riiiight.
+emotion e_dots,"Reidin Corse#tu
+qskill_hunter = 1;
+close;
+case 2:
+[Arpesto]
+Alright, it's your decision. However, I'm sure that you may have great need of my skill sooner or later, so return to me if you change your mind.
+close;
+}
+}
+}
+} else {
+[Arpesto]
+The sky still looks clear, but recently the winds that have been blowing through the land seem to carry with them an air of misfortune.
+next;
+emotion e_pif,"Reidin Corse#tu
+[Reidin Corse]
+So... Danger's coming? Heh! Chill, gramps~ I got it covered!
+next;
+emotion e_swt2;
+[Arpesto]
+Ho ho... Energetic, but cocky. Kids nowadays...
+close;
+}
+}

@@ -1,0 +1,463 @@
+//================= Hercules Script =======================================
+//=       _   _                     _
+//=      | | | |                   | |
+//=      | |_| | ___ _ __ ___ _   _| | ___  ___
+//=      |  _  |/ _ \ '__/ __| | | | |/ _ \/ __|
+//=      | | | |  __/ | | (__| |_| | |  __/\__ \
+//=      \_| |_/\___|_|  \___|\__,_|_|\___||___/
+//================= License ===============================================
+//= This file is part of Hercules.
+//= http://herc.ws - http://github.com/HerculesWS/Hercules
+//=
+//= Copyright (C) 2012-2021 Hercules Dev Team
+//= Copyright (C) DracoRPG
+//= Copyright (C) L0ne_W0lf
+//= Copyright (C) Reddozen
+//= Copyright (C) Lupus
+//=
+//= Hercules is free software: you can redistribute it and/or modify
+//= it under the terms of the GNU General Public License as published by
+//= the Free Software Foundation, either version 3 of the License, or
+//= (at your option) any later version.
+//=
+//= This program is distributed in the hope that it will be useful,
+//= but WITHOUT ANY WARRANTY; without even the implied warranty of
+//= MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//= GNU General Public License for more details.
+//=
+//= You should have received a copy of the GNU General Public License
+//= along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//=========================================================================
+//= Crusader Skills Quests
+//================= Description ===========================================
+//= Quests for skills: Shrink
+//================= Current Version =======================================
+//= 1.4
+//=========================================================================
+
+geffen,110,117,3scriptFord#114_M_CRU_OLD,{
+if (BaseJob == Job_Crusader) {
+if (CRUS_SK == 8 && getskilllv(CR_SHRINK) == 0) {
+[Ford]
+Hey, it's been a while~ And you even managed to become a Paladin. You must have forgotten how to perform the Shrink skill, so I'll teach it to you real quick... There!
+CRUS_SK = 10;
+skill "CR_SHRINK",1,0;
+close;
+}
+
+else if (CRUS_SK == 0) {
+[Ford]
+Damn! Why is it taking so long? Ah, finally, you've arrived! Quick, show me the ^FF0000report^000000 you've brought!
+next;
+["+ strcharinfo(PC_NAME) +"]
+Excuse me...? Oh, you must have mistaken me for someone else. I really don't know what you're talking about.
+next;
+[Ford]
+What?! You're not one of the guards stationed at South Geffen? Oh, this is horrible. I apologize, I just assumed since you
+if (Upper == 1)
+were dressed like a Paladin...
+else
+were dressed like a Crusader...
+next;
+["+ strcharinfo(PC_NAME) +"]
+I'm sorry... What's happening? Is something the matter? I'm an adventurer that goes by the name, "+ strcharinfo(PC_NAME) +".
+next;
+[Ford]
+Well, I'm Leslie Ford, commander of the Prontera Crusader Guardians. We're charged with the duty of protecting adventurers and citizens from evil monsters.
+next;
+[Ford]
+There's been a recent surge in unprovoked violence from Goblins and they're making quite a bit of trouble for us. Our patrols are supposed to report on their activity to me.
+next;
+[Ford]
+However, today's report hasn't arrived yet, so I'm starting to fear that something has happened to the patrol. Unfortunately, my duties don't allow me to leave my post.
+next;
+[Ford]
+I'm getting desperate, and I don't have any choice but to ask for outside help. Since you're a fellow Crusader, I want to ask you if you would please lend me your aid.
+next;
+switch(select("Sure.", "I'm sorry, but I'm busy...")) {
+case 1:
+[Ford]
+Great, thank you so much! Now, please go and seek out ^0000FFSloutii^000000 who should be stationed south of Geffen, and deliver his report to me Your help is a great relief...
+CRUS_SK = 1;
+close;
+case 2:
+[Ford]
+Hm. I understand. I do not know what obligations that you have right now, but if your current task isn't urgent, please reconsider...
+close;
+}
+close;
+}
+else if (CRUS_SK == 1) {
+[Ford]
+Please search for ^0000FFSloutii^000000 in the area south of Geffen, and he should give you his report on his patrol of the Goblins for you to deliver to me.
+close;
+}
+else if (CRUS_SK == 2) {
+[Ford]
+Wait, you've met with Sloutii, but haven't received his report? Please go back to him and bring it to me, it's imperative that I read it!
+close;
+}
+else if (CRUS_SK == 3) {
+[Ford]
+Ah, you've returned! So how is Sloutii? Is everything all right?
+next;
+["+ strcharinfo(PC_NAME) +"]
+Here, I've brought this report as soon as I could! You better read it, quick! Things seemed pretty bad when I left...
+next;
+[Ford]
+Goodness, there's blood all over the paper! Let's see... Oh no. This is an emergency situation! I need to report this to Sir Arga and request for backup immediately!
+next;
+["+ strcharinfo(PC_NAME) +"]
+Wait, we need to do something about Sloutii. He was wounded by the Goblins, and I think he's in serious trouble.
+next;
+[Ford]
+The Goblins...? Oh no, you'll need the special antidote that you can get from Father Arthur to treat the poison in the knives these Goblins use.
+next;
+[Ford]
+While I request for backup, please go to ^0000FFProntera Church^000000 and ask Father ^0000FFArthur^000000 for his antidote for Goblin Poison. If you don't hurry, it might be too late for Sloutii--!
+CRUS_SK = 4;
+close;
+}
+else if (CRUS_SK == 4) {
+[Ford]
+Please hurry and obtain the antidote for Goblin's poison from ^0000FFFather Arthur^000000 in ^0000FFProntera Church^000000. Sloutii's life depends on you now.
+close;
+}
+else if (CRUS_SK == 5) {
+[Ford]
+You've already met Father Arthur? Good, now please hurry and get the antidote from him. Without it, Sloutii will slowly and excruciatingly perish!
+close;
+}
+else if (CRUS_SK == 6) {
+[Ford]
+You've already met Father Arthur? Good, now please hurry and get the antidote from him. Without it, Sloutii will slowly and excruciatingly perish!
+close;
+}
+else if (CRUS_SK == 7) {
+[Ford]
+Great, you've received the antidote from Father Arthur! Now, make haste and administer it to Sloutii stationed south of Geffen. Hurry, every second counts!
+close;
+}
+else if (CRUS_SK == 8) {
+[Ford]
+I hear that you were able to save Sloutii. For that, I am eternally grateful. We could use more people like you to serve in the Prontera Crusader Guardians...
+next;
+[Ford]
+I know that you adventurers prefer not to commit to these kinds of organizations, but your help will always be welcome here. I hope to see you again someday.
+next;
+[Ford]
+Thanks once again, and I hope to that you travel in safety. For now, this is farewell, "+ strcharinfo(PC_NAME) +".
+close;
+}
+else if (CRUS_SK == 10) {
+[Ford]
+Hey, it's been a while~ You should come by more often, and if you're really interested, you can enlist in my troops. We can really use somebody with your expertise.
+close;
+}
+else {
+[Ford]
+Great, you've received the antidote from Father Arthur! Now, make haste and administer it to Sloutii stationed south of Geffen. Hurry, every second counts!
+close;
+}
+}
+else {
+[Ford]
+Ah, greetings. I'm sorry that I cannot assist you, adventurer, but I have something rather urgent to take care of. Now if you'll excuse me...
+close;
+}
+}
+
+gef_fild13,297,242,3scriptSoldier#2774_M_CRU,{
+if (BaseJob == Job_Crusader) {
+if (Upper == 1 && getskilllv("CR_SHRINK")) {
+if (CRUS_SK == 8) {
+[Sloutii]
+Hey pal, it's been a while. I still need to recuperate from my wounds, so if you want to learn Shrink, speak to Sir Ford, alright?
+close;
+}
+else if (CRUS_SK == 10) {
+[Sloutii]
+So how's that Shrink skill working out for you? Hopefully, it's saved your life as many times as it's saved mine. Anyway, I'll see you around, "+ strcharinfo(PC_NAME) +"~
+close;
+}
+}
+if (CRUS_SK == 1) {
+[Soldier]
+Arrrrrghhh! M-my legs! What the hell have they done to my legs?!
+next;
+["+ strcharinfo(PC_NAME) +"]
+Wh-what happened? Were you attacked?
+next;
+[Soldier]
+Y-yeah, I was on my way to report to Sir Ford on my regular patrol when I was attacked by these Goblins! I've got to warn my superiors! They're going to raid Geffen!
+next;
+["+ strcharinfo(PC_NAME) +"]
+I actually spoke to Sir Ford! You must be Sloutii, right? He sent me to see what happened to you!
+next;
+[Sloutii]
+Great, p-perfect timing! Listen, you've got to send him this report. I-it contains details of my patrol and an urgent request for backup. U-ugh! We don't have time!
+next;
+["+ strcharinfo(PC_NAME) +"]
+Wait...! But what about you? You're hurt...
+next;
+[Sloutii]
+I'll be damned if help is delayed on my account! Just hurry and get that report to Sir Ford! Now go! Now, if I can just get that report out of my-- OW! N-no...
+next;
+["+ strcharinfo(PC_NAME) +"]
+^333333(He's writhing in pain so much that he can't even give me his report. I better bring him a Red Potion to alleviate his suffering...)^000000
+CRUS_SK = 2;
+close;
+}
+else if (CRUS_SK == 2) {
+if (countitem(Red_Potion) > 0) {
+["+ strcharinfo(PC_NAME) +"]
+Here, please take this Red Potion. It just might help...
+next;
+[Sloutii]
+Oh, thank goodness! Arrrgh! Just pour it into the wound! I-it... It burns so much! Those Goblins must've cut me with something coated in poison!
+next;
+[Sloutii]
+Ah... Ahh... The bleeding hasn't stopped, but at least it's better. Here, take this report now and get it to Sir Ford. Hurry and go!
+next;
+^3355FFYou received Sloutii's patrol report. Some of the pages are smudged with the blood from his wound.^000000
+delitem Red_Potion,1;
+CRUS_SK = 3;
+close;
+}
+else {
+[Sloutii]
+Hurry and t-take this report! L-let me just hand it to you and th-- Arrrrgh! I-I can't move! It... It just hurts so much!
+next;
+["+ strcharinfo(PC_NAME) +"]
+^333333(I better bring him a Red Potion, otherwise I have no hope of getting that report without hurting him!) 
+close;
+}
+}
+else if (CRUS_SK == 3) {
+[Sloutii]
+We're running out of time! Hurry and get my report to Sir Ford as soon as you possibly can!
+close;
+}
+else if (CRUS_SK == 4) {
+[Sloutii]
+Eeearrrgh--! My l-legs! Everything is starting to h-hurt!
+next;
+^3355FFSloutii fell unconscious, and it seems that the wounds in his legs are causing him much more suffering.^000000
+close;
+}
+else if (CRUS_SK == 5) {
+[Sloutii]
+if (Upper == 1) {
+Eeearrrgh--! My l-legs! Everything is starting to h-hurt!
+next;
+^3355FFSloutii fell unconscious, and it seems that the wounds in his legs are causing him much more suffering.^000000
+}
+else {
+........
+.........
+next;
+^3355FFSloutii is still unconscious. He'll die if his injuries aren't treated immediately. You'll have to help him as quickly as you can.^000000
+}
+close;
+}
+else if (CRUS_SK == 6) {
+[Sloutii]
+........
+.........
+next;
+^3355FFSloutii is still unconscious. He'll die if his injuries aren't treated immediately. You'll have to help him as quickly as you can.^000000
+close;
+}
+else if (CRUS_SK == 7) {
+.@rand = rand(1,5);
+if (.@rand == 1 || .@rand == 5) {
+^3355FFYou carefully pour the Goblin poison antidote into Sloutii's mouth. His throat struggles to swallow the antidote, but he manages to ingest it.^000000
+next;
+^3355FFMiraculously, the wounds inflicted by the Goblins begin to rapidly heal.^000000
+next;
+[Sloutii]
+Oh, wh-what happened? Am... Am I really still alive? Hey, it's you! You must've saved my life! I thought I was going to die for sure!
+next;
+["+ strcharinfo(PC_NAME) +"]
+Well, it's a good thing I came in time. Sir Ford had me visit Father Arthur to make an antidote to save you. Ah, and I already delivered your report to Sir Ford.
+next;
+[Sloutii]
+Great! Now, let me repay you by teaching you a special skill developed by the Prontera Crusader Guardians. Using this skill helped me survive the attack by those Goblins. You ready to learn?
+next;
+[Sloutii]
+This skill is called ''^0000FFShrink^000000,'' and it will knock enemies backwards when you successfully guard their attacks.
+next;
+[Sloutii]
+Now listen closely... To execute it, you've got to be able to concentrate and repel enemies using the right stance and mindset...
+next;
+[Sloutii]
+Great! You learned the skill! Now, I hope you use this ability to combat evil and protect the weak. Ah, and if I learn any new skills, I'll be sure to teach you right away.
+CRUS_SK = 8;
+skill "CR_SHRINK",1,0;
+close;
+}
+^3355FFYou carefully pour the Goblin poison antidote into Sloutii's mouth. His throat struggles to swallow the antidote, but he manages to ingest it.^000000
+next;
+^3355FFUnfortunately, nothing happened. The antidote proabably lost its effect while you were traveling from Father Arthur to Sloutii. You've got to return to Father Arthur and make another one.^000000
+CRUS_SK = 9;
+close;
+}
+else if (CRUS_SK == 8 || CRUS_SK == 10) {
+[Sloutii]
+Hey, it's you~ So how have you been? If you ever get some free time, come by and maybe we can practice our swordplay.
+close;
+}
+else if (CRUS_SK == 9) {
+^3355FFThe antidote you previously administered had no effect. You've got to try again by returning to Father Arthur and making a new antidote for Sloutii.^000000
+close;
+}
+else {
+[Sloutii]
+Please be careful around this area. Goblins are known to attack any humans that they encounter. And lately, they've been getting even more violent, so stay on the lookout.
+close;
+}
+}
+else {
+[Sloutii]
+Please be careful around this area. Goblins are known to attack any humans that they encounter. And lately, they've been getting even more violent, so stay on the lookout.
+close;
+}
+}
+
+prt_church,87,127,3scriptPastor#10114_M_SAGE_C,{
+if (BaseJob == Job_Crusader) {
+if (Upper == 1 && getskilllv("CR_SHRINK")) {
+if (CRUS_SK == 8) {
+[Father Arthur]
+Oh, a Paladin now, are you? Ah, I'm quite proud of you. After all, I've known you back when you were a brave Crusader.
+next;
+[Father Arthur]
+I hope that you continue to use your power to combat the forces of evil and to protect the weak. May your heart guide your actions.
+close;
+}
+else if (CRUS_SK == 10) {
+[Father Arthur]
+Ah, have you been well? It is good to see you under more pleasant circumstances. Nonetheless, if you think that I can be of service to you, then please let me know right away.
+close;
+}
+}
+if (CRUS_SK == 4) {
+[Father Arthur]
+Greetings. How may I be of service to you today?
+next;
+["+ strcharinfo(PC_NAME) +"]
+Someone was wounded by Goblins, and I was told by Sir Ford that you're the only one who can make the Goblin Poison Antidote.
+next;
+[Father Arthur]
+Saints preserve us, the Goblins are indeed cruel and merciless! Unfortunately, I'm fresh out of Goblin Poison Antidote and must make it from scratch.
+next;
+["+ strcharinfo(PC_NAME) +"]
+Tell me what you need to make it, and I'll bring you all of the materials right away!
+next;
+[Father Arthur]
+Ah, yes. Bring me
+^0000FF20 Sticky Mucus^000000,
+^0000FF3 Empty Bottles^000000,
+^0000FF5 Jellopies^000000...
+next;
+[Father Arthur]
+...^0000FF1 Coal^000000,
+^0000FF1 Grape^000000,
+^0000FF3 Cyfar^000000 and
+^0000FF1 Unripe Apple^000000.
+Now hurry, he won't last long if he's poisoned!
+CRUS_SK = 5;
+close;
+}
+else if (CRUS_SK == 5) {
+if (countitem(Grape) > 0 && countitem(Unripe_Apple) > 0 && countitem(Coal) > 0 && countitem(Cyfar) > 2 && countitem(Empty_Bottle) > 2 && countitem(Jellopy) > 4 && countitem(Sticky_Mucus) > 19) {
+[Father Arthur]
+Ah, you've returned. Now let me check to see if you've brought everything needed to create the antidote.
+next;
+[Father Arthur]
+Good, good. It looks like everything is ready. Now, before I begin, I should tell you that the antidote has a time limit of effectiveness.
+next;
+[Father Arthur]
+However, there's no way to accurately predict when the antidote will become ineffective until you try it. Therefore, you may have to return to me for a new batch.
+next;
+[Father Arthur]
+These materials should be enough for multiple dosages, so you won't have to worry about collecting materials again. Now, give me a moment to distill this...
+delitem Sticky_Mucus,20;
+delitem Unripe_Apple,1;
+delitem Jellopy,5;
+delitem Grape,1;
+delitem Coal,1;
+delitem Cyfar,3;
+delitem Empty_Bottle,3;
+CRUS_SK = 6;
+close;
+}
+else {
+[Father Arthur]
+I'm sorry, but these aren't enough materials in order for me to distill the antidote. Hmm, what were the required materials again?
+next;
+[Father Arthur]
+Ah, yes. Bring me
+^0000FF20 Sticky Mucus^000000,
+^0000FF3 Empty Bottles^000000,
+^0000FF5 Jellopies^000000...
+next;
+[Father Arthur]
+...^0000FF1 Coal^000000,
+^0000FF1 Grape^000000,
+^0000FF3 Cyfar^000000 and
+^0000FF1 Unripe Apple^000000. Now hurry, he won't last long if he's poisoned!
+close;
+}
+}
+else if (CRUS_SK == 6) {
+[Father Arthur]
+Your timing must be divinely inspired: I've just completed the Goblin Poison Antidote. Now please listen very carefully to me...
+next;
+[Father Arthur]
+I can't guarantee if this antidote will work. If it loses its effectiveness before you arrive, you'll have to come back and get a fresh new dose.
+next;
+[Father Arthur]
+You've got to hurry over to the wounded as quickly as possible. Now, as soon as I hand this to you, you've got to run there as fast as you can: a man's life is at stake!
+next;
+[Father Arthur]
+Here, take the antidote. Now go! Godspeed, adventurer!
+CRUS_SK = 7;
+close;
+}
+else if (CRUS_SK == 7) {
+[Father Arthur]
+You haven't left yet?! Hurry over to the wounded and administer the antidote! You'll have to come back for a fresh batch of antidote if you arrive there too late!
+close;
+}
+else if (CRUS_SK == 8) {
+[Father Arthur]
+Ah, so the antidote worked and that man is expected to fully recover? Good, good. It does my heart good to hear he's much better.
+close;
+}
+else if (CRUS_SK == 9) {
+[Father Arthur]
+The antidote failed?! We have no choice, but to try it again. Here, let me quickly distill a new dosage for you. Wait, wait... Ah! There! I've finished it!
+next;
+[Father Arthur]
+Now take this fresh antidote and run as fast as you can to the wounded! Go!
+CRUS_SK = 7;
+close;
+}
+else if (CRUS_SK == 10) {
+[Father Arthur]
+Ah, have you been well? It is good to see you under more pleasant circumstances. Nonetheless, if you think that I can be of service to you, then please let me know right away.
+close;
+}
+else {
+[Father Arthur]
+Ah, hello there~ Welcome to Prontera Church. Please relax here, enjoy the silence, and invite spiritual calm into your heart.
+close;
+}
+}
+else {
+[Father Arthur]
+Ah, hello there~ Welcome to Prontera Church. Please relax here, enjoy the silence, and invite spiritual calm into your heart.
+close;
+}
+}

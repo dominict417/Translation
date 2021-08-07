@@ -1,0 +1,124 @@
+//================= Hercules Script =======================================
+//=       _   _                     _
+//=      | | | |                   | |
+//=      | |_| | ___ _ __ ___ _   _| | ___  ___
+//=      |  _  |/ _ \ '__/ __| | | | |/ _ \/ __|
+//=      | | | |  __/ | | (__| |_| | |  __/\__ \
+//=      \_| |_/\___|_|  \___|\__,_|_|\___||___/
+//================= License ===============================================
+//= This file is part of Hercules.
+//= http://herc.ws - http://github.com/HerculesWS/Hercules
+//=
+//= Copyright (C) 2012-2021 Hercules Dev Team
+//= Copyright (C) Euphy
+//= Copyright (C) Masao
+//= Copyright (C) L0ne_W0lf
+//= Copyright (C) IVBela
+//= Copyright (C) Silentdragon
+//= Copyright (C) Lupus
+//= Copyright (C) kobra_k88
+//=
+//= Hercules is free software: you can redistribute it and/or modify
+//= it under the terms of the GNU General Public License as published by
+//= the Free Software Foundation, either version 3 of the License, or
+//= (at your option) any later version.
+//=
+//= This program is distributed in the hope that it will be useful,
+//= but WITHOUT ANY WARRANTY; without even the implied warranty of
+//= MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//= GNU General Public License for more details.
+//=
+//= You should have received a copy of the GNU General Public License
+//= along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//=========================================================================
+//= Mage Skill Quest
+//================= Description ===========================================
+//= Quest for skills: Energy Coat
+//================= Current Version =======================================
+//= 1.8
+//=========================================================================
+
+geffen_in,151,119,4scriptGreat Wizard1_M_WIZARD,{
+[BLIZZARDRISS]
+Hey ! My friend ! I see that you are a mage. Look into yourself to discover your hidden abilities !
+next;
+switch (select("About mage's hidden ability ", "About skill ^3355FF' Energy Coat '^000000 ", "End conversation")) {
+case 1:
+[BLIZZARDRISS]
+For many years I have studied the ancient magic's of Geffen. Recently, I discovered a very good forgotten skill! ! ! Isn't that fortunate?
+next;
+[BLIZZARDRISS]
+The skill uses your mental energy to block attacks against you. It is like a magical shield, or armor. Only the most special of persons can use this amazing skills.
+next;
+[BLIZZARDRISS]
+But the most amazing part is that I can use the skill! ! ! I can use this to protect myself ! Pu hah hah hah !!
+next;
+[BLIZZARDRISS]
+Ok Ok, don't get too excited. Listen carefully to what I can tell you. Those who use this spell must tap the hidden energies and abilities locked within themselves !
+next;
+[BLIZZARDRISS]
+If you wish to learn this skill, you must first have a few items to be used during the process.
+next;
+[BLIZZARDRISS]
+3 ^3355FFGlass Bead^000000 
+1 ^3355FF1 carat Diamond^000000 
+5 ^3355FFShell^000000 
+1 ^3355FFSolid Shell^000000 
+Bring me these items.
+next;
+[BLIZZARDRISS]
+Also, one more thing. . . You must be sufficiently experienced in the magical arts. This means you must either be a wizard or mage job level 35+.
+next;
+[BLIZZARDRISS]
+Wizards already have already experienced the role of a mage and so do not require a job level. In any case, one who wishes to be trained in this art must be in a healthy and strong mental state.
+next;
+[BLIZZARDRISS]
+Okay . . There is nothing more to say, are you interested?
+close;
+case 2:
+if (getskilllv("MG_ENERGYCOAT") == 1) {
+[BLIZZARDRISS]
+It seems that you have  already mastered this skill. Your skill in 'Energy Coat'  is evident. I am sorry,  I have nothing more to teach you ...
+close;
+}
+if ((countitem(Glass_Bead) > 2) && (countitem(Crystal_Jewel) > 0) && (countitem(Shell) > 4) && (countitem(Solid_Shell) > 0) && (JobLevel > 34 || (BaseJob == Job_Wizard || BaseJob == Job_Sage)) && (BaseClass == Job_Mage)) {
+[BLIZZARDRISS]
+Okay, I have received your request. I will now awaken your hidden energies . .
+. . . . . .
+. . . . . . . . . . . . .
+. . . . . . . . . . . . . . . . . . . . . . . . . .
+next;
+[BLIZZARDRISS]
+Ancient powers of Geffen! I seek the enlightenment and honor of your presence.  I am humbled in your presence!
+ ...
+next;
+[BLIZZARDRISS]
+Grant me your power! Release your spirit Mana Shield! Metal Armor!
+. . . . . . . . . . . .
+ENERGY COAT! ! !
+next;
+delitem Glass_Bead,3;
+delitem Crystal_Jewel,1;
+delitem Shell,5;
+delitem Solid_Shell,1;
+skill "MG_ENERGYCOAT",1,0;
+[BLIZZARDRISS]
+. . . . .
+It is done. . . You know have the  elite skill of ^3355FF' Energy Coat '^000000 . Use it well.
+next;
+[BLIZZARDRISS]
+Do not shame our class with disgraceful use of this or any skill. Your new power calls for new responsibility.
+close;
+}
+[BLIZZARDRISS]
+Look!! Didn't you listen to my explanation ? ! You have not prepared fully for me to assist you. Check that you have all the requirements.
+next;
+[BLIZZARDRISS]
+If you need me to explain all this again, then ask me. I would be happy to explain again if only you would listen. . .
+close;
+case 3:
+[BLIZZARDRISS]
+The wise man must have patience ! Prepare yourself again, and return when you are ready.
+close;
+}
+}

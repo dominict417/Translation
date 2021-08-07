@@ -1,0 +1,387 @@
+//================= Hercules Script =======================================
+//=       _   _                     _
+//=      | | | |                   | |
+//=      | |_| | ___ _ __ ___ _   _| | ___  ___
+//=      |  _  |/ _ \ '__/ __| | | | |/ _ \/ __|
+//=      | | | |  __/ | | (__| |_| | |  __/\__ \
+//=      \_| |_/\___|_|  \___|\__,_|_|\___||___/
+//================= License ===============================================
+//= This file is part of Hercules.
+//= http://herc.ws - http://github.com/HerculesWS/Hercules
+//=
+//= Copyright (C) 2012-2021 Hercules Dev Team
+//= Copyright (C) L0ne_W0lf
+//= Copyright (C) Samuray22
+//= Copyright (C) DracoRPG
+//= Copyright (C) Reddozen
+//= Copyright (C) Lupus
+//=
+//= Hercules is free software: you can redistribute it and/or modify
+//= it under the terms of the GNU General Public License as published by
+//= the Free Software Foundation, either version 3 of the License, or
+//= (at your option) any later version.
+//=
+//= This program is distributed in the hope that it will be useful,
+//= but WITHOUT ANY WARRANTY; without even the implied warranty of
+//= MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//= GNU General Public License for more details.
+//=
+//= You should have received a copy of the GNU General Public License
+//= along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//=========================================================================
+//= Blacksmith Skills Quests
+//================= Description ===========================================
+//= Quests for skills: Dubious Salesmanship, Greed
+//================= Current Version =======================================
+//= 1.6
+//=========================================================================
+
+geffen,178,72,3scriptAkkie#qsk_bs4_F_JOB_BLACKSMITH,{
+if (BaseJob == Job_Blacksmith) {
+if (BLACK_SK == 7 && getskilllv("BS_UNFAIRLYTRICK") == 0) {
+[Akkie]
+I see that you've transcended since the last time we've met. Oh... You must have forgotten everything I've taught you. Well, let me teach you again~
+next;
+[Akkie]
+Actually, let me jog your memory with this counterfeit zeny that we made the last time. Do you remember how to perform Dubious Salesmanship? You should be able to use it now...
+BLACK_SK = 8;
+skill "BS_UNFAIRLYTRICK",1,0;
+close;
+}
+else if (BLACK_SK == 8) {
+[Akkie]
+Hi again~ How has the smithing been coming along? Anyway, it was really nice of you to drop by and talk to me~
+next;
+[Akkie]
+It can get a little boring teaching Dubious Salesmanship to Blacksmiths and Master Smiths, but somebody from our guild has to do this job. Anyway, farewell and be safe in your travels, okay?
+close;
+}
+if (JobLevel > 29) {
+if (BLACK_SK == 0) {
+[Akkie]
+Hello there~ Isn't it such a wonderful day today? It's perfect for hunting!
+next;
+[Akkie]
+Um, let me introduce myself. I'm Akkie, a representative of the Blacksmith Guild that has been dispatched to teach the Dubious Salesmanship skill to Blacksmiths and Master Smiths.
+next;
+[Akkie]
+This additional class skill enables you to reduce the amount of zeny spent to cast Mammonite by 10%. This Passive skill might come in handy for you, "+ strcharinfo(PC_NAME) +".
+next;
+[Akkie]
+Although I'm new at this, would you like for me to teach you Dubious Salesmanship?
+next;
+if (select("Sure.", "No, thanks.") == 1) {
+["+ strcharinfo(PC_NAME) +"]
+Sure. I'll try learning this new skill. Who knows? It might be really useful.
+next;
+[Akkie]
+Oh, that's great! You won't regret this! Now, let me explain how this skill works. Um, now where did I put that-- Ah. Let me read these guidelines.
+next;
+[Akkie]
+Using Dubious Salesmanship, we can reduce Mammonite's zeny cost by 10% by forging fake zeny to use in the skill. Since it's against enemies, we can let the forgery slide.
+next;
+[Akkie]
+Now, I need you to bring some materials so that I can demonstrate the forging of counterfeit zeny. Please bring me 1 Steel, 5 Coal, 1 Iron Hammer and... and...
+next;
+[Akkie]
+Um, would you give me a minute to look up the information? I'm sorry about th-this... ^333333(I thought I highlighted this in the manual. Where is it?)^000000
+next;
+[Akkie]
+Oh! Oh, I found it! L-let me start all over again. Uh...
+next;
+["+ strcharinfo(PC_NAME) +"]
+............
+next;
+[Akkie]
+^0000FF1 Steel^000000,
+^0000FF5 Coal^000000,
+^0000FF1 Iron Hammer^000000,
+^0000FF500 zeny^000000 and ^0000FF1 Detrimindexta^000000. Would you bring those, please?
+next;
+["+ strcharinfo(PC_NAME) +"]
+Sure, sure. But are you actually able to teach me this skill? I mean...
+next;
+[Akkie]
+Oh no, I knew this was going to happen! I mean, um, it should be fine! I've been working here for 3 months a-and-- Just bring me the materials and I'll prove you can learn it e-easily!
+next;
+[Akkie]
+You've gotta trust me! You won't be disappointed, I promise! This skill is sooo useful! So just bring me those materials soon, alright?
+BLACK_SK = 1;
+close;
+}
+[Akkie]
+Wh-what?! But why not? A-am I not good enough for you? Please, I promise to do my best to teach you. Besides, I've got to reach my quota for the guild...
+close;
+}
+else if (BLACK_SK == 1) {
+if (countitem(Steel) > 0 && countitem(Coal) > 4 && countitem(Detrimindexta) > 0 && countitem(Iron_Hammer) > 0) {
+if (Zeny >= 500) {
+[Akkie]
+Oh, you came back~ Now let me see if you brought everything we need to make counterfeit zeny so that I can teach you Dubious Salesmanship.
+next;
+[Akkie]
+Good job, it looks like you've got what we need. Alright, now please wait while I get these materials ready for forging, okay?
+delitem Coal,5;
+delitem Steel,1;
+delitem Detrimindexta,1;
+delitem Iron_Hammer,1;
+Zeny -= 500;
+BLACK_SK = 2;
+close;
+}
+else {
+[Akkie]
+Hmm, you have all the forging materials, but I still need 500 zeny. We need that zeny to copy, or we won't be able to make convincing counterfeit money.
+close;
+}
+}
+else {
+[Akkie]
+Oh, you came back~ Now let me see if you brought everything we need to make counterfeit zeny so that I can teach you Dubious Salesmanship.
+next;
+[Akkie]
+Hmm, you're still missing a few things. Let me tell you what you need to bring me once again so that we can start training you in the skill right away.
+next;
+[Akkie]
+^0000FF1 Steel^000000,
+^0000FF5 Coal^000000,
+^0000FF1 Iron Hammer^000000,
+^0000FF500 zeny^000000 and ^0000FF1 Detrimindexta^000000. Don't forget, okay?
+close;
+}
+}
+else if (BLACK_SK == 2) {
+[Akkie]
+A-ah! You came back sooner than I thought. Um, gee. Hmm. How should I tell you this?
+next;
+["+ strcharinfo(PC_NAME) +"]
+...
+......
+.........
+next;
+[Akkie]
+I'm so sorry! I messed something up while I was making a counterfeit sample! I'm so sorry, please d-don't report me to the Blacksmith Guild! Give me one more chance!
+next;
+[Akkie]
+I promise that next time I won't mess up! All I need is 1 Steel and 3 more Coals! Please d-don't be angry with me, it was just an accident!
+next;
+["+ strcharinfo(PC_NAME) +"]
+Okay, okay... Are you sure that's all you need me to get?
+next;
+[Akkie]
+Yes, yes! Oh, thank you for being so generous! Just bring me ^FF00001 Steel^000000 and ^FF00003 Coals^000000 and we'll try again!
+BLACK_SK = 3;
+close;
+}
+else if (BLACK_SK == 3) {
+if (countitem(Steel) > 0 && countitem(Coal) > 2) {
+[Akkie]
+Oh, thank you so much for bringing these materials. Alright, I'll try really hard to succeed this time. Just give me a minute to prepare...
+delitem Steel,1;
+delitem Coal,3;
+BLACK_SK = 4;
+close;
+}
+else {
+[Akkie]
+All I need you to do is bring me 1 Steel and 3 Coals. Then I should be able to teach you the Dubious Salesmanship skill~
+close;
+}
+}
+else if (BLACK_SK == 4) {
+[Akkie]
+......
+.........
+............
+next;
+["+ strcharinfo(PC_NAME) +"]
+...?
+next;
+["+ strcharinfo(PC_NAME) +"]
+Oh no... Did... Did you... Did something happen?
+next;
+[Akkie]
+*Sniff* I b-broke the Iron Hammer you gave me! I c-can't finish forging this without one! Waaah~
+next;
+["+ strcharinfo(PC_NAME) +"]
+^333333(I guess I should really bring her a new ^FF0000Iron Hammer^333333, or else I'll never learn this skill!)^000000
+BLACK_SK = 5;
+close;
+}
+else if (BLACK_SK == 5) {
+if (countitem(Iron_Hammer) > 0) {
+[Akkie]
+^333333*Sniff*^000000 Did you r-really bring this Iron Hammer for me? Th-thank you for being so patient with my screwups...
+next;
+[Akkie]
+Okay, would you give me a moment? I'm going to try one more time.
+delitem Iron_Hammer,1;
+BLACK_SK = 6;
+close;
+}
+else {
+[Akkie]
+Waah~! I can't believe I broke the Iron Hammer! Would you please bring me another one so that I can finish this counterfeit zeny and teach you Dubious Salesmanship?
+close;
+}
+}
+else if (BLACK_SK == 6) {
+[Akkie]
+Oh, you're back! Yaaaay, I finally did it! I finished making a sample of counterfeit zeny and even tested it with Mammonite!
+next;
+[Akkie]
+Oh, before you learn my skill, I'm supposed to tell you that my colleague, Goodman, can teach you another additional skill known as Greed. So you may want to look for him later.
+next;
+[Akkie]
+Okay, now the first part to learning Dubious Salesmanship is making this fake zeny. Watch this... Isn't it easy? Of course, you can only use this in battle to reduce Mammonite's zeny cost...
+BLACK_SK = 7;
+skill "BS_UNFAIRLYTRICK",1,0;
+next;
+[Akkie]
+Also, 90% of the cost of Mammonite has to be real zeny or the skill will begin to lose effectiveness. Well, that's all for the lesson. Now you can use Dubious Salesmanship!
+next;
+[Akkie]
+Thanks once again for putting up with my mistakes, I know it must have been really annoying. Anyway, I hope this skill is really useful for you. Drop again sometime, okay?
+close;
+}
+else {
+if (rand(1,2) == 1) {
+[Akkie]
+Oh, have you spoken with Goodman in Einbroch yet? Goodman in Geffen yet? He's the representative of the Blacksmith Guild that teaches the Greed skill.
+next;
+[Akkie]
+If you're serious about smithing goods, the Greed skill might be very convenient. Though, I have to say that the skill's name is a little... Um. Hmm... It sounds pretty bad~
+close;
+}
+else {
+[Akkie]
+Hi again~ How has the smithing been coming along? Anyway, it was really nice of you to drop by and talk to me~
+next;
+[Akkie]
+It can get a little boring teaching Dubious Salesmanship to Blacksmiths and Master Smiths, but somebody from our guild has to do this job. Anyway, farewell and be safe in your travels, okay?
+close;
+}
+}
+}
+else {
+[Akkie]
+if (Upper == 1) {
+Hello, "+ strcharinfo(PC_NAME) +", I'm here on behalf of the Blacksmith Guild to teach you a new skill. However, your Job Level is a little low right now for me to teach you anything...
+next;
+[Akkie]
+But practice smithing a little bit more, and once you qualify, I'll be sure to teach you my skill! Goodbye and good luck~
+}
+else {
+Hello, I'm Akkie from the Blacksmith Guild. I'm here to teach this new skill to all interested Blacksmiths and Master Smiths, but it looks like your Job Level is too low...
+next;
+[Akkie]
+I'm sorry, "+ strcharinfo(PC_NAME) +",
+But you'll qualify for the skill I teach after you raise your Job Level. In the meantime, keep training, alright?
+}
+close;
+}
+}
+else {
+[Akkie]
+Ah, today seems like a perfect day for forging. I just feel like going behind a beautiful waterfall, getting some high quality materials, and just hammering things.
+close;
+}
+}
+
+geffen,172,52,1scriptGoodman#qsk_bs4_M_DWARF,{
+if (BaseJob == Job_Blacksmith) {
+if (BLACK_SK2 == 2 && Upper == 1 && getskilllv("BS_GREED") == 0) {
+[Goodman]
+Ah, I see that you have transcended. It gladdens me to see Blacksmiths become Master Smiths for the sake of improving their craft.
+next;
+[Goodman]
+Hm? You've forgotten the Greed skill? You should remember how to use it now: just looking at me should jog the memories you require to use this skill once again~
+skill "BS_GREED",1,0;
+BLACK_SK2 = 3;
+close;
+}
+else if (BLACK_SK2 == 3) {
+[Goodman]
+How is your forging technique coming along? When the craft frustrates you, traveling will offer a good opportunity to relax, think, and collect materials.
+close;
+}
+else {
+if (BLACK_SK2 == 0) {
+[Goodman]
+Hey. I'm a Blacksmith skill master sent from the Blacksmith Guild. Everyone calls me Goodman. You're
+if (Upper == 1)
+a Master Smith, aren't you?
+else
+a Blackmith, aren't you? Pffft, rhetorical question.
+next;
+[Goodman]
+Good news. I'm in charge of teaching the skill, developed by the Blacksmith and Merchant Guilds, called ^FF0000Greed^000000. It's your choice whether you learn it, but I recommend that you do.
+next;
+[Goodman]
+If you want, I can start teaching you the Greed skill right now. So what do you say, kid?
+next;
+if (select("Sounds good!", "Maybe later~") == 1) {
+[Goodman]
+Heh! Good choice. Now, the Greed skill automatically picks up all items in a 5*5 cell area around the caster. It's handy for picking up clumps of goods from looting monsters.
+next;
+[Goodman]
+First thing's first. I need to test you and see if you qualify to learn this skill. Go fill your Inventory with any items until it's so full, you can't put an item of 500 Weight in it.
+next;
+[Goodman]
+When you finish that task, come back and talk to me. Alright then, good luck~
+BLACK_SK2 = 1;
+close;
+}
+[Goodman]
+I see. It's good to be busy with other things, but remember that time is  a commodity, and you should always spend it doing the most worthwhile stuff. Understand?
+close;
+}
+else if (BLACK_SK2 == 1) {
+if (MaxWeight - Weight < 5000) {
+[Goodman]
+Back already, eh? Alright, let me check the things you're carrying. Let's see, Inventory, Inventory... 
+next;
+[Goodman]
+Good work: you pass. Do you realize now that the time and experience spent in gathering these items is worth more than their prices in zeny?
+next;
+[Goodman]
+if (Upper == 1)
+I believe that Master Smiths
+else
+I believe that Blacksmiths should first and foremost be artisans. Being rich and famous is merely a side effect of that.
+if (Upper == 1)
+Honorable Master Smiths know value is in the craftsmanship...
+else
+Honorable Blacksmiths know value is in the craftsmanship...
+next;
+if (Upper == 1) {
+[Goodman]
+Now, if you don't place too much importance on an item's worth in terms of zeny, you'll be able to let go of them much more easily. Watch me do this. See? Now you can do it too.
+next;
+}
+[Goodman]
+The skill you learned is called Greed, but I hope you use it in a manner that is different than its name. Don't forget that, and I hope you craft true masterpieces.
+skill "BS_GREED",1,0;
+BLACK_SK2 = 2;
+close;
+}
+else {
+[Goodman]
+Hm. You've come back too early. And you didn't complete the objective that I set for you. Listen carefully. 
+next;
+[Goodman]
+Go fill your Inventory with any items until it becomes too full to place an item of 500 weight into it. When you finish this task, come back and report to me.
+close;
+}
+}
+else {
+[Goodman]
+How have you been using the Greed skill? Hopefully, it has been convenient in your efforts to forge goods of greater quality for all of your comrades.
+close;
+}
+}
+}
+[Goodman]
+I feel like exploring the mountains to look for rare and interesting items that I can use in forging. For me, that's the greatest pleasure of being a Blacksmith.
+close;
+}
